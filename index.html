@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MONO•TERRA™ — Natural Engineering. Unbroken Traceability.</title>
-  <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-source, identity-preserved technical merino. LYTEN™ is a milled knit mid-layer designed for the accountability era.">
+  <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-origin, identity-preserved technical merino. LYTEN™ is a milled knit mid-layer designed for the accountability era.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400&display=swap" rel="stylesheet">
@@ -524,21 +524,20 @@
       line-height: 1.2;
     }
 
-    .transfer-intro {
-      font-family: 'Satoshi', sans-serif;
-      font-weight: 400;
-      font-size: 17px;
-      color: var(--charcoal);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 48px;
-    }
-
     .transfer-cols {
       display: grid;
       grid-template-columns: 42% 58%;
       gap: 48px;
       align-items: start;
+    }
+
+    .transfer-intro {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: 24px;
     }
 
     .transfer-body {
@@ -646,43 +645,20 @@
       background: var(--sepia-black);
       padding: 80px 64px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
-    .prov-line {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 400;
-      font-size: 13px;
-      color: var(--warm-accent);
-      line-height: 2.2;
-      opacity: 0;
-      transform: translateX(-12px);
-      transition: opacity 500ms ease-out, transform 500ms ease-out;
-    }
-
-    .prov-line.appeared {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .prov-line-label {
-      color: rgba(107, 107, 107, 0.7);
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-    }
-
-    .prov-line-sep {
-      color: rgba(107, 107, 107, 0.5);
-      margin: 0 8px;
-    }
-
-    .prov-proxy {
-      color: rgba(107, 107, 107, 0.5);
-      font-size: 11px;
-      margin-left: 6px;
-    }
+    /* SVG Map specific styles */
+    .dp-mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: #D4C9B9; opacity: 0.7; letter-spacing: 0.1em; text-transform: uppercase; }
+    .dp-sans { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13px; fill: #FAFAF8; }
+    .dp-line { stroke: #D4C9B9; stroke-width: 1.5; fill: none; stroke-dasharray: 3 4; opacity: 0.3; }
+    .dp-path { stroke: #D4C9B9; stroke-width: 1.5; fill: none; opacity: 0.3; }
+    .dp-shape { fill: #1A1A1A; stroke: #333; stroke-width: 1; }
+    .dp-bg { fill: #0B0B0B; stroke: #333; stroke-width: 1; }
+    .dp-node { fill: #FAFAF8; }
+    .dp-dot { fill: #8D4E2F; }
 
     /* ══════════════════════════════════
        SECTION 8 — CTA
@@ -867,7 +843,7 @@
       <!-- HERO BACKGROUND VIDEO -->
       <div class="hero-video-wrapper" aria-hidden="true">
         <video class="hero-video" autoplay loop muted playsinline>
-          <source src="https://triangle-halibut-z3ll.squarespace.com/config/asset-library/file-details/f6add7da-2711-4c0f-aff5-470af613c0ee" type="video/mp4">
+          <source src="https://video.squarespace-cdn.com/content/v1/692ef9367a342e5167c274e7/f6add7da-2711-4c0f-aff5-470af613c0ee/thumbnail" type="video/mp4">
         </video>
         <div class="hero-video-overlay"></div>
       </div>
@@ -1158,14 +1134,16 @@
     <section id="data-transfer" aria-labelledby="data-transfer-headline">
       <div class="reveal">
         <h2 class="transfer-headline reveal-child" id="data-transfer-headline">Structured data. Every transaction.</h2>
-        <p class="transfer-intro reveal-child">
-          Each LYTEN™ material delivery is accompanied by a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Fields are structured for direct import into CSRD reporting systems, DPP interfaces, and brand-level environmental databases. No manual data entry required on the buyer side.
-        </p>
         <div class="transfer-cols reveal-child">
-          <div class="transfer-body">
-            The record captures provenance, fibre specification, processing methodology, certification status, and chain-of-custody events from farm gate to finished material handoff. Data is primary &#8212; generated at source, not modelled or averaged. The structure follows open standards to ensure compatibility with third-party DPP systems and future regulatory portals.
+          <div class="transfer-left">
+            <p class="transfer-intro">
+              Each LYTEN™ material delivery is accompanied by a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Fields are structured for direct import into CSRD reporting systems, DPP interfaces, and brand-level environmental databases. No manual data entry required on the buyer side.
+            </p>
+            <p class="transfer-body">
+              The record captures provenance, fibre specification, processing methodology, certification status, and chain-of-custody events from farm gate to finished material handoff. Data is primary &#8212; generated at source, not modelled or averaged. The structure follows open standards to ensure compatibility with third-party DPP systems and future regulatory portals.
+            </p>
           </div>
-          <div>
+          <div class="transfer-right">
             
             <!-- macOS Styled Code Window -->
             <div class="mac-window" aria-label="Illustrative EPCIS 2.0 data structure">
@@ -1203,7 +1181,7 @@
           <span class="code-struct">},</span>
           <span class="code-key">"mt:provenance"</span><span class="code-struct">:</span> <span class="code-struct">{</span>
             <span class="code-key">"sourceRegion"</span><span class="code-struct">:</span> <span class="code-str">"Victoria, Australia"</span><span class="code-struct">,</span>
-            <span class="code-key">"estateType"</span><span class="code-struct">:</span> <span class="code-str">"Single-source family stud"</span><span class="code-struct">,</span>
+            <span class="code-key">"estateType"</span><span class="code-struct">:</span> <span class="code-str">"Single-origin family stud"</span><span class="code-struct">,</span>
             <span class="code-key">"clipYear"</span><span class="code-struct">:</span> <span class="code-str">"2025"</span><span class="code-struct">,</span>
             <span class="code-key">"dataType"</span><span class="code-struct">:</span> <span class="code-str">"primary"</span>
           <span class="code-struct">},</span>
@@ -1235,37 +1213,90 @@
       <div class="provenance-split">
         <div class="prov-light">
           <div class="prov-light-inner reveal">
-            <h2 class="prov-headline reveal-child" id="provenance-headline">Single source. Identity preserved.</h2>
+            <h2 class="prov-headline reveal-child" id="provenance-headline">Single-origin. Identity preserved.</h2>
             <p class="prov-body reveal-child">
               Every batch of LYTEN™ originates from a single estate in Victoria, Australia. A seventh-generation family stud producing fine merino. The source is consistent. The provenance is unbroken. The data is primary &#8212; not modelled, not averaged, not inferred.
             </p>
           </div>
         </div>
         <div class="prov-dark" id="provDark">
-          <div class="prov-line" data-prov-index="0">
-            <span class="prov-line-label">Batch ID</span><span class="prov-line-sep">&middot;</span><span>MT-2025-PX</span><span class="prov-proxy">[proxy]</span>
+          
+          <!-- Consumer DPP Lookup Mockup SVG -->
+          <div class="reveal-child" style="width: 100%; max-width: 400px; margin: 0 auto;">
+            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup">
+              <style>
+                .dp-mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: #D4C9B9; opacity: 0.7; letter-spacing: 0.1em; text-transform: uppercase; }
+                .dp-sans { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13px; fill: #FAFAF8; }
+                .dp-line { stroke: #D4C9B9; stroke-width: 1.5; fill: none; stroke-dasharray: 3 4; opacity: 0.3; }
+                .dp-path { stroke: #D4C9B9; stroke-width: 1.5; fill: none; opacity: 0.3; }
+                .dp-shape { fill: #1A1A1A; stroke: #333; stroke-width: 1; }
+                .dp-bg { fill: #0B0B0B; stroke: #333; stroke-width: 1; }
+                .dp-node { fill: #FAFAF8; }
+                .dp-dot { fill: #8D4E2F; }
+                .dp-accent { fill: #8D4E2F; }
+              </style>
+              <defs>
+                <marker id="arrow-dp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <polygon points="0 0, 8 4, 0 8" fill="#8D4E2F" />
+                </marker>
+              </defs>
+
+              <!-- Garment Tag -->
+              <g transform="translate(10, 150)">
+                <path d="M0,0 L60,0 L60,90 L30,110 L0,90 Z" class="dp-shape" />
+                <circle cx="30" cy="15" r="4" class="dp-bg" />
+                <rect x="15" y="30" width="30" height="30" class="dp-bg" />
+                <rect x="19" y="34" width="8" height="8" class="dp-node" />
+                <rect x="29" y="48" width="12" height="8" class="dp-node" />
+                <rect x="19" y="48" width="8" height="8" class="dp-node" />
+                <text x="30" y="80" text-anchor="middle" class="dp-mono" font-size="9">NFC / QR</text>
+              </g>
+
+              <!-- Connection -->
+              <path d="M80,200 L140,200" stroke="#8D4E2F" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow-dp)" />
+              <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#8D4E2F" opacity="1">SCAN</text>
+
+              <!-- Mobile UI -->
+              <g transform="translate(160, 20)">
+                <rect x="0" y="0" width="240" height="360" rx="20" class="dp-bg" />
+                <rect x="10" y="10" width="220" height="340" rx="12" class="dp-shape" />
+                
+                <!-- UI Header -->
+                <line x1="10" y1="55" x2="230" y2="55" class="dp-path" />
+                <text x="120" y="38" text-anchor="middle" class="dp-mono" fill="#FAFAF8" opacity="0.9">PRODUCT PASSPORT</text>
+
+                <!-- UI Content Nodes -->
+                <!-- Origin Node -->
+                <circle cx="35" cy="90" r="5" class="dp-dot" />
+                <line x1="35" y1="95" x2="35" y2="155" class="dp-line" />
+                <text x="60" y="86" class="dp-mono">ORIGIN</text>
+                <text x="60" y="104" class="dp-sans">Single-Origin Estate</text>
+                <text x="60" y="120" class="dp-sans">Victoria, Australia</text>
+
+                <!-- Fibre Node -->
+                <circle cx="35" cy="160" r="5" class="dp-dot" />
+                <line x1="35" y1="165" x2="35" y2="225" class="dp-line" />
+                <text x="60" y="156" class="dp-mono">FIBRE SPEC</text>
+                <text x="60" y="174" class="dp-sans">16.8 µm Merino</text>
+                <text x="60" y="190" class="dp-sans">98.7% Comfort Factor</text>
+
+                <!-- Processing Node -->
+                <circle cx="35" cy="230" r="5" class="dp-dot" />
+                <line x1="35" y1="235" x2="35" y2="295" class="dp-line" />
+                <text x="60" y="226" class="dp-mono">PROCESSING</text>
+                <text x="60" y="244" class="dp-sans">Zero Chemistry</text>
+                <text x="60" y="260" class="dp-sans">Mechanical Milling</text>
+
+                <!-- Batch Node -->
+                <circle cx="35" cy="300" r="5" class="dp-dot" />
+                <text x="60" y="296" class="dp-mono">VERIFICATION</text>
+                <text x="60" y="314" class="dp-sans">Batch: MT-2025-PX</text>
+                <text x="60" y="330" class="dp-sans" fill="#8D4E2F">RWS Certified</text>
+              </g>
+            </svg>
           </div>
-          <div class="prov-line" data-prov-index="1">
-            <span class="prov-line-label">Fibre Diameter</span><span class="prov-line-sep">&middot;</span><span>16.8 &#xB5;m</span><span class="prov-proxy">[proxy]</span>
-          </div>
-          <div class="prov-line" data-prov-index="2">
-            <span class="prov-line-label">Staple Length</span><span class="prov-line-sep">&middot;</span><span>documented</span>
-          </div>
-          <div class="prov-line" data-prov-index="3">
-            <span class="prov-line-label">Yield</span><span class="prov-line-sep">&middot;</span><span>XX.X%</span><span class="prov-proxy">[proxy]</span>
-          </div>
-          <div class="prov-line" data-prov-index="4">
-            <span class="prov-line-label">Certification</span><span class="prov-line-sep">&middot;</span><span>RWS</span>
-          </div>
-          <div class="prov-line" data-prov-index="5">
-            <span class="prov-line-label">Processing</span><span class="prov-line-sep">&middot;</span><span>mechanical milling, zero chemistry</span>
-          </div>
-          <div class="prov-line" data-prov-index="6">
-            <span class="prov-line-label">Location</span><span class="prov-line-sep">&middot;</span><span>Victoria, Australia</span>
-          </div>
-          <div class="prov-line" data-prov-index="7">
-            <span class="prov-line-label">Estate</span><span class="prov-line-sep">&middot;</span><span>7th generation family stud</span>
-          </div>
+          <!-- End Mockup -->
+
         </div>
       </div>
     </section>
@@ -1286,7 +1317,7 @@
           <a class="cta-btn"
              target="_blank" 
              rel="noopener noreferrer"
-             href="mailto:monoterra@greenfieldgroup.eu?subject=Technical%20Brief%20Request%20%E2%80%94%20LYTEN&body=Please%20include%20your%20name%2C%20brand%2C%20and%20role">
+             href="https://greenfieldgroup.eu/monoterra/contact">
             Request Technical Brief
           </a>
         </div>
@@ -1324,30 +1355,6 @@
         });
       }, { threshold: 0.1 });
       els.forEach(function (el) { io.observe(el); });
-    }());
-
-    // ── PROVENANCE LINES: staggered entrance on section enter ──
-    (function () {
-      var section = document.getElementById('provDark');
-      var lines   = document.querySelectorAll('.prov-line');
-      if (!section || !lines.length) return;
-      if (!('IntersectionObserver' in window)) {
-        lines.forEach(function (l) { l.classList.add('appeared'); });
-        return;
-      }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            lines.forEach(function (line, i) {
-              setTimeout(function () {
-                line.classList.add('appeared');
-              }, i * 150);
-            });
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      io.observe(section);
     }());
 
     // ── TRANSITION BAND: passive scroll parallax ──
