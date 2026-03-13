@@ -6,8 +6,8 @@
   <title>MONO•TERRA™ — Natural Engineering. Unbroken Traceability.</title>
   <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-origin, identity-preserved technical merino. LYTEN™ is a milled knit mid-layer designed for the accountability era.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
   <style>
     :root {
       --sepia-black: #0F0F0E;
@@ -37,11 +37,11 @@
       overflow-x: hidden;
     }
 
-    /* ── REVEAL ── */
+    /* ── REVEAL ANIMATIONS ── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: opacity 600ms ease-out, transform 600ms ease-out;
+      transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
     }
     .reveal.visible {
       opacity: 1;
@@ -50,7 +50,7 @@
     .reveal .reveal-child {
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 600ms ease-out, transform 600ms ease-out;
+      transition: opacity 800ms cubic-bezier(0.19, 1, 0.22, 1), transform 800ms cubic-bezier(0.19, 1, 0.22, 1);
     }
     .reveal.visible .reveal-child { opacity: 1; transform: translateY(0); }
     .reveal.visible .reveal-child:nth-child(1) { transition-delay: 0ms; }
@@ -115,7 +115,6 @@
       overflow: hidden;
     }
 
-    /* Video Background Styles */
     .hero-video-wrapper {
       position: absolute;
       inset: 0;
@@ -136,7 +135,7 @@
     .hero-video-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5); /* 50% Black Transparency */
+      background: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
 
@@ -179,9 +178,9 @@
     .hero-headline {
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 700;
-      font-size: 56px;
+      font-size: clamp(40px, 6vw, 64px);
       color: var(--warm-off-white);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       line-height: 1.1;
     }
 
@@ -206,26 +205,10 @@
       transition: opacity 300ms ease-out;
       white-space: nowrap;
     }
-    .terminal-line.appeared {
-      opacity: 1;
-    }
-    .terminal-label {
-      color: var(--mid-grey);
-      opacity: 0.7;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .terminal-sep {
-      color: var(--mid-grey);
-      opacity: 0.5;
-      font-size: 11px;
-      margin: 0 6px;
-    }
-    .terminal-value {
-      color: var(--warm-accent);
-      font-size: 13px;
-    }
+    .terminal-line.appeared { opacity: 1; }
+    .terminal-label { color: var(--mid-grey); opacity: 0.7; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .terminal-sep { color: var(--mid-grey); opacity: 0.5; font-size: 11px; margin: 0 6px; }
+    .terminal-value { color: var(--warm-accent); font-size: 13px; }
 
     /* ══════════════════════════════════
        SECTION 2 — THE PROBLEM
@@ -272,10 +255,7 @@
       padding: 28px 0;
       border-bottom: 1px solid rgba(141, 78, 47, 0.4);
     }
-    .data-card:first-child {
-      border-top: 1px solid rgba(141, 78, 47, 0.4);
-    }
-
+    .data-card:first-child { border-top: 1px solid rgba(141, 78, 47, 0.4); }
     .data-card-label {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 10px;
@@ -285,7 +265,6 @@
       display: block;
       margin-bottom: 8px;
     }
-
     .data-card-statement {
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 600;
@@ -295,7 +274,37 @@
     }
 
     /* ══════════════════════════════════
-       SECTION 3 — THE MATERIAL: LYTEN
+       SECTION 3 — CIRCULARITY IMPACT
+    ══════════════════════════════════ */
+    #circularity {
+      background: var(--charcoal);
+      padding: 100px 64px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .circularity-headline {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--warm-off-white);
+      margin-bottom: 24px;
+      letter-spacing: 0.01em;
+    }
+    
+    .circularity-body {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: rgba(212, 201, 185, 0.8);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════
+       SECTION 4 — THE MATERIAL: LYTEN
     ══════════════════════════════════ */
     #material {
       background: var(--sepia-black);
@@ -304,24 +313,15 @@
       overflow: hidden;
     }
 
-    .material-rule {
-      height: 1.5px;
-      background: var(--muted-clay);
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
     .material-bg-text {
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 700;
       font-size: clamp(120px, 18vw, 240px);
       color: var(--warm-off-white);
-      opacity: 0.04;
+      opacity: 0.03;
       position: absolute;
       right: -40px;
-      top: 50%;
+      top: 30%;
       transform: translateY(-50%);
       user-select: none;
       letter-spacing: 0.02em;
@@ -391,7 +391,32 @@
     }
 
     /* ══════════════════════════════════
-       SECTION 4 — TRANSITION BAND
+       SECTION 5 — PHILOSOPHY BRIDGE
+    ══════════════════════════════════ */
+    .philosophy-section {
+      text-align: center;
+      padding: 140px 64px;
+      background: var(--sepia-black);
+    }
+    
+    .philosophy-sub {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      color: var(--warm-accent);
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    
+    .philosophy-main {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      color: var(--warm-off-white);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* ══════════════════════════════════
+       SECTION 6 — TRANSITION BAND
     ══════════════════════════════════ */
     #transition-band {
       height: 140px;
@@ -417,11 +442,22 @@
     }
 
     /* ══════════════════════════════════
-       SECTION 5 — DATA LAYER
+       SECTION 7 — DATA LAYER
     ══════════════════════════════════ */
     #data-layer {
       background: var(--warm-off-white);
       padding: 120px 64px;
+    }
+
+    .data-bridge-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted-clay);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      display: block;
+      margin-bottom: 24px;
+      font-weight: 600;
     }
 
     .data-grid {
@@ -431,9 +467,7 @@
       align-items: center;
     }
 
-    .data-left {
-      max-width: 640px;
-    }
+    .data-left { max-width: 640px; }
 
     .data-headline {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -470,10 +504,7 @@
       text-align: left;
       border-bottom: 1.5px solid rgba(141, 78, 47, 0.6);
     }
-
-    .reg-table thead th + th {
-      padding-left: 24px;
-    }
+    .reg-table thead th + th { padding-left: 24px; }
 
     .reg-table tbody td {
       font-family: 'Satoshi', sans-serif;
@@ -485,10 +516,7 @@
       border-bottom: 1px solid rgba(212, 201, 185, 0.4);
       line-height: 1.55;
     }
-
-    .reg-table tbody td + td {
-      padding-left: 24px;
-    }
+    .reg-table tbody td + td { padding-left: 24px; }
 
     .data-qualify-note {
       font-family: 'IBM Plex Mono', monospace;
@@ -507,11 +535,12 @@
     }
 
     /* ══════════════════════════════════
-       SECTION 6 — DATA TRANSFER (MAC UI)
+       SECTION 8 — DATA TRANSFER
     ══════════════════════════════════ */
     #data-transfer {
       background: var(--warm-off-white);
       padding: 120px 64px;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
     .transfer-headline {
@@ -520,7 +549,7 @@
       font-size: 38px;
       color: var(--sepia-black);
       letter-spacing: 0.02em;
-      margin-bottom: 24px;
+      margin-bottom: 48px;
       line-height: 1.2;
     }
 
@@ -552,26 +581,19 @@
     .mac-window {
       background: var(--sepia-black);
       border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
     }
-
     .mac-header {
       height: 32px;
-      background: #1A1A1A;
+      background: #E5E5E5;
       display: flex;
       align-items: center;
       padding: 0 16px;
       gap: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
-
-    .mac-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
     .mac-close { background: #FF5F56; }
     .mac-min   { background: #FFBD2E; }
     .mac-max   { background: #27C93F; }
@@ -584,7 +606,6 @@
       line-height: 1.9;
       overflow-x: auto;
     }
-
     .code-struct { color: var(--mid-grey); }
     .code-key    { color: var(--muted-clay); }
     .code-str    { color: var(--warm-accent); }
@@ -600,7 +621,7 @@
     }
 
     /* ══════════════════════════════════
-       SECTION 7 — PROVENANCE
+       SECTION 9 — PROVENANCE
     ══════════════════════════════════ */
     #provenance {
       background: var(--warm-off-white);
@@ -618,10 +639,6 @@
       background: var(--warm-off-white);
       display: flex;
       align-items: center;
-    }
-
-    .prov-light-inner {
-      width: 100%;
     }
 
     .prov-headline {
@@ -650,18 +667,71 @@
       overflow: hidden;
     }
 
-    /* SVG Map specific styles */
-    .dp-mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: #D4C9B9; opacity: 0.7; letter-spacing: 0.1em; text-transform: uppercase; }
+    /* Contrast-Boosted SVG Map specific styles */
+    .dp-mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: #FAFAF8; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase; }
     .dp-sans { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13px; fill: #FAFAF8; }
-    .dp-line { stroke: #D4C9B9; stroke-width: 1.5; fill: none; stroke-dasharray: 3 4; opacity: 0.3; }
-    .dp-path { stroke: #D4C9B9; stroke-width: 1.5; fill: none; opacity: 0.3; }
-    .dp-shape { fill: #1A1A1A; stroke: #333; stroke-width: 1; }
-    .dp-bg { fill: #0B0B0B; stroke: #333; stroke-width: 1; }
+    .dp-line { stroke: #FAFAF8; stroke-width: 1.5; fill: none; stroke-dasharray: 3 4; opacity: 0.4; }
+    .dp-path { stroke: #FAFAF8; stroke-width: 1.5; fill: none; opacity: 0.2; }
+    .dp-shape { fill: #2C2C2C; stroke: #444; stroke-width: 1; }
+    .dp-bg { fill: #1A1A1A; stroke: #333; stroke-width: 1; }
     .dp-node { fill: #FAFAF8; }
-    .dp-dot { fill: #8D4E2F; }
+    .dp-dot { fill: #D4C9B9; }
+    .dp-accent { fill: #D4C9B9; }
 
     /* ══════════════════════════════════
-       SECTION 8 — CTA
+       SECTION 10 — EXECUTION MODEL (FAQ)
+    ══════════════════════════════════ */
+    #execution {
+      background: var(--warm-off-white);
+      padding: 120px 64px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .exec-headline {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 38px;
+      color: var(--sepia-black);
+      letter-spacing: 0.02em;
+      margin-bottom: 64px;
+      text-transform: uppercase;
+    }
+
+    .exec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px 48px;
+    }
+
+    .exec-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted-clay);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .exec-q {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+
+    .exec-a {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--charcoal);
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    /* ══════════════════════════════════
+       SECTION 11 — CTA
     ══════════════════════════════════ */
     #cta {
       background: var(--sepia-black);
@@ -713,10 +783,7 @@
       text-decoration: none;
       transition: background 200ms;
     }
-
-    .cta-btn:hover {
-      background: #A05A38;
-    }
+    .cta-btn:hover { background: #A05A38; }
 
     .cta-footer {
       font-family: 'IBM Plex Mono', monospace;
@@ -727,108 +794,53 @@
     }
 
     /* ══════════════════════════════════
-       RESPONSIVE — 768px & 1024px
+       RESPONSIVE — 1024px & 768px
     ══════════════════════════════════ */
     @media (max-width: 1024px) {
-      .data-grid {
-        grid-template-columns: 1fr;
-      }
-      .mt-schematic-svg {
-        max-width: 500px;
-        margin: 40px auto 0;
-      }
+      .data-grid, .exec-grid { grid-template-columns: 1fr; gap: 48px; }
+      .mt-schematic-svg { max-width: 500px; margin: 40px auto 0; }
     }
 
     @media (max-width: 768px) {
-      #hero {
-        padding: 32px;
-      }
-      .hero-headline {
-        font-size: 36px;
-      }
-      .hero-bottom {
-        flex-direction: column;
-        gap: 40px;
-        margin-top: 80px;
-      }
-      .hero-terminal {
-        width: 100%;
-      }
-      .terminal-line {
-        white-space: normal;
-      }
+      #hero { padding: 32px; }
+      .hero-headline { font-size: 36px; }
+      .hero-bottom { flex-direction: column; gap: 40px; margin-top: 80px; }
+      .hero-terminal { width: 100%; }
+      .terminal-line { white-space: normal; }
 
-      #problem {
-        padding: 80px 32px;
-      }
-      .problem-headline {
-        font-size: 36px;
-      }
-      .problem-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
+      #problem { padding: 80px 32px; }
+      .problem-headline { font-size: 36px; }
+      .problem-grid { grid-template-columns: 1fr; gap: 48px; }
 
-      #material {
-        padding: 80px 32px;
-      }
-      .material-headline {
-        font-size: 28px;
-      }
-      .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+      #circularity { padding: 80px 32px; }
+      .circularity-headline { font-size: 28px; }
 
-      #data-layer {
-        padding: 80px 32px;
-      }
-      .data-headline {
-        font-size: 28px;
-      }
-      .reg-table thead th,
-      .reg-table tbody td {
-        font-size: 13px;
-        padding-left: 12px !important;
-      }
-      .reg-table thead th:first-child,
-      .reg-table tbody td:first-child {
-        padding-left: 0 !important;
-      }
+      #material { padding: 80px 32px; }
+      .material-headline { font-size: 28px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 40px; }
 
-      #data-transfer {
-        padding: 80px 32px;
-      }
-      .transfer-headline {
-        font-size: 28px;
-      }
-      .transfer-cols {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+      .philosophy-section { padding: 100px 32px; }
+      .philosophy-main { font-size: 32px; }
 
-      #provenance {
-        padding: 0;
-      }
-      .provenance-split {
-        grid-template-columns: 1fr;
-      }
-      .prov-light {
-        padding: 60px 32px;
-      }
-      .prov-dark {
-        padding: 60px 32px;
-      }
-      .prov-headline {
-        font-size: 28px;
-      }
+      #data-layer { padding: 80px 32px; }
+      .data-headline { font-size: 28px; }
+      .reg-table thead th, .reg-table tbody td { font-size: 13px; padding-left: 12px !important; }
+      .reg-table thead th:first-child, .reg-table tbody td:first-child { padding-left: 0 !important; }
 
-      #cta {
-        padding: 100px 32px;
-      }
-      .cta-headline {
-        font-size: 32px;
-      }
+      #data-transfer { padding: 80px 32px; }
+      .transfer-headline { font-size: 28px; }
+      .transfer-cols { grid-template-columns: 1fr; gap: 32px; }
+
+      #provenance { padding: 0; }
+      .provenance-split { grid-template-columns: 1fr; }
+      .prov-light, .prov-dark { padding: 60px 32px; }
+      .prov-headline { font-size: 28px; }
+
+      #execution { padding: 80px 32px; }
+      .exec-headline { font-size: 28px; margin-bottom: 40px; }
+
+      #cta { padding: 100px 32px; }
+      .cta-headline { font-size: 32px; }
     }
   </style>
 </head>
@@ -918,17 +930,25 @@
               <span class="data-card-label">Chemistry Burden</span>
               <p class="data-card-statement">"Superwash processing generates AOX wastewater and carries forward-looking regulatory risk for 'natural' claims."</p>
             </article>
-            <article class="data-card">
-              <span class="data-card-label">Design vs. Disassembly</span>
-              <p class="data-card-statement">"Mono-material keratin requires zero separation. Mechanically recyclable and industrially compostable."</p>
-            </article>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════
-         SECTION 3 — THE MATERIAL: LYTEN&#8482;
+         SECTION 3 — CIRCULARITY IMPACT
+    ══════════════════════════════════════════ -->
+    <section id="circularity" aria-labelledby="circularity-headline">
+      <div class="reveal">
+        <h2 class="circularity-headline reveal-child" id="circularity-headline">Circular by Design.<br>Not by Disassembly.</h2>
+        <p class="circularity-body reveal-child">
+          We solve the circularity problem by not creating it. A mono-material keratin structure requires zero separation. It is mechanically recyclable and industrially compostable at end of life.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 4 — THE MATERIAL: LYTEN&#8482;
     ══════════════════════════════════════════ -->
     <section id="material" aria-labelledby="material-headline">
       <div class="material-rule" aria-hidden="true"></div>
@@ -966,19 +986,28 @@
     </section>
 
     <!-- ══════════════════════════════════════════
-         SECTION 4 — TRANSITION BAND
+         SECTION 5 — PHILOSOPHY BRIDGE
+    ══════════════════════════════════════════ -->
+    <section class="philosophy-section reveal">
+      <h3 class="philosophy-sub reveal-child">This is not invention.</h3>
+      <h2 class="philosophy-main reveal-child">It is recognition.</h2>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 6 — TRANSITION BAND
     ══════════════════════════════════════════ -->
     <div id="transition-band" aria-hidden="true" role="presentation">
       <p class="marquee-text" id="marqueeText">CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &nbsp;</p>
     </div>
 
     <!-- ══════════════════════════════════════════
-         SECTION 5 — THE DATA LAYER & SCHEMATIC
+         SECTION 7 — THE DATA LAYER & SCHEMATIC
     ══════════════════════════════════════════ -->
     <section id="data-layer" aria-labelledby="data-layer-headline">
       <div class="reveal data-grid">
         
         <div class="data-left reveal-child">
+          <span class="data-bridge-text">Nature provides the performance. We provide the proof.</span>
           <h2 class="data-headline" id="data-layer-headline">The data your reporting function actually needs.</h2>
           <p class="data-intro">
             MONO&bull;TERRA™ supplies primary farm-level environmental data with every material transaction. Batch-specific. Auditable. Structured for CSRD Scope 3 Category 1 reporting, DPP field population, and ESPR ecodesign dossiers.
@@ -1129,7 +1158,7 @@
     </section>
 
     <!-- ══════════════════════════════════════════
-         SECTION 6 — DATA TRANSFER (MAC UI)
+         SECTION 8 — DATA TRANSFER (MAC UI)
     ══════════════════════════════════════════ -->
     <section id="data-transfer" aria-labelledby="data-transfer-headline">
       <div class="reveal">
@@ -1207,7 +1236,7 @@
     </section>
 
     <!-- ══════════════════════════════════════════
-         SECTION 7 — PROVENANCE
+         SECTION 9 — PROVENANCE
     ══════════════════════════════════════════ -->
     <section id="provenance" aria-labelledby="provenance-headline">
       <div class="provenance-split">
@@ -1224,20 +1253,9 @@
           <!-- Consumer DPP Lookup Mockup SVG -->
           <div class="reveal-child" style="width: 100%; max-width: 400px; margin: 0 auto;">
             <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup">
-              <style>
-                .dp-mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: #D4C9B9; opacity: 0.7; letter-spacing: 0.1em; text-transform: uppercase; }
-                .dp-sans { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13px; fill: #FAFAF8; }
-                .dp-line { stroke: #D4C9B9; stroke-width: 1.5; fill: none; stroke-dasharray: 3 4; opacity: 0.3; }
-                .dp-path { stroke: #D4C9B9; stroke-width: 1.5; fill: none; opacity: 0.3; }
-                .dp-shape { fill: #1A1A1A; stroke: #333; stroke-width: 1; }
-                .dp-bg { fill: #0B0B0B; stroke: #333; stroke-width: 1; }
-                .dp-node { fill: #FAFAF8; }
-                .dp-dot { fill: #8D4E2F; }
-                .dp-accent { fill: #8D4E2F; }
-              </style>
               <defs>
                 <marker id="arrow-dp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <polygon points="0 0, 8 4, 0 8" fill="#8D4E2F" />
+                  <polygon points="0 0, 8 4, 0 8" fill="#D4C9B9" />
                 </marker>
               </defs>
 
@@ -1253,8 +1271,8 @@
               </g>
 
               <!-- Connection -->
-              <path d="M80,200 L140,200" stroke="#8D4E2F" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow-dp)" />
-              <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#8D4E2F" opacity="1">SCAN</text>
+              <path d="M80,200 L140,200" stroke="#D4C9B9" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow-dp)" />
+              <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#D4C9B9" opacity="1">SCAN</text>
 
               <!-- Mobile UI -->
               <g transform="translate(160, 20)">
@@ -1263,7 +1281,7 @@
                 
                 <!-- UI Header -->
                 <line x1="10" y1="55" x2="230" y2="55" class="dp-path" />
-                <text x="120" y="38" text-anchor="middle" class="dp-mono" fill="#FAFAF8" opacity="0.9">PRODUCT PASSPORT</text>
+                <text x="120" y="38" text-anchor="middle" class="dp-mono">PRODUCT PASSPORT</text>
 
                 <!-- UI Content Nodes -->
                 <!-- Origin Node -->
@@ -1291,7 +1309,7 @@
                 <circle cx="35" cy="300" r="5" class="dp-dot" />
                 <text x="60" y="296" class="dp-mono">VERIFICATION</text>
                 <text x="60" y="314" class="dp-sans">Batch: MT-2025-PX</text>
-                <text x="60" y="330" class="dp-sans" fill="#8D4E2F">RWS Certified</text>
+                <text x="60" y="330" class="dp-sans" fill="#D4C9B9">RWS Certified</text>
               </g>
             </svg>
           </div>
@@ -1302,7 +1320,43 @@
     </section>
 
     <!-- ══════════════════════════════════════════
-         SECTION 8 — CTA
+         SECTION 10 — EXECUTION MODEL (FAQ)
+    ══════════════════════════════════════════ -->
+    <section id="execution" aria-labelledby="exec-headline">
+      <div class="reveal">
+        <h2 class="exec-headline reveal-child" id="exec-headline">Execution Model.</h2>
+        <div class="exec-grid reveal-child">
+          
+          <article class="exec-card">
+            <span class="exec-num">// 01. INTEGRATION</span>
+            <h3 class="exec-q">Does this require new software?</h3>
+            <p class="exec-a">No. MONO&bull;TERRA™ is a fibre ingredient brand, not a SaaS platform. Data is delivered as a standardised file (JSON/EPCIS) linked to the commercial invoice, designed for immediate ingestion into your existing PLM or traceability ecosystem.</p>
+          </article>
+          
+          <article class="exec-card">
+            <span class="exec-num">// 02. VERIFICATION</span>
+            <h3 class="exec-q">How is data accuracy ensured?</h3>
+            <p class="exec-a">We do not rely on generic regional averages. We deliver Primary Raw Data, measured to PEF standards and verified against farm records. Full transparency on methodology ensures a defensible audit trail.</p>
+          </article>
+          
+          <article class="exec-card">
+            <span class="exec-num">// 03. CERTIFICATION</span>
+            <h3 class="exec-q">Does this replace RWS?</h3>
+            <p class="exec-a">No, it enhances it. All fibre is RWS-certified for animal welfare. We layer granular primary data on top to deliver a specific cradle-to-gate footprint value for every batch.</p>
+          </article>
+          
+          <article class="exec-card">
+            <span class="exec-num">// 04. SCALE</span>
+            <h3 class="exec-q">Is supply consistent?</h3>
+            <p class="exec-a">Yes. We maintain strategic buffer stock to smooth seasonal fluctuations. For expansion, we leverage existing relationships with adjacent producers pre-assessed against the strict MONO&bull;TERRA™ protocol.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 11 — CTA
     ══════════════════════════════════════════ -->
     <section id="cta" aria-labelledby="cta-headline">
       <div class="reveal">
@@ -1317,7 +1371,7 @@
           <a class="cta-btn"
              target="_blank" 
              rel="noopener noreferrer"
-             href="https://greenfieldgroup.eu/monoterra/contact">
+             href="https://greenfieldgroup.eu/monoterra/contact/thanks">
             Request Technical Brief
           </a>
         </div>
@@ -1355,6 +1409,30 @@
         });
       }, { threshold: 0.1 });
       els.forEach(function (el) { io.observe(el); });
+    }());
+
+    // ── PROVENANCE LINES: staggered entrance on section enter ──
+    (function () {
+      var section = document.getElementById('provDark');
+      var lines   = document.querySelectorAll('.prov-line');
+      if (!section || !lines.length) return;
+      if (!('IntersectionObserver' in window)) {
+        lines.forEach(function (l) { l.classList.add('appeared'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            lines.forEach(function (line, i) {
+              setTimeout(function () {
+                line.classList.add('appeared');
+              }, i * 150);
+            });
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      io.observe(section);
     }());
 
     // ── TRANSITION BAND: passive scroll parallax ──
