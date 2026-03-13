@@ -66,7 +66,7 @@
       inset: 0;
       pointer-events: none;
       opacity: 0.035;
-      z-index: 1;
+      z-index: 2;
     }
     .noise-overlay svg {
       width: 100%;
@@ -98,7 +98,7 @@
       color: var(--muted-clay);
       font-size: 14px;
       animation: scrollBounce 2s ease-in-out infinite;
-      z-index: 2;
+      z-index: 3;
       user-select: none;
     }
 
@@ -115,12 +115,37 @@
       overflow: hidden;
     }
 
+    /* Video Background Styles */
+    .hero-video-wrapper {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.12); /* Scales up to push Veo logo out of bounds */
+      transform-origin: top left;
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* 50% Black Transparency */
+      z-index: 1;
+    }
+
     .hero-logo {
       width: 260px;
       height: auto;
       flex-shrink: 0;
       position: relative;
-      z-index: 2;
+      z-index: 3;
       display: block;
     }
 
@@ -131,7 +156,7 @@
       letter-spacing: 0.15em;
       margin-top: 10px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     .hero-bottom {
@@ -142,7 +167,7 @@
       margin-top: 80px;
       flex: 1;
       position: relative;
-      z-index: 2;
+      z-index: 3;
       gap: 64px;
     }
 
@@ -208,6 +233,8 @@
     #problem {
       background: var(--sepia-black);
       padding: 120px 64px;
+      position: relative;
+      z-index: 3;
     }
 
     .problem-headline {
@@ -397,6 +424,17 @@
       padding: 120px 64px;
     }
 
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .data-left {
+      max-width: 640px;
+    }
+
     .data-headline {
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 700;
@@ -412,7 +450,6 @@
       font-weight: 400;
       font-size: 17px;
       color: var(--charcoal);
-      max-width: 640px;
       line-height: 1.75;
       margin-bottom: 72px;
     }
@@ -462,8 +499,15 @@
       line-height: 1.6;
     }
 
+    .mt-schematic-svg {
+      width: 100%;
+      height: auto;
+      max-height: 580px;
+      display: block;
+    }
+
     /* ══════════════════════════════════
-       SECTION 6 — DATA TRANSFER
+       SECTION 6 — DATA TRANSFER (MAC UI)
     ══════════════════════════════════ */
     #data-transfer {
       background: var(--warm-off-white);
@@ -505,10 +549,36 @@
       line-height: 1.75;
     }
 
-    .code-block {
+    /* macOS Window Wrapper */
+    .mac-window {
       background: var(--sepia-black);
-      border-radius: 0;
-      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mac-header {
+      height: 32px;
+      background: #1A1A1A;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mac-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .mac-close { background: #FF5F56; }
+    .mac-min   { background: #FFBD2E; }
+    .mac-max   { background: #27C93F; }
+
+    .code-block {
+      padding: 32px 32px 40px 32px;
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 400;
       font-size: 12px;
@@ -681,8 +751,18 @@
     }
 
     /* ══════════════════════════════════
-       RESPONSIVE — 768px
+       RESPONSIVE — 768px & 1024px
     ══════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+      .mt-schematic-svg {
+        max-width: 500px;
+        margin: 40px auto 0;
+      }
+    }
+
     @media (max-width: 768px) {
       #hero {
         padding: 32px;
@@ -784,6 +864,14 @@
     ══════════════════════════════════════════ -->
     <section id="hero" aria-label="Hero">
 
+      <!-- HERO BACKGROUND VIDEO -->
+      <div class="hero-video-wrapper" aria-hidden="true">
+        <video class="hero-video" autoplay loop muted playsinline>
+          <source src="https://triangle-halibut-z3ll.squarespace.com/config/asset-library/file-details/f6add7da-2711-4c0f-aff5-470af613c0ee" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
       <div class="noise-overlay" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg">
           <filter id="noiseFilter">
@@ -809,12 +897,12 @@
       <div class="hero-bottom">
         <div class="hero-left">
           <h1 class="hero-headline">A textile ingredient brand built for the accountability era.</h1>
-          <p class="hero-subline">One source. One fibre. Total system.</p>
+          <p class="hero-subline">Natural Engineering. Unbroken Traceability.</p>
         </div>
 
         <div class="hero-terminal" id="heroTerminal" aria-label="Material specification data">
           <div class="terminal-line" data-delay="0">
-            <span class="terminal-label">Fibre Diameter</span><span class="terminal-sep">&middot;</span><span class="terminal-value">17.4&#xB5;m</span>
+            <span class="terminal-label">Fibre Diameter</span><span class="terminal-sep">&middot;</span><span class="terminal-value">16.8&#xB5;m</span>
           </div>
           <div class="terminal-line" data-delay="1">
             <span class="terminal-label">Comfort Factor</span><span class="terminal-sep">&middot;</span><span class="terminal-value">98.7%</span>
@@ -852,7 +940,11 @@
             </article>
             <article class="data-card">
               <span class="data-card-label">Chemistry Burden</span>
-              <p class="data-card-statement">"Superwash resin is an AOX-generating chlorination process. Regulatory exposure is not resolved."</p>
+              <p class="data-card-statement">"Superwash processing generates AOX wastewater and carries forward-looking regulatory risk for 'natural' claims."</p>
+            </article>
+            <article class="data-card">
+              <span class="data-card-label">Design vs. Disassembly</span>
+              <p class="data-card-statement">"Mono-material keratin requires zero separation. Mechanically recyclable and industrially compostable."</p>
             </article>
           </div>
         </div>
@@ -901,19 +993,21 @@
          SECTION 4 — TRANSITION BAND
     ══════════════════════════════════════════ -->
     <div id="transition-band" aria-hidden="true" role="presentation">
-      <p class="marquee-text" id="marqueeText">CSRD &middot; ESPR &middot; DPP &middot; EPR &middot; SCOPE 3 &middot; RWS &middot; AWTA &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; EPR &middot; SCOPE 3 &middot; RWS &middot; AWTA &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; EPR &middot; SCOPE 3 &middot; RWS &middot; AWTA &middot; MONOTERRA AB &nbsp;</p>
+      <p class="marquee-text" id="marqueeText">CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &nbsp;</p>
     </div>
 
     <!-- ══════════════════════════════════════════
-         SECTION 5 — THE DATA LAYER
+         SECTION 5 — THE DATA LAYER & SCHEMATIC
     ══════════════════════════════════════════ -->
     <section id="data-layer" aria-labelledby="data-layer-headline">
-      <div class="reveal">
-        <h2 class="data-headline reveal-child" id="data-layer-headline">The data your reporting function actually needs.</h2>
-        <p class="data-intro reveal-child">
-          MONO&bull;TERRA™ supplies primary farm-level environmental data with every material transaction. Batch-specific. Auditable. Structured for CSRD Scope 3 Category 1 reporting, DPP field population, and ESPR ecodesign dossiers.
-        </p>
-        <div class="reveal-child">
+      <div class="reveal data-grid">
+        
+        <div class="data-left reveal-child">
+          <h2 class="data-headline" id="data-layer-headline">The data your reporting function actually needs.</h2>
+          <p class="data-intro">
+            MONO&bull;TERRA™ supplies primary farm-level environmental data with every material transaction. Batch-specific. Auditable. Structured for CSRD Scope 3 Category 1 reporting, DPP field population, and ESPR ecodesign dossiers.
+          </p>
+          
           <table class="reg-table" aria-label="Regulatory compliance matrix">
             <thead>
               <tr>
@@ -936,22 +1030,130 @@
               <tr>
                 <td>DPP (textile)</td>
                 <td>Product-level traceability data</td>
-                <td>Data infrastructure in development; batch provenance available now</td>
+                <td>Batch provenance available now</td>
               </tr>
               <tr>
                 <td>EPR Eco-modulation</td>
                 <td>End-of-life recyclability</td>
-                <td>Mono-material keratin. Single fibre stream. No blend contaminants.</td>
+                <td>Mono-material keratin. Single stream. No blend contaminants.</td>
               </tr>
             </tbody>
           </table>
           <p class="data-qualify-note">Regulatory enforcement timelines vary. M.T positions buyers ahead of compliance thresholds, not behind them.</p>
         </div>
+
+        <!-- SVG Schematic Column -->
+        <div class="reveal-child" style="transition-delay: 200ms;">
+          <svg viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Diagram showing physical batch linked to digital record">
+            <style>
+              .mt-svg-mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; fill: #6B6B6B; letter-spacing: 0.05em; }
+              .mt-svg-sans { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 14px; fill: #1A1A1A; text-transform: uppercase; }
+              .mt-svg-tiny { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: #1A1A1A; }
+              .mt-svg-line { stroke: #1A1A1A; stroke-width: 2; fill: none; stroke-dasharray: 4; }
+              .mt-svg-fill { fill: #FAFAF8; stroke: #1A1A1A; stroke-width: 1.5; }
+              .mt-svg-accent { fill: #D4C9B9; }
+              .mt-svg-bar  { fill: #1A1A1A; opacity: 0.2; }
+              .mt-svg-zone { fill: #F4F4F2; stroke: none; } 
+              .mt-svg-zone-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; fill: #999; letter-spacing: 0.1em; text-transform: uppercase; }
+              .mt-arrow-path { stroke: #1A1A1A; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+            </style>
+            <defs>
+              <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#1A1A1A" />
+              </marker>
+              <g id="squatCone">
+                  <rect x="-6" y="-35" width="12" height="10" class="mt-svg-accent" />
+                  <path d="M-22,30 L-18,-25 L18,-25 L22,30 Q0,36 -22,30 Z" class="mt-svg-fill" />
+                  <path d="M-12,20 L12,28 M-14,5 L14,12 M-12,-10 L12,-2" stroke="#1A1A1A" stroke-width="0.5" opacity="0.15" />
+              </g>
+              <g id="dataRecord">
+                  <rect x="0" y="0" width="90" height="80" class="mt-svg-fill" rx="2" />
+                  <rect x="12" y="15" width="30" height="4" fill="#1A1A1A" />
+                  <rect x="12" y="30" width="50" height="2" class="mt-svg-bar" />
+                  <rect x="12" y="40" width="60" height="2" class="mt-svg-bar" />
+                  <rect x="12" y="50" width="30" height="2" class="mt-svg-bar" />
+                  <rect x="12" y="60" width="55" height="2" class="mt-svg-bar" />
+                  <rect x="0" y="0" width="5" height="80" fill="#1A1A1A" rx="1" />
+              </g>
+              <g id="factoryIcon">
+                <path d="M0,40 L0,15 L15,0 L30,15 L45,0 L60,15 L60,40 Z" class="mt-svg-fill" />
+                <rect x="10" y="25" width="10" height="15" class="mt-svg-fill" />
+                <rect x="40" y="25" width="10" height="15" class="mt-svg-fill" />
+              </g>
+              <g id="dbIcon">
+                 <path d="M0,10 A30,8 0 0,1 60,10 L60,50 A30,8 0 0,1 0,50 Z" class="mt-svg-fill" />
+                 <ellipse cx="30" cy="10" rx="30" ry="8" class="mt-svg-fill" />
+                 <path d="M0,30 A30,8 0 0,0 60,30" stroke="#1A1A1A" stroke-width="1.5" fill="none" />
+              </g>
+              <g id="tagIcon">
+                <path d="M0,0 L60,0 L60,90 L0,90 Z" class="mt-svg-fill" /> 
+                <circle cx="30" cy="10" r="4" stroke="#1A1A1A" stroke-width="1.5" fill="#FAFAF8" /> 
+                <path d="M30,6 C30,-15 30,-15 30,-20" stroke="#1A1A1A" stroke-width="1" fill="none" />
+                <rect x="15" y="25" width="30" height="30" fill="#1A1A1A" opacity="0.9" />
+                <line x1="12" y1="65" x2="48" y2="65" stroke="#1A1A1A" stroke-width="1" />
+                <line x1="12" y1="70" x2="40" y2="70" stroke="#1A1A1A" stroke-width="1" />
+              </g>
+            </defs>
+
+            <g transform="translate(100, 60)">
+                  <use href="#squatCone" x="-25" y="-12" opacity="0.5" />
+                  <use href="#squatCone" x="25" y="-12" opacity="0.5" />
+                  <use href="#squatCone" x="0" y="10" opacity="1" />
+            </g>
+            <text x="100" y="130" text-anchor="middle" class="mt-svg-sans">PHYSICAL<tspan x="100" dy="16">BATCH</tspan></text>
+
+            <line x1="150" y1="70" x2="350" y2="70" class="mt-svg-line" />
+            
+            <g transform="translate(250, 70)">
+              <circle cx="0" cy="0" r="18" fill="#1A1A1A" />
+              <g transform="translate(-12, -12) scale(1.5)">
+                 <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" fill="#FAFAF8"/>
+                 <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" fill="#FAFAF8"/>
+              </g>
+            </g>
+            <text x="250" y="110" text-anchor="middle" class="mt-svg-mono" font-size="10">CONTRACTUALLY<tspan x="250" dy="12">INTERLINKED</tspan></text>
+
+            <g transform="translate(355, 30)">
+                <use href="#dataRecord" />
+            </g>
+            <text x="400" y="130" text-anchor="middle" class="mt-svg-sans">DIGITAL<tspan x="400" dy="16">RECORD</tspan></text>
+
+            <path d="M100,150 L100,210" class="mt-arrow-path" />
+            <path d="M400,150 L400,210" class="mt-arrow-path" />
+
+            <rect x="20" y="195" width="460" height="140" class="mt-svg-zone" rx="4" />
+            <text x="470" y="210" text-anchor="end" class="mt-svg-zone-label">PARTNER BRAND OPERATIONS</text>
+
+            <g transform="translate(70, 230)">
+               <use href="#factoryIcon" />
+            </g>
+            <text x="100" y="300" text-anchor="middle" class="mt-svg-sans">BRAND<tspan x="100" dy="16">MANUFACTURING</tspan></text>
+
+            <g transform="translate(370, 230)">
+               <use href="#dbIcon" />
+            </g>
+            <text x="400" y="300" text-anchor="middle" class="mt-svg-sans">ERP / PLM<tspan x="400" dy="16">SYSTEMS</tspan></text>
+
+            <path d="M100,320 Q100,380 230,380" class="mt-arrow-path" />
+            <path d="M400,320 Q400,380 270,380" class="mt-arrow-path" />
+
+            <g transform="translate(220, 390)">
+              <use href="#tagIcon" />
+            </g>
+            
+            <text x="300" y="430" class="mt-svg-tiny">MADE WITH</text>
+            <text x="300" y="444" class="mt-svg-tiny" font-weight="bold">MONO•TERRA™</text>
+            <text x="300" y="458" class="mt-svg-tiny">MERINO</text>
+
+            <text x="250" y="510" text-anchor="middle" class="mt-svg-sans">CONSUMER<tspan x="250" dy="16">PASSPORT (DPP)</tspan></text>
+
+          </svg>
+        </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════
-         SECTION 6 — DATA TRANSFER SPECIFICATIONS
+         SECTION 6 — DATA TRANSFER (MAC UI)
     ══════════════════════════════════════════ -->
     <section id="data-transfer" aria-labelledby="data-transfer-headline">
       <div class="reveal">
@@ -964,11 +1166,19 @@
             The record captures provenance, fibre specification, processing methodology, certification status, and chain-of-custody events from farm gate to finished material handoff. Data is primary &#8212; generated at source, not modelled or averaged. The structure follows open standards to ensure compatibility with third-party DPP systems and future regulatory portals.
           </div>
           <div>
-            <div class="code-block" aria-label="Illustrative EPCIS 2.0 data structure">
+            
+            <!-- macOS Styled Code Window -->
+            <div class="mac-window" aria-label="Illustrative EPCIS 2.0 data structure">
+              <div class="mac-header" aria-hidden="true">
+                <div class="mac-dot mac-close"></div>
+                <div class="mac-dot mac-min"></div>
+                <div class="mac-dot mac-max"></div>
+              </div>
+              <div class="code-block">
 <span class="code-struct">{</span>
   <span class="code-key">"epcis:EPCISDocument"</span><span class="code-struct">:</span> <span class="code-struct">{</span>
     <span class="code-key">"schemaVersion"</span><span class="code-struct">:</span> <span class="code-str">"2.0"</span><span class="code-struct">,</span>
-    <span class="code-key">"creationDate"</span><span class="code-struct">:</span> <span class="code-str">"2025-XX-XX"</span><span class="code-struct">,</span>
+    <span class="code-key">"creationDate"</span><span class="code-struct">:</span> <span class="code-str">"2026-XX-XX"</span><span class="code-struct">,</span>
     <span class="code-key">"sender"</span><span class="code-struct">:</span> <span class="code-struct">{</span>
       <span class="code-key">"identifier"</span><span class="code-struct">:</span> <span class="code-str">"MONOTERRA-AB"</span><span class="code-struct">,</span>
       <span class="code-key">"gs1CompanyPrefix"</span><span class="code-struct">:</span> <span class="code-str">"XXXXXXX"</span>
@@ -976,7 +1186,7 @@
     <span class="code-key">"eventList"</span><span class="code-struct">:</span> <span class="code-struct">[</span>
       <span class="code-struct">{</span>
         <span class="code-key">"type"</span><span class="code-struct">:</span> <span class="code-str">"ObjectEvent"</span><span class="code-struct">,</span>
-        <span class="code-key">"eventTime"</span><span class="code-struct">:</span> <span class="code-str">"2025-XX-XXTXX:XX:XXZ"</span><span class="code-struct">,</span>
+        <span class="code-key">"eventTime"</span><span class="code-struct">:</span> <span class="code-str">"2026-XX-XXTXX:XX:XXZ"</span><span class="code-struct">,</span>
         <span class="code-key">"action"</span><span class="code-struct">:</span> <span class="code-str">"OBSERVE"</span><span class="code-struct">,</span>
         <span class="code-key">"epcList"</span><span class="code-struct">:</span> <span class="code-struct">[</span><span class="code-str">"urn:epc:id:sgtin:XXXXXXX.XXXXX.MT-XXXX-PX"</span><span class="code-struct">],</span>
         <span class="code-key">"bizStep"</span><span class="code-struct">:</span> <span class="code-str">"urn:epcglobal:cbv:bizstep:shipping"</span><span class="code-struct">,</span>
@@ -984,7 +1194,7 @@
         <span class="code-key">"readPoint"</span><span class="code-struct">:</span> <span class="code-struct">{</span><span class="code-key">"id"</span><span class="code-struct">:</span> <span class="code-str">"urn:epc:id:sgln:XXXXXXX.XXXXX.0"</span><span class="code-struct">},</span>
         <span class="code-key">"ilmd"</span><span class="code-struct">:</span> <span class="code-struct">{</span>
           <span class="code-key">"mt:fibreSpecification"</span><span class="code-struct">:</span> <span class="code-struct">{</span>
-            <span class="code-key">"diameter_microns"</span><span class="code-struct">:</span> <span class="code-str">"XX.X"</span><span class="code-struct">,</span>
+            <span class="code-key">"diameter_microns"</span><span class="code-struct">:</span> <span class="code-str">"16.8"</span><span class="code-struct">,</span>
             <span class="code-key">"comfortFactor_pct"</span><span class="code-struct">:</span> <span class="code-str">"XX.X"</span><span class="code-struct">,</span>
             <span class="code-key">"stapleLength_mm"</span><span class="code-struct">:</span> <span class="code-str">"XX"</span><span class="code-struct">,</span>
             <span class="code-key">"yield_pct"</span><span class="code-struct">:</span> <span class="code-str">"XX.X"</span><span class="code-struct">,</span>
@@ -1008,7 +1218,10 @@
     <span class="code-struct">]</span>
   <span class="code-struct">}</span>
 <span class="code-struct">}</span>
+              </div>
             </div>
+            <!-- End macOS Window -->
+
             <p class="code-note">Illustrative structure only. Field values are proxies. Live records are batch-specific and supplied with each material transaction.</p>
           </div>
         </div>
@@ -1033,7 +1246,7 @@
             <span class="prov-line-label">Batch ID</span><span class="prov-line-sep">&middot;</span><span>MT-2025-PX</span><span class="prov-proxy">[proxy]</span>
           </div>
           <div class="prov-line" data-prov-index="1">
-            <span class="prov-line-label">Fibre Diameter</span><span class="prov-line-sep">&middot;</span><span>XX.X &#xB5;m</span><span class="prov-proxy">[proxy]</span>
+            <span class="prov-line-label">Fibre Diameter</span><span class="prov-line-sep">&middot;</span><span>16.8 &#xB5;m</span><span class="prov-proxy">[proxy]</span>
           </div>
           <div class="prov-line" data-prov-index="2">
             <span class="prov-line-label">Staple Length</span><span class="prov-line-sep">&middot;</span><span>documented</span>
