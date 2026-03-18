@@ -800,27 +800,111 @@
       letter-spacing: 0.02em;
     }
 
+    /* ── ORIENTATION DEVICE ── */
+    .orientation-device {
+      display: flex;
+      width: 100%;
+    }
+
+    .orientation-panel {
+      flex: 1;
+      padding: 64px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .orientation-panel--dark {
+      background: var(--sepia-black);
+      border-right: 1px solid rgba(141, 78, 47, 0.2); /* muted-clay at 20% */
+    }
+
+    .orientation-panel--light {
+      background: var(--warm-off-white);
+    }
+
+    .orientation-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .orientation-panel--dark .orientation-label {
+      color: var(--text-label-dark);
+    }
+
+    .orientation-panel--light .orientation-label {
+      color: var(--mid-grey);
+    }
+
+    .orientation-body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      margin-top: 24px;
+      max-width: 480px;
+    }
+
+    .orientation-panel--dark .orientation-body {
+      color: var(--warm-accent);
+    }
+
+    .orientation-panel--light .orientation-body {
+      color: var(--charcoal);
+    }
+
+    .orientation-cue {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      margin-top: 32px;
+    }
+
+    .orientation-panel--dark .orientation-cue {
+      color: rgba(212, 201, 185, 0.5);
+    }
+
+    .orientation-panel--light .orientation-cue {
+      color: rgba(107, 107, 107, 0.5);
+    }
+
     /* ══════════════════════════════════
        SECTION 6 — TRANSITION BAND
     ══════════════════════════════════ */
+    /* ── TRANSITION PIVOT ── */
     #transition-band {
-      height: 140px;
-      background: linear-gradient(to bottom, var(--sepia-black), #3A2210, var(--warm-off-white));
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
+      background: linear-gradient(to bottom, var(--sepia-black), var(--warm-off-white));
+      padding: 48px 0;
+      text-align: center;
     }
 
-    .marquee-text {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: rgba(250, 250, 248, 0.04);
-      white-space: nowrap;
-      user-select: none;
-      display: inline-block;
-      flex-shrink: 0;
+    .transition-pivot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .transition-line {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .transition-line--outgoing {
+      color: var(--warm-accent);
+      opacity: 0.6;
+    }
+
+    .transition-line--incoming {
+      color: var(--charcoal);
+      opacity: 0.8;
     }
 
     /* ══════════════════════════════════
@@ -1044,6 +1128,14 @@
       line-height: 1.75;
     }
 
+    /* Closing line in mono weight to match existing terminal/data register */
+    .prov-closing {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      margin-top: 24px;
+    }
+
     .prov-dark {
       background: var(--sepia-black);
       padding: 80px 64px;
@@ -1244,15 +1336,6 @@
     /* ══════════════════════════════════
        TRANSITION BAND — CSS-only parallax
     ══════════════════════════════════ */
-    .marquee-track {
-      display: flex;
-      white-space: nowrap;
-      animation: marqueeScroll 60s linear infinite;
-    }
-    @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
 
     /* ══════════════════════════════════
        COOKIE CONSENT BANNER
@@ -1355,6 +1438,15 @@
       .nav-links { display: none; }
       .hamburger-btn { display: block; }
       .mobile-drawer { display: flex; }
+
+      /* Orientation device mobile */
+      .orientation-device { flex-direction: column; }
+      .orientation-panel { padding: 48px 32px; }
+      .orientation-panel--dark { border-right: none; border-bottom: 1px solid rgba(141, 78, 47, 0.2); }
+      .orientation-body { font-size: 15px; }
+
+      /* Transition pivot mobile */
+      .transition-line { font-size: 20px; }
       
       #hero { padding: 120px 32px 32px 32px; justify-content: center; }
       .hero-headline { font-size: 36px; }
@@ -1496,7 +1588,7 @@
             <span class="terminal-label">Certification</span><span class="terminal-sep">&middot;</span><span class="terminal-value">RWS</span>
           </div>
           <div class="terminal-line" data-delay="3">
-            <span class="terminal-label">Source</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Victoria, Australia &middot; 7th Generation Family Stud<span class="cursor-blink">|</span></span>
+            <span class="terminal-label">Grower Partner 001</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Victoria, Australia &middot; 7th Generation Family Stud<span class="cursor-blink">|</span></span>
           </div>
         </div>
       </div>
@@ -1504,6 +1596,26 @@
       </div><!-- end .hero-content-fade -->
 
       <div class="scroll-indicator" aria-hidden="true">&#9662;</div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 1B — TWO-FACET ORIENTATION DEVICE
+    ══════════════════════════════════════════ -->
+    <section class="orientation-device" aria-label="Two-facet proposition overview">
+      <div class="orientation-panel orientation-panel--dark reveal" role="region" aria-label="Natural Engineering">
+        <span class="orientation-label reveal-child">Natural Engineering</span>
+        <p class="orientation-body reveal-child">
+          One untreated fibre, mechanically finished to deliver structural performance. No blends. No coatings. Zero chemical finishing.
+        </p>
+        <a href="#problem" class="orientation-cue reveal-child" aria-label="Scroll to material proposition">The material &#8595;</a>
+      </div>
+      <div class="orientation-panel orientation-panel--light reveal" role="region" aria-label="Unbroken Traceability">
+        <span class="orientation-label reveal-child" style="transition-delay: 200ms;">Unbroken Traceability</span>
+        <p class="orientation-body reveal-child" style="transition-delay: 200ms;">
+          Batch-specific environmental data from a single verified source. Primary, not modelled. Structured for EU compliance reporting and delivered with every transaction.
+        </p>
+        <a href="#data-story" class="orientation-cue reveal-child" style="transition-delay: 200ms;" aria-label="Scroll to data proposition">The data &#8595;</a>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════════
@@ -1635,9 +1747,9 @@
          SECTION 6 — TRANSITION BAND
     ══════════════════════════════════════════ -->
     <div id="transition-band" aria-hidden="true" role="presentation">
-      <div class="marquee-track">
-        <span class="marquee-text">CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &nbsp;&nbsp;&nbsp;</span>
-        <span class="marquee-text">CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &middot; CSRD &middot; ESPR &middot; DPP &middot; ISO-PENDING &middot; GOTS-COMPATIBLE PATHWAY &middot; RWS &middot; MONOTERRA AB &nbsp;&nbsp;&nbsp;</span>
+      <div class="transition-pivot">
+        <span class="transition-line transition-line--outgoing">Natural Engineering.</span>
+        <span class="transition-line transition-line--incoming">Unbroken Traceability.</span>
       </div>
     </div>
 
@@ -1839,9 +1951,21 @@
       <div class="provenance-split">
         <div class="prov-light">
           <div class="prov-light-inner reveal">
-            <h2 class="prov-headline reveal-child" id="provenance-headline">Single-estate. Identity preserved.</h2>
+            <h2 class="prov-headline reveal-child" id="provenance-headline">Our Grower Partners.</h2>
             <p class="prov-body reveal-child">
-              Every batch of LYTEN™ originates from a single estate in Victoria, Australia. A seventh-generation family stud producing fine merino. The data is primary -- not modelled, not averaged, not inferred. Single-origin. Fully segregated. Secure supply.
+              Hand-selected family estates. Assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
+            </p>
+            <p class="prov-body reveal-child">
+              Mulesing is a hard exclusion. No exceptions.
+            </p>
+            <p class="prov-body reveal-child">
+              All Grower Partners hold current Responsible Wool Standard certification, independently audited by Textile Exchange. RWS is our baseline. Our protocol assesses what growers do beyond it.
+            </p>
+            <p class="prov-body reveal-child">
+              Primary environmental data is structured directly with each farm team from existing operational records. Generated at source. Not modelled. Not averaged.
+            </p>
+            <p class="prov-body prov-closing reveal-child">
+              Grower Partner identity is not disclosed. Single-origin. Fully segregated. Secure supply.
             </p>
           </div>
         </div>
