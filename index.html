@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <title>MONO•TERRA™ — Natural Engineering. Unbroken Traceability.</title>
   <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-origin, identity-preserved technical merino. LYTEN™ is a milled knit mid-layer designed for the accountability era.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <link href="assets/fonts/fonts.css" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/hero.avif" type="image/avif">
   <style>
     :root {
       --sepia-black: #0F0F0E;
@@ -16,6 +17,22 @@
       --warm-off-white: #FAFAF8;
       --charcoal: #1A1A1A;
       --mid-grey: #6B6B6B;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      background: var(--muted-clay);
+      color: var(--warm-off-white);
+      padding: 12px 24px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      left: 0;
     }
 
     *, *::before, *::after {
@@ -156,6 +173,64 @@
     .nav-btn:hover {
       background: var(--muted-clay);
       color: var(--warm-off-white);
+    }
+
+    /* ── HAMBURGER BUTTON ── */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 60;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #FAFAF8;
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ── MOBILE DRAWER ── */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      background: var(--sepia-black);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .mobile-drawer.open {
+      display: flex;
+    }
+    .mobile-drawer a {
+      color: var(--warm-off-white);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .mobile-drawer a:hover {
+      opacity: 0.6;
+    }
+    .mobile-drawer .nav-btn {
+      margin-top: 16px;
     }
 
     /* ══════════════════════════════════
@@ -864,6 +939,7 @@
     @media (max-width: 768px) {
       .global-nav { padding: 20px 32px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: block; }
       
       #hero { padding: 120px 32px 32px 32px; justify-content: center; }
       .hero-headline { font-size: 36px; }
@@ -901,6 +977,7 @@
 
       #execution { padding: 80px 32px; }
       .exec-headline { font-size: 28px; margin-bottom: 40px; }
+      .exec-grid { grid-template-columns: 1fr; gap: 40px; }
 
       #cta { padding: 100px 32px; }
       .cta-headline { font-size: 32px; }
@@ -908,21 +985,33 @@
   </style>
 </head>
 <body>
-  
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
   <!-- ══════════════════════════════════════════
        GLOBAL NAVIGATION
   ══════════════════════════════════════════ -->
   <nav class="global-nav reveal">
     <div class="nav-logo">
-      <img src="https://images.squarespace-cdn.com/content/692ef9367a342e5167c274e7/c62c5556-95c7-4008-aa62-8dcbc427429d/260204+M%E2%80%A2T%E2%84%A2+New+Logo_W.png?content-type=image%2Fpng" alt="MONO•TERRA™">
+      <img src="assets/images/logo.png" alt="MONO•TERRA™">
     </div>
     <div class="nav-links">
       <a href="#provenance" class="nav-link">[ SINGLE-ORIGIN ]</a>
       <a href="#cta" class="nav-btn">REQUEST BRIEF</a>
     </div>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <main>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile navigation">
+    <a href="#provenance">[ SINGLE-ORIGIN ]</a>
+    <a href="#material">[ MATERIAL ]</a>
+    <a href="#data-layer">[ DATA ]</a>
+    <a href="#execution">[ FAQ ]</a>
+    <a href="#cta" class="nav-btn">REQUEST BRIEF</a>
+  </div>
+
+  <main id="main-content">
     <!-- ══════════════════════════════════════════
          SECTION 1 — HERO
     ══════════════════════════════════════════ -->
@@ -930,7 +1019,11 @@
 
       <!-- HERO BACKGROUND IMAGE (Fallback from Video) -->
       <div class="hero-image-wrapper" aria-hidden="true">
-        <img class="hero-image" src="https://images.squarespace-cdn.com/content/692ef9367a342e5167c274e7/106e138b-f5c6-4188-82bc-45f7cf6984a7/Hero+landing+image.png?content-type=image%2Fpng" alt="MONO•TERRA™ Terrain">
+        <picture>
+          <source srcset="assets/images/hero.avif" type="image/avif">
+          <source srcset="assets/images/hero.webp" type="image/webp">
+          <img class="hero-image" src="assets/images/hero.png" alt="MONO•TERRA™ Terrain" fetchpriority="high" decoding="async">
+        </picture>
         <div class="hero-image-overlay"></div>
       </div>
 
@@ -953,16 +1046,16 @@
         </div>
 
         <div class="hero-terminal" id="heroTerminal" aria-label="Material specification data">
-          <div class="terminal-line" data-delay="0">
+          <div class="terminal-line">
             <span class="terminal-label">Fibre Diameter</span><span class="terminal-sep">&middot;</span><span class="terminal-value">16.8&#xB5;m</span>
           </div>
-          <div class="terminal-line" data-delay="1">
+          <div class="terminal-line">
             <span class="terminal-label">Comfort Factor</span><span class="terminal-sep">&middot;</span><span class="terminal-value">98.7%</span>
           </div>
-          <div class="terminal-line" data-delay="2">
+          <div class="terminal-line">
             <span class="terminal-label">Certification</span><span class="terminal-sep">&middot;</span><span class="terminal-value">RWS</span>
           </div>
-          <div class="terminal-line" data-delay="3">
+          <div class="terminal-line">
             <span class="terminal-label">Source</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Victoria, Australia &middot; 7th Generation Family Stud<span class="cursor-blink">|</span></span>
           </div>
         </div>
@@ -1015,7 +1108,6 @@
          SECTION 4 — THE MATERIAL: LYTEN&#8482;
     ══════════════════════════════════════════ -->
     <section id="material" aria-labelledby="material-headline">
-      <div class="material-rule" aria-hidden="true"></div>
       <div class="material-bg-text" aria-hidden="true">LYTEN&#8482;</div>
 
       <div class="material-content">
@@ -1052,7 +1144,7 @@
     <!-- ══════════════════════════════════════════
          SECTION 5 — PHILOSOPHY BRIDGE
     ══════════════════════════════════════════ -->
-    <section class="philosophy-section reveal">
+    <section class="philosophy-section reveal" aria-label="Philosophy">
       <h3 class="philosophy-sub reveal-child">This is not invention.</h3>
       <h2 class="philosophy-main reveal-child">It is recognition.</h2>
     </section>
@@ -1228,7 +1320,7 @@
       <div class="reveal">
         <h2 class="transfer-headline reveal-child" id="data-transfer-headline">Structured data. Every transaction.</h2>
         <div class="transfer-cols reveal-child">
-          <div class="transfer-left">
+          <div>
             <p class="transfer-intro">
               Each LYTEN™ material delivery is accompanied by a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Fields are structured for direct import into CSRD reporting systems, DPP interfaces, and brand-level environmental databases. No manual data entry required on the buyer side.
             </p>
@@ -1236,7 +1328,7 @@
               The record captures provenance, fibre specification, processing methodology, certification status, and chain-of-custody events from farm gate to finished material handoff. Data is primary &#8212; generated at source, not modelled or averaged. The structure follows open standards to ensure compatibility with third-party DPP systems and future regulatory portals.
             </p>
           </div>
-          <div class="transfer-right">
+          <div>
             
             <!-- macOS Styled Code Window -->
             <div class="mac-window" aria-label="Illustrative EPCIS 2.0 data structure">
@@ -1305,7 +1397,7 @@
     <section id="provenance" aria-labelledby="provenance-headline">
       <div class="provenance-split">
         <div class="prov-light">
-          <div class="prov-light-inner reveal">
+          <div class="reveal">
             <h2 class="prov-headline reveal-child" id="provenance-headline">Single-origin. Identity preserved.</h2>
             <p class="prov-body reveal-child">
               Every batch of LYTEN™ originates from a single estate in Victoria, Australia. A seventh-generation family stud producing fine merino. The source is consistent. The provenance is unbroken. The data is primary &#8212; not modelled, not averaged, not inferred.
@@ -1391,25 +1483,25 @@
         <h2 class="exec-headline reveal-child" id="exec-headline">Execution Model.</h2>
         <div class="exec-grid reveal-child">
           
-          <article class="exec-card">
+          <article>
             <span class="exec-num">// 01. INTEGRATION</span>
             <h3 class="exec-q">Does this require new software?</h3>
             <p class="exec-a">No. MONO&bull;TERRA™ is a fibre ingredient brand, not a SaaS platform. Data is delivered as a standardised file (JSON/EPCIS) linked to the commercial invoice, designed for immediate ingestion into your existing PLM or traceability ecosystem.</p>
           </article>
           
-          <article class="exec-card">
+          <article>
             <span class="exec-num">// 02. VERIFICATION</span>
             <h3 class="exec-q">How is data accuracy ensured?</h3>
             <p class="exec-a">We do not rely on generic regional averages. We deliver Primary Raw Data, measured to PEF standards and verified against farm records. Full transparency on methodology ensures a defensible audit trail.</p>
           </article>
           
-          <article class="exec-card">
+          <article>
             <span class="exec-num">// 03. CERTIFICATION</span>
             <h3 class="exec-q">Does this replace RWS?</h3>
             <p class="exec-a">No, it enhances it. All fibre is RWS-certified for animal welfare. We layer granular primary data on top to deliver a specific cradle-to-gate footprint value for every batch.</p>
           </article>
           
-          <article class="exec-card">
+          <article>
             <span class="exec-num">// 04. SCALE</span>
             <h3 class="exec-q">Is supply consistent?</h3>
             <p class="exec-a">Yes. We maintain strategic buffer stock to smooth seasonal fluctuations. For expansion, we leverage existing relationships with adjacent producers pre-assessed against the strict MONO&bull;TERRA™ protocol.</p>
@@ -1435,12 +1527,12 @@
           <a class="cta-btn"
              target="_blank" 
              rel="noopener noreferrer"
-             href="https://greenfieldgroup.eu/monoterra/contact/thanks">
+             href="https://greenfieldgroup.eu/contact/cta">
             Request Technical Brief
           </a>
         </div>
         <p class="cta-footer reveal-child">MONOTERRA AB &middot; Stockholm, Sweden &middot; </p>
-        <p class="cta-footer reveal-child" style="margin-top:12px;font-size:10px;opacity:0.45;">&copy; 2026 MONOTERRA AB &middot; Organisationsnummer: 559572-5259 &middot; All rights reserved</p>
+        <p class="cta-footer reveal-child" style="margin-top:12px;font-size:10px;opacity:0.45;">&copy; 2026 MONOTERRA AB &middot; Organisationsnummer: 559572-5259 &middot; All rights reserved &middot; <a href="https://www.greenfieldgroup.eu/privacy-policy" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Privacy Policy</a></p>
       </div>
     </section>
 
@@ -1475,6 +1567,37 @@
       els.forEach(function (el) { io.observe(el); });
     }());
     
+    // ── MOBILE DRAWER TOGGLE ──
+    (function () {
+      var btn = document.querySelector('.nav-hamburger');
+      var drawer = document.getElementById('mobileDrawer');
+      if (!btn || !drawer) return;
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !open);
+        btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+        drawer.classList.toggle('open', !open);
+        document.body.style.overflow = open ? '' : 'hidden';
+      });
+      drawer.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
+          drawer.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
+          drawer.classList.remove('open');
+          document.body.style.overflow = '';
+          btn.focus();
+        }
+      });
+    }());
+
     // ── TRANSITION BAND: passive scroll parallax ──
     (function () {
       var el   = document.getElementById('marqueeText');
