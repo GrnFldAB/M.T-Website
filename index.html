@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; media-src 'self'; base-uri 'self'; form-action 'self'">
   <title>MONO•TERRA™ — Natural Engineering. Unbroken Traceability.</title>
   <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-origin, identity-preserved technical merino. LYTEN™ is a milled knit mid-layer designed for the accountability era.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
@@ -929,11 +929,134 @@
     }
 
     /* ══════════════════════════════════
+       SECTION 3B — LYTEN INTRODUCTION
+    ══════════════════════════════════ */
+    .lyten-intro {
+      background: var(--sepia-black);
+      padding: 160px 0 140px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .lyten-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: center;
+    }
+    .lyten-intro-text {
+      padding-right: 64px;
+      position: relative;
+      z-index: 2;
+    }
+    .lyten-intro-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted-clay);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .lyten-intro-headline {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(64px, 10vw, 120px);
+      color: var(--warm-off-white);
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+      margin-bottom: 32px;
+    }
+    .lyten-intro-descriptor {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--warm-accent);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+    .lyten-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 40px;
+      margin-top: 56px;
+    }
+    .lyten-spec {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 0;
+      border-top: 1px solid rgba(212, 201, 185, 0.15);
+    }
+    .lyten-spec-value {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--warm-off-white);
+      line-height: 1;
+    }
+    .lyten-spec-unit {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      color: var(--muted-clay);
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+    .lyten-spec-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(212, 201, 185, 0.6);
+      margin-top: 12px;
+    }
+    /* ── LYTEN video frame ── */
+    .lyten-video-frame {
+      position: relative;
+      width: calc(100% + 40px);
+      height: 100%;
+      min-height: 520px;
+      overflow: hidden;
+    }
+    .lyten-video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.05s linear;
+    }
+    .lyten-video-frame::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 100%;
+      background: linear-gradient(to right, var(--sepia-black), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .lyten-video-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, var(--sepia-black) 0%, transparent 8%),
+        linear-gradient(to top, var(--sepia-black) 0%, transparent 8%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════
        RESPONSIVE — 1024px & 768px
     ══════════════════════════════════ */
     @media (max-width: 1024px) {
       .data-grid, .exec-grid { grid-template-columns: 1fr; gap: 48px; }
       .mt-schematic-svg { max-width: 500px; margin: 40px auto 0; }
+      .lyten-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .lyten-intro-text { padding-right: 64px; }
+      .lyten-video-frame { width: calc(100% + 80px); min-height: 360px; margin-left: -80px; }
+      .lyten-specs { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; }
     }
 
     @media (max-width: 768px) {
@@ -953,6 +1076,13 @@
 
       #circularity { padding: 80px 32px; }
       .circularity-headline { font-size: 28px; }
+
+      .lyten-intro { padding: 100px 32px; }
+      .lyten-intro-text { padding-right: 0; }
+      .lyten-intro-headline { font-size: 56px; }
+      .lyten-video-frame { width: calc(100% + 64px); margin-left: -32px; min-height: 280px; }
+      .lyten-specs { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+      .lyten-spec-value { font-size: 36px; }
 
       #material { padding: 80px 32px; }
       .material-headline { font-size: 28px; }
@@ -1101,6 +1231,53 @@
         <p class="circularity-body reveal-child">
           We solve the circularity problem by not creating it. A mono-material keratin structure requires zero separation. It is mechanically recyclable and industrially compostable at end of life.
         </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 3B — LYTEN INTRODUCTION
+    ══════════════════════════════════════════ -->
+    <section id="lyten-intro" class="lyten-intro" aria-labelledby="lyten-intro-headline">
+      <div class="lyten-intro-grid">
+        <div class="lyten-intro-text reveal">
+          <span class="lyten-intro-label reveal-child">Introducing</span>
+          <h2 class="lyten-intro-headline reveal-child" id="lyten-intro-headline">LYTEN&#8482;</h2>
+          <p class="lyten-intro-descriptor reveal-child">Our flagship material. Engineered from single-estate superfine merino. No blends. No coatings. No compromises.</p>
+          <div class="lyten-specs reveal-child">
+            <div class="lyten-spec">
+              <span class="lyten-spec-value">250</span>
+              <span class="lyten-spec-unit">gsm</span>
+              <span class="lyten-spec-label">Fabric Weight [provisional]</span>
+            </div>
+            <div class="lyten-spec">
+              <span class="lyten-spec-value">16.8</span>
+              <span class="lyten-spec-unit">&micro;m</span>
+              <span class="lyten-spec-label">Fibre Diameter</span>
+            </div>
+            <div class="lyten-spec">
+              <span class="lyten-spec-value">98.7</span>
+              <span class="lyten-spec-unit">%</span>
+              <span class="lyten-spec-label">Comfort Factor</span>
+            </div>
+            <div class="lyten-spec">
+              <span class="lyten-spec-value">100</span>
+              <span class="lyten-spec-unit">%</span>
+              <span class="lyten-spec-label">Mono-Material</span>
+            </div>
+          </div>
+        </div>
+        <div class="lyten-video-frame">
+          <!-- UPDATE: replace src with your hosted .mp4 path -->
+          <video
+            id="lytenVideo"
+            src="assets/video/lyten-hero.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            aria-hidden="true"
+          ></video>
+        </div>
       </div>
     </section>
 
@@ -1607,6 +1784,35 @@
         var offset = (window.pageYOffset - band.offsetTop) * 0.3;
         el.style.transform = 'translateY(-50%) translateX(' + (-offset) + 'px)';
       }, { passive: true });
+    }());
+
+    // ── LYTEN VIDEO: scroll-linked fade-in reveal ──
+    (function () {
+      var video = document.getElementById('lytenVideo');
+      var section = document.getElementById('lyten-intro');
+      if (!video || !section) return;
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var rect = section.getBoundingClientRect();
+          var vh = window.innerHeight;
+          var enterPoint = vh * 0.8;
+          var fullPoint = vh * 0.3;
+          if (rect.top > enterPoint) {
+            video.style.opacity = '0';
+          } else if (rect.top <= enterPoint && rect.top > fullPoint) {
+            var progress = 1 - ((rect.top - fullPoint) / (enterPoint - fullPoint));
+            video.style.opacity = String(Math.min(1, Math.max(0, progress)));
+          } else {
+            video.style.opacity = '1';
+          }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     }());
   </script>
 </body>
