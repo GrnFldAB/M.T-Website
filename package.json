@@ -1,0 +1,14 @@
+{
+  "name": "mt-website-tests",
+  "version": "1.0.0",
+  "description": "Stress tests for MONO•TERRA™ landing page",
+  "scripts": {
+    "test": "node tests/static-analysis.js && npx playwright test",
+    "test:static": "node tests/static-analysis.js",
+    "test:browser": "npx playwright test",
+    "test:headed": "npx playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}
