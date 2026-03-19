@@ -706,6 +706,19 @@
       color: rgba(212, 201, 185, 0.85);
       line-height: 1.7;
     }
+    .espr-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-off-white);
+      background: rgba(212, 201, 185, 0.12);
+      border: 1px solid rgba(212, 201, 185, 0.18);
+      border-radius: 3px;
+      padding: 3px 8px;
+      margin-top: 10px;
+    }
 
     .feature-block-note {
       font-family: var(--font-mono);
@@ -950,6 +963,12 @@
       font-size: 13px;
       letter-spacing: 0.04em;
       margin-top: 24px;
+    }
+    .ds-divider {
+      width: 64px;
+      height: 1px;
+      background: rgba(0,0,0,0.1);
+      margin: 0 auto;
     }
     .ds-prov-visual {
       background: var(--sepia-black);
@@ -1763,10 +1782,12 @@
             <article>
               <span class="feature-block-label">Mono-Material</span>
               <p class="feature-block-body">No synthetic components. No coatings. No microplastic generation pathway in consumer use.</p>
+              <span class="espr-tag">ESPR: Recyclability by design</span>
             </article>
             <article>
               <span class="feature-block-label">Zero Added Chemistry</span>
               <p class="feature-block-body">No chlorination. No chemical finishes. GOTS-compatible processing pathway.</p>
+              <span class="espr-tag">ESPR: Restricted substance compliance</span>
             </article>
             <article>
               <span class="feature-block-label">Engineered in Biella</span>
@@ -1775,10 +1796,12 @@
             <article>
               <span class="feature-block-label">Unbroken Traceability</span>
               <p class="feature-block-body">Single-estate. Identity-preserved from source to finished material. RWS-certified.</p>
+              <span class="espr-tag">ESPR: Product passport readiness</span>
             </article>
             <article>
               <span class="feature-block-label">Next-to-Skin Performance</span>
               <p class="feature-block-body">A 98.7% comfort factor places LYTEN™ above the fibre diameter threshold at which prickle perception begins. Silent against skin. Structured for mid-layer thermal performance.</p>
+              <span class="espr-tag">ESPR: Durability &amp; extended use</span>
             </article>
           </div>
 
@@ -1815,17 +1838,20 @@
       <div class="ds-compliance reveal">
         <div class="ds-compliance-grid">
           <div class="reveal-child">
-            <span class="ds-eyebrow">Nature provides the performance. We provide the proof.</span>
-            <h2 class="ds-headline">Your Compliance Data Shouldn't Be an Industry Average.</h2>
+            <span class="ds-eyebrow">Beyond Industry Averages</span>
+            <h2 class="ds-headline">Most Brands Report With Modelled Data. That Penalty Is Avoidable.</h2>
             <p class="ds-body">
-              MONO&bull;TERRA™ supplies Tier 4 primary data with every material transaction. Batch-specific. Auditable. Structured for CSRD Scope 3 Category 1 reporting, DPP field population, and ESPR ecodesign dossiers.
+              CSRD requires Scope 3 Category 1 environmental data from every material supplier. Without it, brands default to industry averages — generic emission factors that inflate reported footprints, weaken reduction claims, and expose ESG narratives to audit risk.
+            </p>
+            <p class="ds-body">
+              MONO&bull;TERRA™ supplies Tier 4 primary data with every transaction. Batch-specific. Auditable. Structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers. Your numbers reflect your actual supply chain — not someone else's.
             </p>
 
             <table class="reg-table" aria-label="Regulatory compliance matrix">
               <thead>
                 <tr>
                   <th scope="col">Regulation</th>
-                  <th scope="col">Relevance</th>
+                  <th scope="col">What It Requires</th>
                   <th scope="col">MONO&bull;TERRA™ Position</th>
                 </tr>
               </thead>
@@ -1836,23 +1862,18 @@
                   <td>Primary farm data supplied per batch</td>
                 </tr>
                 <tr>
-                  <td>ESPR Ecodesign</td>
-                  <td>Mono-material, no restricted substances</td>
-                  <td>LYTEN™ designed to ESPR alignment criteria</td>
-                </tr>
-                <tr>
                   <td>DPP (textile)</td>
                   <td>Product-level traceability data</td>
                   <td>Batch provenance available now</td>
                 </tr>
                 <tr>
                   <td>EPR Eco-modulation</td>
-                  <td>End-of-life recyclability</td>
+                  <td>End-of-life recyclability evidence</td>
                   <td>Mono-material keratin. Single stream. No blend contaminants.</td>
                 </tr>
               </tbody>
             </table>
-            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to hedge EPR exposure, reduce reporting burden, and limit end-of-life liability — ahead of compliance thresholds, not behind them.</p>
+            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to reduce reporting burden, hedge EPR exposure, and limit end-of-life liability — ahead of compliance thresholds, not behind them.</p>
           </div>
           <!-- SVG Schematic -->
           <div class="reveal-child svg-lazy-container" style="transition-delay: 200ms;" data-lazy-svg>
@@ -1907,7 +1928,8 @@
       <div class="ds-transfer reveal">
         <div class="ds-transfer-grid">
           <div class="reveal-child">
-            <h3 class="ds-headline" style="font-size: 28px;">Structured data. Every transaction.</h3>
+            <span class="ds-eyebrow">What Travels With Every Batch</span>
+            <h3 class="ds-headline" style="font-size: 28px;">Structured Data. Every Transaction.</h3>
             <p class="ds-body">Each LYTEN™ delivery includes a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Structured for direct import into CSRD reporting, DPP interfaces, and brand-level environmental databases.</p>
             <p class="ds-body">The record captures provenance, fibre specification, certification status, and chain-of-custody events from farm gate to finished material handoff. Primary data, not modelled or averaged.</p>
           </div>
@@ -1925,12 +1947,14 @@
         </div>
       </div>
       <!-- Segment 3: Provenance -->
+      <div class="ds-divider" aria-hidden="true"></div>
       <div class="ds-provenance reveal">
         <div class="ds-prov-grid">
           <div class="ds-prov-text reveal-child">
+            <span class="ds-eyebrow">Where the Primary Data Originates</span>
             <h3 class="ds-prov-headline" id="provenance">Our Grower Partners.</h3>
             <p class="ds-prov-body">
-              Hand-selected family estates. Assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
+              The data records above start here. Hand-selected family estates, assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
             </p>
             <p class="ds-prov-body">
               Mulesing is a hard exclusion. No exceptions.
@@ -1942,7 +1966,7 @@
               Primary environmental data is structured directly with each farm team from existing operational records. Generated at source. Not modelled. Not averaged.
             </p>
             <p class="ds-prov-body ds-prov-closing">
-              Grower Partner identity is not disclosed. Single-origin. Fully segregated. Secure supply.
+              Grower Partner identity is not disclosed publicly to protect commercial and biosecurity interests. Single-origin. Fully segregated. Secure supply.
             </p>
           </div>
           <div class="ds-prov-visual reveal-child svg-lazy-container" data-lazy-svg>
@@ -2012,7 +2036,7 @@
           <a class="cta-btn"
              target="_blank" 
              rel="noopener noreferrer"
-             href="https://greenfieldgroup.eu/monoterra/contact/thanks">
+             href="https://greenfieldgroup.eu/monoterra/contact/cta">
             Request Technical Brief
           </a>
         </div>
@@ -2341,9 +2365,9 @@
         var span = document.createElement('span');
         span.textContent = text[i];
         span.className = 'disassemble-letter';
-        span.dataset.dx = String((Math.random() - 0.5) * 60);
-        span.dataset.dy = String(20 + Math.random() * 40);
-        span.dataset.rot = String((Math.random() - 0.5) * 30);
+        span.dataset.dx = String((Math.random() - 0.5) * 140);
+        span.dataset.dy = String(30 + Math.random() * 70);
+        span.dataset.rot = String((Math.random() - 0.5) * 50);
         word.appendChild(span);
         letters.push(span);
       }
@@ -2357,14 +2381,17 @@
           var sectionCenter = rect.top + rect.height / 2;
           var dist = Math.abs(sectionCenter - vh / 2) / (vh / 2);
           var haloStrength = Math.max(0, 1 - dist);
-          if (haloStrength > 0.3) {
-            line1.style.textShadow = '0 0 ' + (40 * haloStrength) + 'px rgba(250,250,248,' + (0.15 * haloStrength) + '), 0 0 ' + (80 * haloStrength) + 'px rgba(250,250,248,' + (0.05 * haloStrength) + ')';
+          if (haloStrength > 0.15) {
+            var s = haloStrength * haloStrength;
+            line1.style.textShadow = '0 0 ' + (60 * s) + 'px rgba(250,250,248,' + (0.3 * s) + '), 0 0 ' + (120 * s) + 'px rgba(250,250,248,' + (0.1 * s) + ')';
           } else {
             line1.style.textShadow = '';
           }
-          var scrollPast = window.pageYOffset - (section.offsetTop + section.offsetHeight - vh * 0.3);
+          // Scatter triggers when section's bottom 30% reaches viewport center
+          var triggerPoint = section.offsetTop + section.offsetHeight * 0.7;
+          var scrollPast = window.pageYOffset + vh * 0.5 - triggerPoint;
           if (scrollPast > 0) {
-            var progress = Math.min(scrollPast / 300, 1);
+            var progress = Math.min(scrollPast / 200, 1);
             letters.forEach(function (span) {
               var dx = parseFloat(span.dataset.dx) * progress;
               var dy = parseFloat(span.dataset.dy) * progress;
@@ -2382,7 +2409,6 @@
         });
       }
       window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', function () {}, { passive: true });
     }());
 
     // ── LYTEN VIDEO: scroll-linked fade-in reveal ──
