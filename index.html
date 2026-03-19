@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F0F0E">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; media-src 'self'; base-uri 'self'; form-action 'self'">
-  <title>MONO•TERRA™ — Natural Engineering. Unbroken Traceability.</title>
+  <title>MONO•TERRA™ | Natural Engineering. Unbroken Traceability.</title>
   <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-estate, identity-preserved technical merino. LYTEN™ is a mechanically finished mid-layer material designed for the compliance era.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
   <link href="assets/fonts/fonts.css" rel="stylesheet">
@@ -256,6 +257,7 @@
       font-size: 14px;
       animation: scrollBounce 2s ease-in-out infinite;
       z-index: 3;
+      -webkit-user-select: none;
       user-select: none;
     }
 
@@ -660,6 +662,7 @@
       right: -40px;
       top: 30%;
       transform: translateY(-50%);
+      -webkit-user-select: none;
       user-select: none;
       letter-spacing: 0.02em;
       white-space: nowrap;
@@ -691,12 +694,13 @@
 
     .feature-block-label {
       font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-label-dark);
+      font-size: 12px;
+      color: var(--warm-off-white);
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 12px;
       display: block;
+      font-weight: 500;
     }
 
     .feature-block-body {
@@ -707,7 +711,9 @@
       line-height: 1.7;
     }
     .espr-tag {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-family: var(--font-mono);
       font-size: 9px;
       letter-spacing: 0.08em;
@@ -719,16 +725,16 @@
       padding: 3px 8px;
       margin-top: 10px;
     }
-
-    .feature-block-note {
-      font-family: var(--font-mono);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 11px;
-      color: var(--text-tertiary-dark);
-      margin-top: 8px;
-      display: block;
+    .espr-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #27C93F;
+      flex-shrink: 0;
     }
+
+
 
     .material-app-note {
       font-family: var(--font-body);
@@ -766,6 +772,13 @@
       color: var(--warm-off-white);
       font-weight: 600;
       letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s, text-shadow 0.4s ease;
+    }
+    .philosophy-main.phil-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ── ORIENTATION DEVICE ── */
@@ -868,15 +881,19 @@
     .transition-line--outgoing {
       color: var(--warm-accent);
       opacity: 0.6;
+      transition: transform 0.05s linear;
+      will-change: transform, opacity;
     }
 
     .transition-line--incoming {
       color: var(--charcoal);
       opacity: 0.8;
+      transition: transform 0.05s linear;
+      will-change: transform, opacity;
     }
 
     /* ══════════════════════════════════
-       UNIFIED DATA STORY (was sections 7-9)
+       UNIFIED DATA STORY — scrollytelling
     ══════════════════════════════════ */
     #data-story {
       background:
@@ -884,16 +901,27 @@
         radial-gradient(ellipse at 10% 90%, rgba(212, 201, 185, 0.06) 0%, transparent 40%),
         var(--warm-off-white);
       position: relative;
+      padding: 140px 64px 120px 80px;
     }
-    /* ── Segment 1: Compliance Data ── */
-    .ds-compliance {
-      padding: 140px 64px 100px 80px;
-    }
-    .ds-compliance-grid {
+    .ds-scroll-wrap {
       display: grid;
-      grid-template-columns: 55% 45%;
+      grid-template-columns: 45% 1fr;
       gap: 80px;
       align-items: start;
+    }
+    /* ── Left: scrolling narrative ── */
+    .ds-narrative {
+      position: relative;
+    }
+    .ds-segment {
+      padding-bottom: 80px;
+    }
+    .ds-segment:last-child { padding-bottom: 0; }
+    .ds-segment-rule {
+      width: 48px;
+      height: 1px;
+      background: rgba(0,0,0,0.12);
+      margin-bottom: 48px;
     }
     .ds-eyebrow {
       font-family: var(--font-mono);
@@ -908,75 +936,61 @@
     .ds-headline {
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: clamp(32px, 4vw, 44px);
+      font-size: clamp(28px, 3.5vw, 40px);
       color: var(--sepia-black);
       letter-spacing: 0.02em;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       line-height: 1.15;
     }
     .ds-body {
       font-family: var(--font-body);
       font-weight: 400;
-      font-size: 17px;
+      font-size: 16px;
       color: var(--charcoal);
       line-height: 1.75;
     }
-    .ds-body + .ds-body { margin-top: 20px; }
-    /* ── Segment 2: JSON Window ── */
-    .ds-transfer {
-      padding: 60px 64px 80px 80px;
-    }
-    .ds-transfer-grid {
-      display: grid;
-      grid-template-columns: 38% 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-    /* ── Segment 3: Provenance ── */
-    .ds-provenance {
-      padding: 80px 64px 140px 80px;
-    }
-    .ds-prov-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+    .ds-body + .ds-body { margin-top: 16px; }
+    /* ── Right: sticky visual panel ── */
+    .ds-visual-panel {
+      position: sticky;
+      top: 20vh;
+      height: 60vh;
+      display: flex;
       align-items: center;
+      justify-content: center;
     }
-    .ds-prov-headline {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 36px;
-      color: var(--sepia-black);
-      margin-bottom: 28px;
-      line-height: 1.2;
+    .ds-visual-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
     }
-    .ds-prov-body {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 17px;
-      color: var(--charcoal);
-      line-height: 1.75;
-    }
-    .ds-prov-body + .ds-prov-body { margin-top: 16px; }
-    .ds-prov-closing {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      margin-top: 24px;
-    }
-    .ds-divider {
-      width: 64px;
-      height: 1px;
-      background: rgba(0,0,0,0.1);
-      margin: 0 auto;
+    .ds-visual-slide.ds-active {
+      opacity: 1;
+      pointer-events: auto;
     }
     .ds-prov-visual {
       background: var(--sepia-black);
       border-radius: 8px;
-      padding: 48px;
+      padding: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      max-width: 480px;
+    }
+    .ds-prov-caption {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mid-grey);
+      margin-top: 16px;
+      text-align: center;
+      letter-spacing: 0.02em;
     }
 
     .reg-table {
@@ -1047,6 +1061,13 @@
     .mac-close { background: #FF5F56; }
     .mac-min   { background: #FFBD2E; }
     .mac-max   { background: #27C93F; }
+    .mac-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(212, 201, 185, 0.4);
+      margin-left: 8px;
+      letter-spacing: 0.02em;
+    }
     .code-block {
       padding: 24px 24px 28px 24px;
       font-family: var(--font-mono);
@@ -1487,13 +1508,13 @@
        RESPONSIVE — 1024px & 768px
     ══════════════════════════════════ */
     @media (max-width: 1024px) {
-      .ds-compliance-grid, .ds-prov-grid, .exec-grid { grid-template-columns: 1fr; gap: 48px; }
-      .ds-transfer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ds-scroll-wrap { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .exec-grid { grid-template-columns: 1fr; gap: 48px; }
       .mt-schematic-svg { max-width: 500px; margin: 40px auto 0; }
       .lyten-intro-grid { grid-template-columns: 1fr; gap: 48px; }
       .lyten-intro-text { padding-right: 64px; }
       .lyten-video-frame { width: calc(100% + 80px); min-height: 360px; margin-left: -80px; }
-      .lyten-specs { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; }
+      .lyten-specs { grid-template-columns: 1fr 1fr; gap: 32px; }
       .feature-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     }
 
@@ -1527,7 +1548,8 @@
       .data-cards { padding-left: 0; margin-left: 0; }
 
       #circularity { padding: 80px 32px; }
-      .circularity-headline { font-size: 28px; }
+      .circularity-line1 { font-size: clamp(32px, 5vw, 48px); }
+      .circularity-line2 { font-size: clamp(28px, 4vw, 40px); }
 
       .lyten-intro { padding: 100px 32px; }
       .lyten-intro-text { padding-right: 0; }
@@ -1543,12 +1565,12 @@
       .philosophy-section { padding: 100px 32px; }
       .philosophy-main { font-size: 32px; }
 
-      #data-story .ds-compliance { padding: 80px 32px; }
-      #data-story .ds-transfer { padding: 40px 32px; }
-      #data-story .ds-provenance { padding: 60px 32px 80px; }
-      .ds-compliance-grid, .ds-transfer-grid, .ds-prov-grid { grid-template-columns: 1fr; gap: 40px; }
-      .ds-headline { font-size: 28px; }
-      .ds-prov-headline { font-size: 28px; }
+      #data-story { padding: 80px 24px 60px; }
+      .ds-scroll-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .ds-visual-panel { position: relative; top: auto; height: auto; }
+      .ds-visual-slide { position: relative; opacity: 1; pointer-events: auto; }
+      .ds-visual-slide:not(.ds-active) { display: none; }
+      .ds-headline { font-size: 24px; }
       .mac-window { max-width: 100%; }
       .reg-table thead th, .reg-table tbody td { font-size: 13px; }
       .reg-table thead th + th, .reg-table tbody td + td { padding-left: 12px; }
@@ -1611,7 +1633,8 @@
       <!-- HERO BACKGROUND IMAGE -->
       <div class="hero-image-wrapper" aria-hidden="true">
         <picture>
-          <img class="hero-image" src="assets/images/Hero landing image.png" alt="MONO•TERRA™ Terrain" fetchpriority="high" decoding="async">
+          <source srcset="assets/images/_Hero landing image_CMPRSSD.avif" type="image/avif">
+          <img class="hero-image" src="assets/images/_Hero landing image_CMPRSSD.webp" alt="MONO•TERRA™ Terrain" fetchpriority="high" decoding="async">
         </picture>
         <div class="hero-image-overlay"></div>
       </div>
@@ -1834,49 +1857,82 @@
          UNIFIED DATA STORY
     ══════════════════════════════════════════ -->
     <section id="data-story" aria-label="Data story: compliance, provenance and traceability">
-      <!-- Segment 1: Compliance Data + Schematic -->
-      <div class="ds-compliance reveal">
-        <div class="ds-compliance-grid">
-          <div class="reveal-child">
-            <span class="ds-eyebrow">Beyond Industry Averages</span>
+      <div class="ds-scroll-wrap">
+        <!-- LEFT: scrolling narrative -->
+        <div class="ds-narrative">
+          <!-- Segment 1: Compliance -->
+          <div class="ds-segment" data-ds-visual="schematic">
+            <span class="ds-eyebrow">Nature provides the performance. We provide the proof.</span>
             <h2 class="ds-headline">Most Brands Report With Modelled Data. That Penalty Is Avoidable.</h2>
             <p class="ds-body">
-              CSRD requires Scope 3 Category 1 environmental data from every material supplier. Without it, brands default to industry averages — generic emission factors that inflate reported footprints, weaken reduction claims, and expose ESG narratives to audit risk.
+              CSRD requires Scope 3 Category 1 data from every material supplier. Without it, brands default to industry averages: generic emission factors that inflate reported footprints, weaken reduction targets, and expose ESG narratives to audit risk.
             </p>
             <p class="ds-body">
-              MONO&bull;TERRA™ supplies Tier 4 primary data with every transaction. Batch-specific. Auditable. Structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers. Your numbers reflect your actual supply chain — not someone else's.
+              MONO&bull;TERRA™ supplies Tier 4 primary data with every transaction. Batch-specific. Auditable. Pre-structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers.
             </p>
-
+            <p class="ds-body">
+              Specifying LYTEN™ is more than a sourcing decision. It is a compliance infrastructure solution. The compliance-ready data arrives with the material.
+            </p>
             <table class="reg-table" aria-label="Regulatory compliance matrix">
               <thead>
                 <tr>
                   <th scope="col">Regulation</th>
                   <th scope="col">What It Requires</th>
-                  <th scope="col">MONO&bull;TERRA™ Position</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>CSRD Scope 3 Cat. 1</td>
                   <td>Tier 1 supplier environmental data</td>
-                  <td>Primary farm data supplied per batch</td>
+                </tr>
+                <tr>
+                  <td>ESPR Ecodesign</td>
+                  <td>Mono-material composition, restricted substance compliance, recyclability by design</td>
                 </tr>
                 <tr>
                   <td>DPP (textile)</td>
-                  <td>Product-level traceability data</td>
-                  <td>Batch provenance available now</td>
+                  <td>Product-level traceability and provenance data</td>
                 </tr>
                 <tr>
                   <td>EPR Eco-modulation</td>
                   <td>End-of-life recyclability evidence</td>
-                  <td>Mono-material keratin. Single stream. No blend contaminants.</td>
                 </tr>
               </tbody>
             </table>
-            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to reduce reporting burden, hedge EPR exposure, and limit end-of-life liability — ahead of compliance thresholds, not behind them.</p>
+            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to reduce reporting burden, hedge EPR exposure, and limit end-of-life liability. Ahead of compliance thresholds, not behind them.</p>
           </div>
-          <!-- SVG Schematic -->
-          <div class="reveal-child svg-lazy-container" style="transition-delay: 200ms;" data-lazy-svg>
+          <!-- Segment 2: Structured Data -->
+          <div class="ds-segment" data-ds-visual="json">
+            <div class="ds-segment-rule" aria-hidden="true"></div>
+            <span class="ds-eyebrow">What Travels With Every Batch</span>
+            <h3 class="ds-headline">Structured Data. Every Transaction.</h3>
+            <p class="ds-body">Each LYTEN™ delivery includes a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Structured for direct import into CSRD reporting, DPP interfaces, and brand-level environmental databases.</p>
+            <p class="ds-body">The record captures provenance, fibre specification, certification status, and chain-of-custody events from farm gate to finished material handoff. Primary data, not modelled or averaged.</p>
+          </div>
+          <!-- Segment 3: Grower Partners -->
+          <div class="ds-segment" data-ds-visual="dpp">
+            <div class="ds-segment-rule" aria-hidden="true"></div>
+            <span class="ds-eyebrow">Where the Primary Data Originates</span>
+            <h3 class="ds-headline" id="provenance">Our Grower Partners.</h3>
+            <p class="ds-body">
+              The data records start here. Hand-selected family estates, assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
+            </p>
+            <p class="ds-body">
+              Mulesing is a hard exclusion. No exceptions.
+            </p>
+            <p class="ds-body">
+              All Grower Partners hold current Responsible Wool Standard certification, independently audited by Textile Exchange. RWS is our baseline. Our protocol assesses what growers do beyond it.
+            </p>
+            <p class="ds-body">
+              Primary environmental data is structured directly with each farm team from existing operational records. Generated at source. Not modelled. Not averaged.
+            </p>
+          </div>
+        </div>
+        <!-- RIGHT: sticky visual panel -->
+        <div class="ds-visual-panel">
+          <!-- Slide 1: Schematic -->
+          <div class="ds-visual-slide ds-active" data-ds-slide="schematic">
+            <div class="svg-lazy-container" data-lazy-svg>
             <svg viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Diagram showing physical batch linked to digital record">
               <style>
                 .mt-svg-mono { font-family: var(--font-mono); font-size: 12px; fill: #6B6B6B; letter-spacing: 0.05em; }
@@ -1921,62 +1977,77 @@
               <text x="300" y="458" class="mt-svg-tiny">MERINO</text>
               <text x="250" y="510" text-anchor="middle" class="mt-svg-sans">CONSUMER<tspan x="250" dy="16">PASSPORT (DPP)</tspan></text>
             </svg>
+            </div>
           </div>
-        </div>
-      </div>
-      <!-- Segment 2: JSON Data Window -->
-      <div class="ds-transfer reveal">
-        <div class="ds-transfer-grid">
-          <div class="reveal-child">
-            <span class="ds-eyebrow">What Travels With Every Batch</span>
-            <h3 class="ds-headline" style="font-size: 28px;">Structured Data. Every Transaction.</h3>
-            <p class="ds-body">Each LYTEN™ delivery includes a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Structured for direct import into CSRD reporting, DPP interfaces, and brand-level environmental databases.</p>
-            <p class="ds-body">The record captures provenance, fibre specification, certification status, and chain-of-custody events from farm gate to finished material handoff. Primary data, not modelled or averaged.</p>
-          </div>
-          <div class="reveal-child">
+          <!-- Slide 2: JSON Window -->
+          <div class="ds-visual-slide" data-ds-slide="json">
             <div class="mac-window" aria-label="Illustrative EPCIS 2.0 data structure">
               <div class="mac-header" aria-hidden="true">
                 <div class="mac-dot mac-close"></div>
                 <div class="mac-dot mac-min"></div>
                 <div class="mac-dot mac-max"></div>
+                <span class="mac-title">MT-2026-P3-batch.epcis.json</span>
               </div>
               <pre class="code-block"><code id="epcisCode"></code></pre>
             </div>
             <p class="code-note">Illustrative structure. Field values are proxies. Live records are batch-specific.</p>
           </div>
-        </div>
-      </div>
-      <!-- Segment 3: Provenance -->
-      <div class="ds-divider" aria-hidden="true"></div>
-      <div class="ds-provenance reveal">
-        <div class="ds-prov-grid">
-          <div class="ds-prov-text reveal-child">
-            <span class="ds-eyebrow">Where the Primary Data Originates</span>
-            <h3 class="ds-prov-headline" id="provenance">Our Grower Partners.</h3>
-            <p class="ds-prov-body">
-              The data records above start here. Hand-selected family estates, assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
-            </p>
-            <p class="ds-prov-body">
-              Mulesing is a hard exclusion. No exceptions.
-            </p>
-            <p class="ds-prov-body">
-              All Grower Partners hold current Responsible Wool Standard certification, independently audited by Textile Exchange. RWS is our baseline. Our protocol assesses what growers do beyond it.
-            </p>
-            <p class="ds-prov-body">
-              Primary environmental data is structured directly with each farm team from existing operational records. Generated at source. Not modelled. Not averaged.
-            </p>
-            <p class="ds-prov-body ds-prov-closing">
-              Grower Partner identity is not disclosed publicly to protect commercial and biosecurity interests. Single-origin. Fully segregated. Secure supply.
-            </p>
-          </div>
-          <div class="ds-prov-visual reveal-child svg-lazy-container" data-lazy-svg>
-            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup" style="max-height:400px;">
-              <defs><marker id="arrow-dp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#D4C9B9" /></marker></defs>
-              <g transform="translate(10, 150)"><path d="M0,0 L60,0 L60,90 L30,110 L0,90 Z" class="dp-shape" /><circle cx="30" cy="15" r="4" class="dp-bg" /><rect x="15" y="30" width="30" height="30" class="dp-bg" /><rect x="19" y="34" width="8" height="8" class="dp-node" /><rect x="29" y="48" width="12" height="8" class="dp-node" /><rect x="19" y="48" width="8" height="8" class="dp-node" /><text x="30" y="80" text-anchor="middle" class="dp-mono" font-size="9">NFC / QR</text></g>
-              <path d="M80,200 L140,200" stroke="#D4C9B9" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow-dp)" />
-              <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#D4C9B9">SCAN</text>
-              <g transform="translate(160, 20)"><rect x="0" y="0" width="240" height="360" rx="20" class="dp-bg" /><rect x="10" y="10" width="220" height="340" rx="12" class="dp-shape" /><line x1="10" y1="55" x2="230" y2="55" class="dp-path" /><text x="120" y="38" text-anchor="middle" class="dp-mono">PRODUCT PASSPORT</text><circle cx="35" cy="90" r="5" class="dp-dot" /><line x1="35" y1="95" x2="35" y2="155" class="dp-line" /><text x="60" y="86" class="dp-mono">ORIGIN</text><text x="60" y="104" class="dp-sans">Single-Estate Family Stud</text><text x="60" y="120" class="dp-sans">Victoria, Australia</text><circle cx="35" cy="160" r="5" class="dp-dot" /><line x1="35" y1="165" x2="35" y2="225" class="dp-line" /><text x="60" y="156" class="dp-mono">FIBRE SPEC</text><text x="60" y="174" class="dp-sans">16.8 µm Merino</text><text x="60" y="190" class="dp-sans">98.7% Comfort Factor</text><circle cx="35" cy="230" r="5" class="dp-dot" /><line x1="35" y1="235" x2="35" y2="295" class="dp-line" /><text x="60" y="226" class="dp-mono">PROCESSING</text><text x="60" y="244" class="dp-sans">Zero Added Chemistry</text><text x="60" y="260" class="dp-sans">Mechanical Finishing</text><circle cx="35" cy="300" r="5" class="dp-dot" /><text x="60" y="296" class="dp-mono">VERIFICATION</text><text x="60" y="314" class="dp-sans">Batch: MT-2025-PX</text><text x="60" y="330" class="dp-sans" fill="#D4C9B9">RWS Certified</text></g>
-            </svg>
+          <!-- Slide 3: DPP Garment Tag -->
+          <div class="ds-visual-slide" data-ds-slide="dpp">
+            <div class="ds-prov-visual svg-lazy-container" data-lazy-svg>
+              <svg viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Garment tag with QR code linking to product passport" style="max-height:400px;">
+                <defs>
+                  <filter id="tagShadow"><feDropShadow dx="3" dy="6" stdDeviation="4" flood-opacity="0.3" /></filter>
+                  <linearGradient id="tagGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#111"/></linearGradient>
+                </defs>
+                <!-- Garment tag with perspective tilt -->
+                <g transform="translate(40, 10) skewY(-2)">
+                  <!-- Tag body -->
+                  <rect x="0" y="40" width="200" height="340" rx="4" fill="url(#tagGrad)" stroke="#333" stroke-width="1" filter="url(#tagShadow)" />
+                  <!-- Fold / hole -->
+                  <path d="M80,40 L80,15 Q100,0 120,15 L120,40" fill="none" stroke="#444" stroke-width="1" />
+                  <circle cx="100" cy="20" r="6" fill="none" stroke="#555" stroke-width="1" />
+                  <!-- Brand mark -->
+                  <text x="100" y="80" text-anchor="middle" class="dp-mono" font-size="8" fill="#666">MONO\u2022TERRA\u2122</text>
+                  <!-- QR code block -->
+                  <rect x="45" y="100" width="110" height="110" rx="2" fill="#222" stroke="#444" stroke-width="0.5" />
+                  <!-- QR pattern (simplified) -->
+                  <g transform="translate(50, 105)" fill="#D4C9B9">
+                    <rect x="0" y="0" width="20" height="20" /><rect x="0" y="80" width="20" height="20" /><rect x="80" y="0" width="20" height="20" />
+                    <rect x="3" y="3" width="14" height="14" fill="#222" /><rect x="3" y="83" width="14" height="14" fill="#222" /><rect x="83" y="3" width="14" height="14" fill="#222" />
+                    <rect x="6" y="6" width="8" height="8" /><rect x="6" y="86" width="8" height="8" /><rect x="86" y="6" width="8" height="8" />
+                    <rect x="30" y="0" width="5" height="5" /><rect x="45" y="0" width="5" height="5" /><rect x="55" y="5" width="5" height="5" />
+                    <rect x="30" y="10" width="5" height="5" /><rect x="40" y="15" width="5" height="5" /><rect x="60" y="10" width="5" height="5" />
+                    <rect x="0" y="30" width="5" height="5" /><rect x="10" y="35" width="5" height="5" /><rect x="25" y="30" width="5" height="5" />
+                    <rect x="35" y="30" width="5" height="5" /><rect x="50" y="35" width="5" height="5" /><rect x="65" y="30" width="5" height="5" />
+                    <rect x="75" y="35" width="5" height="5" /><rect x="85" y="25" width="5" height="5" /><rect x="95" y="30" width="5" height="5" />
+                    <rect x="30" y="45" width="5" height="5" /><rect x="45" y="50" width="5" height="5" /><rect x="55" y="45" width="5" height="5" />
+                    <rect x="65" y="50" width="5" height="5" /><rect x="80" y="45" width="5" height="5" /><rect x="90" y="55" width="5" height="5" />
+                    <rect x="0" y="55" width="5" height="5" /><rect x="15" y="60" width="5" height="5" /><rect x="30" y="60" width="5" height="5" />
+                    <rect x="40" y="65" width="5" height="5" /><rect x="55" y="60" width="5" height="5" /><rect x="70" y="65" width="5" height="5" />
+                    <rect x="85" y="65" width="5" height="5" /><rect x="95" y="70" width="5" height="5" /><rect x="80" y="80" width="5" height="5" />
+                    <rect x="90" y="85" width="5" height="5" /><rect x="80" y="95" width="5" height="5" /><rect x="95" y="90" width="5" height="5" />
+                  </g>
+                  <text x="100" y="228" text-anchor="middle" class="dp-mono" font-size="7" fill="#666">SCAN FOR PRODUCT PASSPORT</text>
+                  <!-- Data lines -->
+                  <line x1="30" y1="252" x2="170" y2="252" stroke="#333" stroke-width="0.5" />
+                  <text x="30" y="272" class="dp-mono" font-size="8" fill="#888">ORIGIN</text>
+                  <text x="30" y="288" class="dp-sans" font-size="11" fill="#D4C9B9">Single-Estate, Victoria AU</text>
+                  <line x1="30" y1="302" x2="170" y2="302" stroke="#333" stroke-width="0.5" />
+                  <text x="30" y="322" class="dp-mono" font-size="8" fill="#888">SPECIFICATION</text>
+                  <text x="30" y="338" class="dp-sans" font-size="11" fill="#D4C9B9">16.8 &#xB5;m &middot; 98.7% CF &middot; RWS</text>
+                  <line x1="30" y1="352" x2="170" y2="352" stroke="#333" stroke-width="0.5" />
+                  <text x="100" y="372" text-anchor="middle" class="dp-mono" font-size="8" fill="#555">MT-2026-P3</text>
+                </g>
+                <!-- Scan indicator -->
+                <g transform="translate(260, 160)">
+                  <path d="M0,0 L40,20 L40,60 L0,80" fill="none" stroke="#D4C9B9" stroke-width="1" stroke-dasharray="4 4" opacity="0.4" />
+                  <text x="50" y="35" class="dp-mono" font-size="8" fill="#D4C9B9" opacity="0.6">NFC</text>
+                  <text x="50" y="50" class="dp-mono" font-size="8" fill="#D4C9B9" opacity="0.6">QR</text>
+                </g>
+              </svg>
+            </div>
+            <p class="ds-prov-caption">Grower Partner identity is not disclosed publicly to protect right to privacy.</p>
           </div>
         </div>
       </div>
@@ -2199,7 +2270,7 @@
       function onScroll() {
         if (ticking) return;
         ticking = true;
-        window.requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
           var scrollY = window.pageYOffset;
 
           // Hero content fade: start fading at 20% scroll, fully gone at 70%
@@ -2269,6 +2340,39 @@
 
       acceptBtn.addEventListener('click', function () { dismiss('accepted'); });
       declineBtn.addEventListener('click', function () { dismiss('declined'); });
+    }());
+
+    // ── DATA STORY: scrollytelling visual swap ──
+    (function () {
+      var segments = document.querySelectorAll('.ds-segment[data-ds-visual]');
+      var slides = document.querySelectorAll('.ds-visual-slide[data-ds-slide]');
+      if (!segments.length || !slides.length) return;
+      var slideMap = {};
+      slides.forEach(function (s) { slideMap[s.dataset.dsSlide] = s; });
+      var current = 'schematic';
+      function activate(name) {
+        if (name === current) return;
+        slides.forEach(function (s) { s.classList.remove('ds-active'); });
+        if (slideMap[name]) slideMap[name].classList.add('ds-active');
+        current = name;
+      }
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var vh = window.innerHeight;
+          var trigger = vh * 0.45;
+          var active = 'schematic';
+          segments.forEach(function (seg) {
+            var rect = seg.getBoundingClientRect();
+            if (rect.top < trigger) active = seg.dataset.dsVisual;
+          });
+          activate(active);
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
     }());
 
     // ── EPCIS CODE BLOCK: syntax highlighting + cycling last line ──
@@ -2405,6 +2509,68 @@
               span.style.opacity = '';
             });
           }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }());
+
+    // ── PHILOSOPHY: scroll-linked fade-in + halo ──
+    (function () {
+      var section = document.querySelector('.philosophy-section');
+      var main = section && section.querySelector('.philosophy-main');
+      if (!section || !main) return;
+      var revealed = false;
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var rect = section.getBoundingClientRect();
+          var vh = window.innerHeight;
+          // Fade in when section enters viewport
+          if (!revealed && rect.top < vh * 0.75) {
+            main.classList.add('phil-visible');
+            revealed = true;
+          }
+          // Halo when centered
+          var center = rect.top + rect.height / 2;
+          var dist = Math.abs(center - vh / 2) / (vh / 2);
+          var strength = Math.max(0, 1 - dist);
+          if (strength > 0.2) {
+            var s = strength * strength;
+            main.style.textShadow = '0 0 ' + (50 * s) + 'px rgba(250,250,248,' + (0.25 * s) + '), 0 0 ' + (100 * s) + 'px rgba(250,250,248,' + (0.08 * s) + ')';
+          } else {
+            main.style.textShadow = '';
+          }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }());
+
+    // ── TRANSITION BAND: split on scroll ──
+    (function () {
+      var band = document.getElementById('transition-band');
+      if (!band) return;
+      var outgoing = band.querySelector('.transition-line--outgoing');
+      var incoming = band.querySelector('.transition-line--incoming');
+      if (!outgoing || !incoming) return;
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var rect = band.getBoundingClientRect();
+          var vh = window.innerHeight;
+          var bandCenter = rect.top + rect.height / 2;
+          // Progress: 0 when band center is at viewport center, 1 when band center reaches top
+          var progress = Math.max(0, Math.min(1, (vh / 2 - bandCenter) / (vh * 0.4)));
+          var offset = progress * 60; // max 60px separation
+          outgoing.style.transform = 'translateY(' + (-offset) + 'px)';
+          outgoing.style.opacity = String(Math.max(0.15, 0.6 - progress * 0.45));
+          incoming.style.transform = 'translateY(' + offset + 'px)';
+          incoming.style.opacity = String(Math.min(1, 0.8 + progress * 0.2));
           ticking = false;
         });
       }
