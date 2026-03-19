@@ -125,7 +125,7 @@
     @media print {
       body { background: #fff; color: #000; }
       .global-nav, .scroll-indicator, #transition-band, .noise-overlay, .hamburger-btn { display: none; }
-      .feature-card-panel { max-height: none !important; opacity: 1 !important; visibility: visible !important; }
+      .feature-card-panel { max-height: none !important; opacity: 1 !important; }
       .feature-card-icon { display: none; }
       .reveal, .reveal .reveal-child, .terminal-line { opacity: 1; transform: none; }
       section { padding: 40px 0; break-inside: avoid; }
@@ -413,6 +413,12 @@
       height: 100%;
       overflow: hidden;
       z-index: 0;
+    }
+
+    .hero-image-wrapper picture {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .hero-image {
@@ -743,9 +749,11 @@
       border-bottom: 1px solid rgba(212, 201, 185, 0.12);
     }
     .feature-card-trigger {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
       align-items: center;
-      gap: 12px;
+      gap: 4px 12px;
       width: 100%;
       padding: 16px 0;
       background: none;
@@ -756,15 +764,21 @@
       font: inherit;
     }
     .feature-card-trigger .feature-block-label {
+      grid-column: 1;
+      grid-row: 1;
       margin-bottom: 0;
-      flex-shrink: 0;
     }
     .feature-card-trigger .espr-tag {
+      grid-column: 1;
+      grid-row: 2;
       margin-top: 0;
       pointer-events: none;
+      justify-self: start;
     }
     .feature-card-icon {
-      margin-left: auto;
+      grid-column: 2;
+      grid-row: 1 / -1;
+      align-self: center;
       flex-shrink: 0;
       color: var(--warm-off-white);
       opacity: 0.5;
@@ -774,23 +788,16 @@
       transform: rotate(45deg);
     }
     .feature-card-panel {
+      display: block;
       overflow: hidden;
       max-height: 0;
       opacity: 0;
-      visibility: hidden;
       transition: max-height 400ms cubic-bezier(0.19, 1, 0.22, 1),
                   opacity 300ms ease;
-    }
-    .feature-card-panel[hidden] {
-      display: block;
-      max-height: 0;
-      opacity: 0;
-      visibility: hidden;
     }
     .feature-card-panel.is-open {
       max-height: 300px;
       opacity: 1;
-      visibility: visible;
     }
     .feature-card-panel .feature-block-body {
       padding: 0 0 20px 0;
@@ -833,8 +840,8 @@
       font-weight: 600;
       letter-spacing: 0.02em;
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s, text-shadow 0.4s ease;
+      transform: translateY(16px);
+      transition: opacity 2.5s ease 0.5s, transform 2.5s ease 0.5s, text-shadow 0.6s ease;
     }
     .philosophy-main.phil-visible {
       opacity: 1;
@@ -1016,8 +1023,8 @@
     /* ── Right: sticky visual panel ── */
     .ds-visual-panel {
       position: sticky;
-      top: 20vh;
-      height: 60vh;
+      top: 10vh;
+      height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1099,7 +1106,7 @@
     .mt-schematic-svg {
       width: 100%;
       height: auto;
-      max-height: 580px;
+      max-height: 720px;
       display: block;
     }
 
@@ -1109,7 +1116,8 @@
       border-radius: 8px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       overflow: hidden;
-      max-width: 520px;
+      width: 520px;
+      max-width: 100%;
     }
     .mac-header {
       height: 32px;
@@ -1137,16 +1145,9 @@
       font-weight: 400;
       font-size: 11px;
       line-height: 1.8;
-      max-height: 280px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(212,201,185,0.2) transparent;
+      max-height: 320px;
+      overflow: hidden;
     }
-    .code-block::-webkit-scrollbar { width: 4px; }
-    .code-block::-webkit-scrollbar-track { background: transparent; }
-    .code-block::-webkit-scrollbar-thumb { background: rgba(212,201,185,0.2); border-radius: 2px; }
-    .code-block:hover::-webkit-scrollbar-thumb { background: rgba(212,201,185,0.4); }
 
     .code-struct { color: rgba(212, 201, 185, 0.6); }
     .code-key    { color: var(--text-label-dark); }
@@ -1199,28 +1200,73 @@
       text-transform: uppercase;
     }
 
-    .exec-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px 48px;
+    .exec-list {
+      max-width: 720px;
     }
 
-    .exec-num {
+    .exec-item {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .exec-trigger {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      align-items: center;
+      gap: 2px 16px;
+      width: 100%;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+    }
+
+    .exec-trigger .exec-num {
+      grid-column: 1;
+      grid-row: 1;
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--muted-clay);
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 16px;
       display: block;
     }
 
-    .exec-q {
+    .exec-trigger .exec-q {
+      grid-column: 1;
+      grid-row: 2;
       font-family: var(--font-sans);
       font-weight: 700;
       font-size: 20px;
       color: var(--charcoal);
-      margin-bottom: 12px;
+      margin-top: 8px;
+    }
+
+    .exec-icon {
+      grid-column: 2;
+      grid-row: 1 / -1;
+      align-self: center;
+      color: var(--muted-clay);
+      transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .exec-trigger[aria-expanded="true"] .exec-icon {
+      transform: rotate(45deg);
+    }
+
+    .exec-panel {
+      display: block;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 400ms cubic-bezier(0.19, 1, 0.22, 1),
+                  opacity 300ms ease;
+    }
+    .exec-panel.is-open {
+      max-height: 300px;
+      opacity: 1;
     }
 
     .exec-a {
@@ -1230,6 +1276,7 @@
       color: var(--charcoal);
       line-height: 1.7;
       opacity: 0.9;
+      padding-bottom: 24px;
     }
 
     /* ══════════════════════════════════
@@ -1572,7 +1619,6 @@
     ══════════════════════════════════ */
     @media (max-width: 1024px) {
       .ds-scroll-wrap { grid-template-columns: 1fr 1fr; gap: 48px; }
-      .exec-grid { grid-template-columns: 1fr; gap: 48px; }
       .mt-schematic-svg { max-width: 500px; margin: 40px auto 0; }
       .lyten-intro-grid { grid-template-columns: 1fr; gap: 48px; }
       .lyten-intro-text { padding-right: 64px; }
@@ -1640,7 +1686,6 @@
 
       #execution { padding: 80px 32px; }
       .exec-headline { font-size: 28px; margin-bottom: 40px; }
-      .exec-grid { grid-template-columns: 1fr; gap: 40px; }
 
       #cta { padding: 100px 32px; }
       .cta-headline { font-size: 32px; }
@@ -1697,7 +1742,8 @@
       <div class="hero-image-wrapper" aria-hidden="true">
         <picture>
           <source srcset="assets/images/_Hero landing image_CMPRSSD.avif" type="image/avif">
-          <img class="hero-image" src="assets/images/_Hero landing image_CMPRSSD.webp" alt="MONO•TERRA™ Terrain" fetchpriority="high" decoding="async">
+          <source srcset="assets/images/_Hero landing image_CMPRSSD.webp" type="image/webp">
+          <img class="hero-image" src="assets/images/Hero landing image.png" alt="MONO•TERRA™ Terrain" fetchpriority="high" decoding="async">
         </picture>
         <div class="hero-image-overlay"></div>
       </div>
@@ -1871,7 +1917,7 @@
                 <span class="espr-tag">ESPR: Recyclability by design</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-1" role="region" aria-labelledby="feature-trigger-1" hidden>
+              <div class="feature-card-panel" id="feature-panel-1" role="region" aria-labelledby="feature-trigger-1">
                 <p class="feature-block-body">No synthetic components. No coatings. No microplastic generation pathway in consumer use.</p>
               </div>
             </article>
@@ -1881,7 +1927,7 @@
                 <span class="espr-tag">ESPR: Restricted substance compliance</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-2" role="region" aria-labelledby="feature-trigger-2" hidden>
+              <div class="feature-card-panel" id="feature-panel-2" role="region" aria-labelledby="feature-trigger-2">
                 <p class="feature-block-body">No chlorination. No chemical finishes. GOTS-compatible processing pathway.</p>
               </div>
             </article>
@@ -1890,7 +1936,7 @@
                 <span class="feature-block-label">Engineered in Biella</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-3" role="region" aria-labelledby="feature-trigger-3" hidden>
+              <div class="feature-card-panel" id="feature-panel-3" role="region" aria-labelledby="feature-trigger-aria-labelledby="feature-trigger-3">
                 <p class="feature-block-body">Developed in Italy&#8217;s textile district, where generations of superfine wool expertise meet the precision finishing infrastructure of Biella.</p>
               </div>
             </article>
@@ -1900,7 +1946,7 @@
                 <span class="espr-tag">ESPR: Product passport readiness</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-4" role="region" aria-labelledby="feature-trigger-4" hidden>
+              <div class="feature-card-panel" id="feature-panel-4" role="region" aria-labelledby="feature-trigger-aria-labelledby="feature-trigger-4">
                 <p class="feature-block-body">Single-estate. Identity-preserved from source to finished material. RWS-certified.</p>
               </div>
             </article>
@@ -1910,7 +1956,7 @@
                 <span class="espr-tag">ESPR: Durability &amp; extended use</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-5" role="region" aria-labelledby="feature-trigger-5" hidden>
+              <div class="feature-card-panel" id="feature-panel-5" role="region" aria-labelledby="feature-trigger-aria-labelledby="feature-trigger-5">
                 <p class="feature-block-body">A 98.7% comfort factor places LYTEN&#8482; above the fibre diameter threshold at which prickle perception begins. Silent against skin. Structured for mid-layer thermal performance.</p>
               </div>
             </article>
@@ -1920,7 +1966,7 @@
                 <span class="espr-tag">ESPR: Durability &amp; extended use</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-6" role="region" aria-labelledby="feature-trigger-6" hidden>
+              <div class="feature-card-panel" id="feature-panel-6" role="region" aria-labelledby="feature-trigger-aria-labelledby="feature-trigger-6">
                 <p class="feature-block-body">The keratin protein matrix resists odour and moisture retention, reducing wash frequency compared to synthetic and blend mid-layers. Most use cases require airing rather than washing. No antimicrobial treatment required or applied.</p>
               </div>
             </article>
@@ -1930,7 +1976,7 @@
                 <span class="espr-tag">ESPR: Recyclability by design</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
-              <div class="feature-card-panel" id="feature-panel-7" role="region" aria-labelledby="feature-trigger-7" hidden>
+              <div class="feature-card-panel" id="feature-panel-7" role="region" aria-labelledby="feature-trigger-aria-labelledby="feature-trigger-7">
                 <p class="feature-block-body">Inherent fibre elasticity without synthetic components. No elastane. No blend required.</p>
               </div>
             </article>
@@ -2117,24 +2163,32 @@
                   <circle cx="100" cy="20" r="6" fill="none" stroke="#555" stroke-width="1" />
                   <!-- Brand mark -->
                   <text x="100" y="80" text-anchor="middle" class="dp-mono" font-size="8" fill="#666">MONO\u2022TERRA\u2122</text>
-                  <!-- QR code block -->
-                  <rect x="45" y="100" width="110" height="110" rx="2" fill="#222" stroke="#444" stroke-width="0.5" />
-                  <!-- QR pattern (simplified) -->
-                  <g transform="translate(50, 105)" fill="#D4C9B9">
-                    <rect x="0" y="0" width="20" height="20" /><rect x="0" y="80" width="20" height="20" /><rect x="80" y="0" width="20" height="20" />
-                    <rect x="3" y="3" width="14" height="14" fill="#222" /><rect x="3" y="83" width="14" height="14" fill="#222" /><rect x="83" y="3" width="14" height="14" fill="#222" />
-                    <rect x="6" y="6" width="8" height="8" /><rect x="6" y="86" width="8" height="8" /><rect x="86" y="6" width="8" height="8" />
-                    <rect x="30" y="0" width="5" height="5" /><rect x="45" y="0" width="5" height="5" /><rect x="55" y="5" width="5" height="5" />
-                    <rect x="30" y="10" width="5" height="5" /><rect x="40" y="15" width="5" height="5" /><rect x="60" y="10" width="5" height="5" />
-                    <rect x="0" y="30" width="5" height="5" /><rect x="10" y="35" width="5" height="5" /><rect x="25" y="30" width="5" height="5" />
-                    <rect x="35" y="30" width="5" height="5" /><rect x="50" y="35" width="5" height="5" /><rect x="65" y="30" width="5" height="5" />
-                    <rect x="75" y="35" width="5" height="5" /><rect x="85" y="25" width="5" height="5" /><rect x="95" y="30" width="5" height="5" />
-                    <rect x="30" y="45" width="5" height="5" /><rect x="45" y="50" width="5" height="5" /><rect x="55" y="45" width="5" height="5" />
-                    <rect x="65" y="50" width="5" height="5" /><rect x="80" y="45" width="5" height="5" /><rect x="90" y="55" width="5" height="5" />
-                    <rect x="0" y="55" width="5" height="5" /><rect x="15" y="60" width="5" height="5" /><rect x="30" y="60" width="5" height="5" />
-                    <rect x="40" y="65" width="5" height="5" /><rect x="55" y="60" width="5" height="5" /><rect x="70" y="65" width="5" height="5" />
-                    <rect x="85" y="65" width="5" height="5" /><rect x="95" y="70" width="5" height="5" /><rect x="80" y="80" width="5" height="5" />
-                    <rect x="90" y="85" width="5" height="5" /><rect x="80" y="95" width="5" height="5" /><rect x="95" y="90" width="5" height="5" />
+                  <!-- QR code block (21×21 Version 1 grid, 5px modules) -->
+                  <rect x="42" y="97" width="116" height="116" rx="3" fill="#1A1A17" stroke="#444" stroke-width="0.5" />
+                  <g transform="translate(47, 102)" fill="#D4C9B9">
+                    <!-- Finder pattern: top-left 7×7 -->
+                    <rect x="0" y="0" width="35" height="5"/><rect x="0" y="5" width="5" height="5"/><rect x="30" y="5" width="5" height="5"/><rect x="0" y="10" width="5" height="5"/><rect x="10" y="10" width="15" height="5"/><rect x="30" y="10" width="5" height="5"/><rect x="0" y="15" width="5" height="5"/><rect x="10" y="15" width="15" height="5"/><rect x="30" y="15" width="5" height="5"/><rect x="0" y="20" width="5" height="5"/><rect x="10" y="20" width="15" height="5"/><rect x="30" y="20" width="5" height="5"/><rect x="0" y="25" width="5" height="5"/><rect x="30" y="25" width="5" height="5"/><rect x="0" y="30" width="35" height="5"/>
+                    <!-- Finder pattern: top-right 7×7 -->
+                    <rect x="70" y="0" width="35" height="5"/><rect x="70" y="5" width="5" height="5"/><rect x="100" y="5" width="5" height="5"/><rect x="70" y="10" width="5" height="5"/><rect x="80" y="10" width="15" height="5"/><rect x="100" y="10" width="5" height="5"/><rect x="70" y="15" width="5" height="5"/><rect x="80" y="15" width="15" height="5"/><rect x="100" y="15" width="5" height="5"/><rect x="70" y="20" width="5" height="5"/><rect x="80" y="20" width="15" height="5"/><rect x="100" y="20" width="5" height="5"/><rect x="70" y="25" width="5" height="5"/><rect x="100" y="25" width="5" height="5"/><rect x="70" y="30" width="35" height="5"/>
+                    <!-- Finder pattern: bottom-left 7×7 -->
+                    <rect x="0" y="70" width="35" height="5"/><rect x="0" y="75" width="5" height="5"/><rect x="30" y="75" width="5" height="5"/><rect x="0" y="80" width="5" height="5"/><rect x="10" y="80" width="15" height="5"/><rect x="30" y="80" width="5" height="5"/><rect x="0" y="85" width="5" height="5"/><rect x="10" y="85" width="15" height="5"/><rect x="30" y="85" width="5" height="5"/><rect x="0" y="90" width="5" height="5"/><rect x="10" y="90" width="15" height="5"/><rect x="30" y="90" width="5" height="5"/><rect x="0" y="95" width="5" height="5"/><rect x="30" y="95" width="5" height="5"/><rect x="0" y="100" width="35" height="5"/>
+                    <!-- Timing patterns -->
+                    <rect x="40" y="30" width="5" height="5"/><rect x="50" y="30" width="5" height="5"/><rect x="60" y="30" width="5" height="5"/><rect x="30" y="40" width="5" height="5"/><rect x="30" y="50" width="5" height="5"/><rect x="30" y="60" width="5" height="5"/>
+                    <!-- Data modules (pseudo-random fill) -->
+                    <rect x="40" y="0" width="5" height="5"/><rect x="50" y="5" width="5" height="5"/><rect x="60" y="0" width="5" height="5"/><rect x="45" y="10" width="5" height="5"/><rect x="55" y="15" width="5" height="5"/><rect x="40" y="20" width="5" height="5"/><rect x="60" y="25" width="5" height="5"/>
+                    <rect x="40" y="40" width="5" height="5"/><rect x="55" y="40" width="5" height="5"/><rect x="70" y="40" width="5" height="5"/><rect x="85" y="40" width="5" height="5"/><rect x="100" y="40" width="5" height="5"/>
+                    <rect x="45" y="45" width="5" height="5"/><rect x="60" y="45" width="5" height="5"/><rect x="75" y="45" width="5" height="5"/><rect x="95" y="45" width="5" height="5"/>
+                    <rect x="40" y="50" width="5" height="5"/><rect x="50" y="50" width="5" height="5"/><rect x="65" y="50" width="5" height="5"/><rect x="80" y="50" width="5" height="5"/><rect x="90" y="50" width="5" height="5"/>
+                    <rect x="45" y="55" width="5" height="5"/><rect x="55" y="55" width="5" height="5"/><rect x="70" y="55" width="5" height="5"/><rect x="85" y="55" width="5" height="5"/><rect x="100" y="55" width="5" height="5"/>
+                    <rect x="40" y="60" width="5" height="5"/><rect x="60" y="60" width="5" height="5"/><rect x="75" y="60" width="5" height="5"/><rect x="95" y="60" width="5" height="5"/>
+                    <rect x="50" y="65" width="5" height="5"/><rect x="65" y="65" width="5" height="5"/><rect x="80" y="65" width="5" height="5"/><rect x="90" y="65" width="5" height="5"/>
+                    <rect x="40" y="70" width="5" height="5"/><rect x="55" y="70" width="5" height="5"/><rect x="70" y="70" width="5" height="5"/><rect x="85" y="70" width="5" height="5"/><rect x="100" y="70" width="5" height="5"/>
+                    <rect x="45" y="75" width="5" height="5"/><rect x="60" y="75" width="5" height="5"/><rect x="75" y="75" width="5" height="5"/><rect x="95" y="75" width="5" height="5"/>
+                    <rect x="50" y="80" width="5" height="5"/><rect x="70" y="80" width="5" height="5"/><rect x="80" y="80" width="5" height="5"/><rect x="100" y="80" width="5" height="5"/>
+                    <rect x="40" y="85" width="5" height="5"/><rect x="55" y="85" width="5" height="5"/><rect x="65" y="85" width="5" height="5"/><rect x="85" y="85" width="5" height="5"/><rect x="95" y="85" width="5" height="5"/>
+                    <rect x="45" y="90" width="5" height="5"/><rect x="60" y="90" width="5" height="5"/><rect x="75" y="90" width="5" height="5"/><rect x="90" y="90" width="5" height="5"/>
+                    <rect x="50" y="95" width="5" height="5"/><rect x="70" y="95" width="5" height="5"/><rect x="80" y="95" width="5" height="5"/><rect x="100" y="95" width="5" height="5"/>
+                    <rect x="45" y="100" width="5" height="5"/><rect x="55" y="100" width="5" height="5"/><rect x="65" y="100" width="5" height="5"/><rect x="85" y="100" width="5" height="5"/><rect x="95" y="100" width="5" height="5"/>
                   </g>
                   <text x="100" y="228" text-anchor="middle" class="dp-mono" font-size="7" fill="#666">SCAN FOR PRODUCT PASSPORT</text>
                   <!-- Data lines -->
@@ -2168,31 +2222,51 @@
     <section id="execution" aria-labelledby="exec-headline">
       <div class="reveal">
         <h2 class="exec-headline reveal-child" id="exec-headline">Execution Model.</h2>
-        <div class="exec-grid reveal-child">
-          
-          <article>
-            <span class="exec-num">// 01. INTEGRATION</span>
-            <h3 class="exec-q">Does this require new software?</h3>
-            <p class="exec-a">No. MONO&bull;TERRA™ is a fibre ingredient brand, not a SaaS platform. Data is delivered as a standardised file (JSON/EPCIS) linked to the commercial invoice, designed for immediate ingestion into your existing PLM or traceability ecosystem.</p>
-          </article>
-          
-          <article>
-            <span class="exec-num">// 02. VERIFICATION</span>
-            <h3 class="exec-q">How is data accuracy ensured?</h3>
-            <p class="exec-a">We do not rely on generic regional averages. We deliver Primary Raw Data, measured to PEF standards and verified against farm records. Full transparency on methodology ensures a defensible audit trail.</p>
-          </article>
-          
-          <article>
-            <span class="exec-num">// 03. CERTIFICATION</span>
-            <h3 class="exec-q">Does this replace RWS?</h3>
-            <p class="exec-a">No, it enhances it. All fibre is RWS-certified for animal welfare. We layer granular primary data on top to deliver a specific cradle-to-gate footprint value for every batch.</p>
-          </article>
-          
-          <article>
-            <span class="exec-num">// 04. SCALE</span>
-            <h3 class="exec-q">Is supply consistent?</h3>
-            <p class="exec-a">Yes. We maintain strategic buffer stock to smooth seasonal fluctuations. For expansion, we leverage existing relationships with adjacent producers pre-assessed against the strict MONO&bull;TERRA™ protocol.</p>
-          </article>
+        <div class="exec-list reveal-child">
+
+          <div class="exec-item" data-exec-accordion>
+            <button class="exec-trigger" aria-expanded="false">
+              <span class="exec-num">// 01. INTEGRATION</span>
+              <h3 class="exec-q">Does this require new software?</h3>
+              <svg class="exec-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
+            </button>
+            <div class="exec-panel">
+              <p class="exec-a">No. MONO&bull;TERRA™ is a fibre ingredient brand, not a SaaS platform. Data is delivered as a standardised file (JSON/EPCIS) linked to the commercial invoice, designed for immediate ingestion into your existing PLM or traceability ecosystem.</p>
+            </div>
+          </div>
+
+          <div class="exec-item" data-exec-accordion>
+            <button class="exec-trigger" aria-expanded="false">
+              <span class="exec-num">// 02. VERIFICATION</span>
+              <h3 class="exec-q">How is data accuracy ensured?</h3>
+              <svg class="exec-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
+            </button>
+            <div class="exec-panel">
+              <p class="exec-a">We do not rely on generic regional averages. We deliver Primary Raw Data, measured to PEF standards and verified against farm records. Full transparency on methodology ensures a defensible audit trail.</p>
+            </div>
+          </div>
+
+          <div class="exec-item" data-exec-accordion>
+            <button class="exec-trigger" aria-expanded="false">
+              <span class="exec-num">// 03. CERTIFICATION</span>
+              <h3 class="exec-q">Does this replace RWS?</h3>
+              <svg class="exec-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
+            </button>
+            <div class="exec-panel">
+              <p class="exec-a">No, it enhances it. All fibre is RWS-certified for animal welfare. We layer granular primary data on top to deliver a specific cradle-to-gate footprint value for every batch.</p>
+            </div>
+          </div>
+
+          <div class="exec-item" data-exec-accordion>
+            <button class="exec-trigger" aria-expanded="false">
+              <span class="exec-num">// 04. SCALE</span>
+              <h3 class="exec-q">Is supply consistent?</h3>
+              <svg class="exec-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
+            </button>
+            <div class="exec-panel">
+              <p class="exec-a">Yes. We maintain strategic buffer stock to smooth seasonal fluctuations. For expansion, we leverage existing relationships with adjacent producers pre-assessed against the strict MONO&bull;TERRA™ protocol.</p>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -2562,6 +2636,27 @@
         cycleIdx = (cycleIdx + 1) % cycleValues.length;
         renderWithCycle();
       }, 3500);
+
+      // Scroll-sync: scroll code-block content with page scroll
+      var codeBlock = codeEl.parentElement;
+      if (codeBlock) {
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            var rect = codeBlock.getBoundingClientRect();
+            var vh = window.innerHeight;
+            // Calculate how far through the viewport the code block is
+            var progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height)));
+            var scrollRange = codeBlock.scrollHeight - codeBlock.clientHeight;
+            if (scrollRange > 0) {
+              codeBlock.scrollTop = progress * scrollRange;
+            }
+            ticking = false;
+          });
+        }, { passive: true });
+      }
     }());
 
     // ── CIRCULARITY: halo glow + disassembly letter scatter ──
@@ -2628,32 +2723,54 @@
       var cards = document.querySelectorAll('[data-accordion]');
       if (!cards.length) return;
 
-      function closeCard(card) {
-        var btn = card.querySelector('.feature-card-trigger');
-        var panel = card.querySelector('.feature-card-panel');
-        if (!btn || !panel) return;
-        btn.setAttribute('aria-expanded', 'false');
-        panel.classList.remove('is-open');
-        panel.setAttribute('hidden', '');
-      }
-
-      function openCard(card) {
-        var btn = card.querySelector('.feature-card-trigger');
-        var panel = card.querySelector('.feature-card-panel');
-        if (!btn || !panel) return;
-        btn.setAttribute('aria-expanded', 'true');
-        panel.removeAttribute('hidden');
-        panel.offsetHeight; // force reflow for transition
-        panel.classList.add('is-open');
-      }
-
       cards.forEach(function (card) {
         var btn = card.querySelector('.feature-card-trigger');
         if (!btn) return;
         btn.addEventListener('click', function () {
           var isOpen = btn.getAttribute('aria-expanded') === 'true';
-          cards.forEach(function (c) { closeCard(c); });
-          if (!isOpen) openCard(card);
+          // Close all
+          cards.forEach(function (c) {
+            var b = c.querySelector('.feature-card-trigger');
+            var p = c.querySelector('.feature-card-panel');
+            if (b) b.setAttribute('aria-expanded', 'false');
+            if (p) p.classList.remove('is-open');
+          });
+          // Open clicked (if it was closed)
+          if (!isOpen) {
+            var panel = card.querySelector('.feature-card-panel');
+            btn.setAttribute('aria-expanded', 'true');
+            if (panel) {
+              panel.offsetHeight;
+              panel.classList.add('is-open');
+            }
+          }
+        });
+      });
+    }());
+
+    // ── EXECUTION ACCORDION: single-open toggle ──
+    (function () {
+      var items = document.querySelectorAll('[data-exec-accordion]');
+      if (!items.length) return;
+      items.forEach(function (item) {
+        var btn = item.querySelector('.exec-trigger');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var isOpen = btn.getAttribute('aria-expanded') === 'true';
+          items.forEach(function (it) {
+            var b = it.querySelector('.exec-trigger');
+            var p = it.querySelector('.exec-panel');
+            if (b) b.setAttribute('aria-expanded', 'false');
+            if (p) p.classList.remove('is-open');
+          });
+          if (!isOpen) {
+            var panel = item.querySelector('.exec-panel');
+            btn.setAttribute('aria-expanded', 'true');
+            if (panel) {
+              panel.offsetHeight;
+              panel.classList.add('is-open');
+            }
+          }
         });
       });
     }());
@@ -2680,9 +2797,9 @@
           var center = rect.top + rect.height / 2;
           var dist = Math.abs(center - vh / 2) / (vh / 2);
           var strength = Math.max(0, 1 - dist);
-          if (strength > 0.2) {
+          if (strength > 0.15) {
             var s = strength * strength;
-            main.style.textShadow = '0 0 ' + (50 * s) + 'px rgba(250,250,248,' + (0.25 * s) + '), 0 0 ' + (100 * s) + 'px rgba(250,250,248,' + (0.08 * s) + ')';
+            main.style.textShadow = '0 0 ' + (60 * s) + 'px rgba(250,250,248,' + (0.12 * s) + '), 0 0 ' + (120 * s) + 'px rgba(250,250,248,' + (0.04 * s) + ')';
           } else {
             main.style.textShadow = '';
           }
