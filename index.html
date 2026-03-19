@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F0F0E">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; media-src 'self'; base-uri 'self'; form-action 'self'">
   <title>MONO•TERRA™ | Natural Engineering. Unbroken Traceability.</title>
   <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-estate, identity-preserved technical merino. LYTEN™ is a mechanically finished mid-layer material designed for the compliance era.">
@@ -256,6 +257,7 @@
       font-size: 14px;
       animation: scrollBounce 2s ease-in-out infinite;
       z-index: 3;
+      -webkit-user-select: none;
       user-select: none;
     }
 
@@ -660,6 +662,7 @@
       right: -40px;
       top: 30%;
       transform: translateY(-50%);
+      -webkit-user-select: none;
       user-select: none;
       letter-spacing: 0.02em;
       white-space: nowrap;
@@ -731,15 +734,7 @@
       flex-shrink: 0;
     }
 
-    .feature-block-note {
-      font-family: var(--font-mono);
-      font-style: italic;
-      font-weight: 400;
-      font-size: 11px;
-      color: var(--text-tertiary-dark);
-      margin-top: 8px;
-      display: block;
-    }
+
 
     .material-app-note {
       font-family: var(--font-body);
@@ -1519,7 +1514,7 @@
       .lyten-intro-grid { grid-template-columns: 1fr; gap: 48px; }
       .lyten-intro-text { padding-right: 64px; }
       .lyten-video-frame { width: calc(100% + 80px); min-height: 360px; margin-left: -80px; }
-      .lyten-specs { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; }
+      .lyten-specs { grid-template-columns: 1fr 1fr; gap: 32px; }
       .feature-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     }
 
@@ -1553,7 +1548,8 @@
       .data-cards { padding-left: 0; margin-left: 0; }
 
       #circularity { padding: 80px 32px; }
-      .circularity-headline { font-size: 28px; }
+      .circularity-line1 { font-size: clamp(32px, 5vw, 48px); }
+      .circularity-line2 { font-size: clamp(28px, 4vw, 40px); }
 
       .lyten-intro { padding: 100px 32px; }
       .lyten-intro-text { padding-right: 0; }
@@ -2273,7 +2269,7 @@
       function onScroll() {
         if (ticking) return;
         ticking = true;
-        window.requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
           var scrollY = window.pageYOffset;
 
           // Hero content fade: start fading at 20% scroll, fully gone at 70%
