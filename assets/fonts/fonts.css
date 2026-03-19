@@ -1,23 +1,12 @@
 /* ══════════════════════════════════
    SELF-HOSTED FONTS
    ══════════════════════════════════
+   Only the weights actually used by the site are declared here.
+   All other font files have been removed to reduce payload.
 
-   SETUP: Download font files and place them in this directory:
-
-   1. IBM Plex Sans — https://fonts.google.com/specimen/IBM+Plex+Sans
-      Download weights: 300, 500, 600, 700
-      Save as: IBMPlexSans-Light.ttf, IBMPlexSans-Medium.ttf,
-               IBMPlexSans-SemiBold.ttf, IBMPlexSans-Bold.ttf
-
-   2. IBM Plex Mono — https://fonts.google.com/specimen/IBM+Plex+Mono
-      Download weights: 400, 400italic, 700
-      Save as: IBMPlexMono-Regular.ttf, IBMPlexMono-Italic.ttf,
-               IBMPlexMono-Bold.ttf
-
-   3. Satoshi — https://www.fontshare.com/fonts/satoshi
-      Download weights: 300, 400, 500
-      Save as: Satoshi-Light.woff2, Satoshi-Regular.woff2,
-               Satoshi-Medium.woff2
+   IBM Plex Sans  : 300, 500, 600, 700       (ttf)
+   IBM Plex Mono  : 400, 400i, 700           (ttf)
+   Satoshi        : 300, 400, 500            (woff2 + woff fallback)
    ══════════════════════════════════ */
 
 /* ── IBM Plex Sans ── */
@@ -79,19 +68,22 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('Satoshi-Light.woff2') format('woff2');
+  src: url('Satoshi-Light.woff2') format('woff2'),
+       url('Satoshi-Light.woff') format('woff');
 }
 @font-face {
   font-family: 'Satoshi';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('Satoshi-Regular.woff2') format('woff2');
+  src: url('Satoshi-Regular.woff2') format('woff2'),
+       url('Satoshi-Regular.woff') format('woff');
 }
 @font-face {
   font-family: 'Satoshi';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('Satoshi-Medium.woff2') format('woff2');
+  src: url('Satoshi-Medium.woff2') format('woff2'),
+       url('Satoshi-Medium.woff') format('woff');
 }
