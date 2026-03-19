@@ -118,7 +118,7 @@ assert(html.includes('aria-label="Toggle navigation menu"'), 'Hamburger has desc
 assert(html.includes('role="dialog"'), 'Mobile drawer has role=dialog');
 
 // Section landmarks: all major sections should have aria-labelledby or aria-label
-const sectionIds = ['hero', 'problem', 'circularity', 'lyten-intro', 'material', 'data-layer', 'data-transfer', 'provenance', 'execution', 'cta'];
+const sectionIds = ['hero', 'problem', 'circularity', 'lyten-intro', 'material', 'data-story', 'execution', 'cta'];
 sectionIds.forEach(id => {
   const sectionRegex = new RegExp(`id="${id}"[^>]*(aria-label|aria-labelledby)`);
   assert(sectionRegex.test(html), `Section #${id} has ARIA label`);

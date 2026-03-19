@@ -548,18 +548,16 @@
     .data-cards {
       display: flex;
       flex-direction: column;
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 3px solid var(--muted-clay);
-      padding-left: 40px;
-      margin-left: -20px; /* overlap into grid gap */
+      padding-left: 0;
+      margin-left: 0;
       position: relative;
     }
 
     .data-card {
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(141, 78, 47, 0.4);
+      padding: 32px 0;
+      border-top: 1px solid rgba(250, 250, 248, 0.08);
     }
-    .data-card:first-child { border-top: 1px solid rgba(141, 78, 47, 0.4); }
+    .data-card:last-child { border-bottom: 1px solid rgba(250, 250, 248, 0.08); }
     .data-card-label {
       font-family: var(--font-mono);
       font-size: 10px;
@@ -567,48 +565,79 @@
       text-transform: uppercase;
       color: var(--text-label-dark);
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .data-card-statement {
-      font-family: var(--font-sans);
-      font-weight: 600;
+      font-family: var(--font-body);
+      font-weight: 400;
       font-size: 15px;
-      color: var(--warm-accent);
-      line-height: 1.55;
+      color: var(--text-secondary-dark);
+      line-height: 1.65;
     }
 
     /* ══════════════════════════════════
        SECTION 3 — CIRCULARITY IMPACT
     ══════════════════════════════════ */
     #circularity {
-      background: 
+      background:
         radial-gradient(ellipse at 20% 50%, rgba(141, 78, 47, 0.06) 0%, transparent 60%),
         radial-gradient(ellipse at 80% 50%, rgba(212, 201, 185, 0.04) 0%, transparent 50%),
         var(--charcoal);
-      padding: 120px 64px;
-      text-align: center;
+      padding: 180px 64px;
+      text-align: left;
       border-top: 1px solid rgba(255,255,255,0.05);
       border-bottom: 1px solid rgba(255,255,255,0.05);
       position: relative;
+      overflow: hidden;
     }
-    
-    .circularity-headline {
+
+    .circularity-line1 {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: clamp(44px, 6vw, 72px);
+      color: var(--warm-off-white);
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      text-transform: uppercase;
+      display: block;
+      position: relative;
+      text-shadow: 0 0 0px rgba(250, 250, 248, 0);
+      transition: text-shadow 0.3s;
+    }
+    .circularity-line1.halo {
+      text-shadow: 0 0 40px rgba(250, 250, 248, 0.15), 0 0 80px rgba(250, 250, 248, 0.05);
+    }
+    .circularity-line2 {
       font-family: var(--font-sans);
       font-weight: 300;
-      font-size: clamp(32px, 4vw, 48px);
-      color: var(--warm-off-white);
-      margin-bottom: 24px;
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--warm-accent);
       letter-spacing: 0.01em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 8px;
+      white-space: nowrap;
     }
-    
+    .circularity-line2 .disassemble-letter {
+      display: inline-block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+    }
+    .circularity-rule {
+      width: 64px;
+      height: 2px;
+      background: var(--warm-off-white);
+      margin: 48px 0;
+      opacity: 0.2;
+    }
     .circularity-body {
       font-family: var(--font-body);
       font-weight: 400;
-      font-size: 18px;
-      color: rgba(212, 201, 185, 0.8);
-      max-width: 680px;
-      margin: 0 auto;
-      line-height: 1.6;
+      font-size: 20px;
+      color: var(--warm-accent);
+      max-width: 640px;
+      margin: 0;
+      line-height: 1.7;
     }
 
     /* ══════════════════════════════════
@@ -616,7 +645,7 @@
     ══════════════════════════════════ */
     #material {
       background: var(--sepia-black);
-      padding: 120px 64px 120px 80px;
+      padding: 60px 64px 120px 80px;
       position: relative;
       overflow: hidden;
     }
@@ -834,17 +863,26 @@
     }
 
     /* ══════════════════════════════════
-       SECTION 7 — DATA LAYER
+       UNIFIED DATA STORY (was sections 7-9)
     ══════════════════════════════════ */
-    #data-layer {
-      background: 
-        radial-gradient(ellipse at 80% 20%, rgba(141, 78, 47, 0.04) 0%, transparent 50%),
+    #data-story {
+      background:
+        radial-gradient(ellipse at 80% 10%, rgba(141, 78, 47, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 10% 90%, rgba(212, 201, 185, 0.06) 0%, transparent 40%),
         var(--warm-off-white);
-      padding: 120px 64px;
       position: relative;
     }
-
-    .data-bridge-text {
+    /* ── Segment 1: Compliance Data ── */
+    .ds-compliance {
+      padding: 140px 64px 100px 80px;
+    }
+    .ds-compliance-grid {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 80px;
+      align-items: start;
+    }
+    .ds-eyebrow {
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--muted-clay);
@@ -854,38 +892,78 @@
       margin-bottom: 24px;
       font-weight: 600;
     }
-
-    .data-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .data-left { max-width: 640px; }
-
-    .data-headline {
+    .ds-headline {
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 38px;
+      font-size: clamp(32px, 4vw, 44px);
       color: var(--sepia-black);
       letter-spacing: 0.02em;
-      margin-bottom: 32px;
-      line-height: 1.2;
+      margin-bottom: 28px;
+      line-height: 1.15;
     }
-
-    .data-intro {
+    .ds-body {
       font-family: var(--font-body);
       font-weight: 400;
       font-size: 17px;
       color: var(--charcoal);
       line-height: 1.75;
-      margin-bottom: 72px;
+    }
+    .ds-body + .ds-body { margin-top: 20px; }
+    /* ── Segment 2: JSON Window ── */
+    .ds-transfer {
+      padding: 60px 64px 80px 80px;
+    }
+    .ds-transfer-grid {
+      display: grid;
+      grid-template-columns: 38% 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    /* ── Segment 3: Provenance ── */
+    .ds-provenance {
+      padding: 80px 64px 140px 80px;
+    }
+    .ds-prov-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .ds-prov-headline {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--sepia-black);
+      margin-bottom: 28px;
+      line-height: 1.2;
+    }
+    .ds-prov-body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 17px;
+      color: var(--charcoal);
+      line-height: 1.75;
+    }
+    .ds-prov-body + .ds-prov-body { margin-top: 16px; }
+    .ds-prov-closing {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      margin-top: 24px;
+    }
+    .ds-prov-visual {
+      background: var(--sepia-black);
+      border-radius: 8px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .reg-table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 48px;
     }
 
     .reg-table thead th {
@@ -913,7 +991,7 @@
     }
     .reg-table tbody td + td { padding-left: 24px; }
 
-    .data-qualify-note {
+    .ds-note {
       font-family: var(--font-mono);
       font-weight: 400;
       font-size: 11px;
@@ -929,149 +1007,65 @@
       display: block;
     }
 
-    /* ══════════════════════════════════
-       SECTION 8 — DATA TRANSFER
-    ══════════════════════════════════ */
-    #data-transfer {
-      background: var(--warm-off-white);
-      padding: 120px 64px;
-      border-top: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .transfer-headline {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 38px;
-      color: var(--sepia-black);
-      letter-spacing: 0.02em;
-      margin-bottom: 48px;
-      line-height: 1.2;
-    }
-
-    .transfer-cols {
-      display: grid;
-      grid-template-columns: 42% 58%;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .transfer-intro {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 17px;
-      color: var(--charcoal);
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-
-    .transfer-body {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 16px;
-      color: var(--charcoal);
-      line-height: 1.75;
-    }
-
-    /* macOS Window Wrapper */
+    /* macOS Window */
     .mac-window {
       background: var(--sepia-black);
       border-radius: 8px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       overflow: hidden;
+      max-width: 520px;
     }
     .mac-header {
       height: 32px;
-      background: #E5E5E5;
+      background: var(--charcoal);
       display: flex;
       align-items: center;
       padding: 0 16px;
       gap: 8px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot { width: 10px; height: 10px; border-radius: 50%; }
     .mac-close { background: #FF5F56; }
     .mac-min   { background: #FFBD2E; }
     .mac-max   { background: #27C93F; }
-
     .code-block {
-      padding: 32px 32px 40px 32px;
+      padding: 24px 24px 28px 24px;
       font-family: var(--font-mono);
       font-weight: 400;
-      font-size: 12px;
-      line-height: 1.9;
-      overflow-x: auto;
+      font-size: 11px;
+      line-height: 1.8;
+      max-height: 280px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(212,201,185,0.2) transparent;
     }
-    
+    .code-block::-webkit-scrollbar { width: 4px; }
+    .code-block::-webkit-scrollbar-track { background: transparent; }
+    .code-block::-webkit-scrollbar-thumb { background: rgba(212,201,185,0.2); border-radius: 2px; }
+    .code-block:hover::-webkit-scrollbar-thumb { background: rgba(212,201,185,0.4); }
+
     .code-struct { color: rgba(212, 201, 185, 0.6); }
     .code-key    { color: var(--text-label-dark); }
     .code-str    { color: var(--warm-accent); }
     .code-bool   { color: rgba(212, 201, 185, 0.8); }
-
     .code-note {
       font-family: var(--font-mono);
       font-weight: 400;
       font-size: 11px;
-      color: var(--text-tertiary-dark);
-      margin-top: 20px;
+      color: var(--mid-grey);
+      margin-top: 16px;
       line-height: 1.6;
     }
-
-    /* ══════════════════════════════════
-       SECTION 9 — PROVENANCE
-    ══════════════════════════════════ */
-    #provenance {
-      background: var(--warm-off-white);
-      padding: 120px 0;
+    /* Cycling last-line shimmer */
+    @keyframes genShimmer {
+      0% { opacity: 0.3; }
+      40% { opacity: 1; }
+      100% { opacity: 1; }
     }
-
-    .provenance-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 600px;
-    }
-
-    .prov-light {
-      padding: 80px 64px;
-      background: var(--warm-off-white);
-      display: flex;
-      align-items: center;
-    }
-    .prov-light-inner {
-      max-width: 540px;
-    }
-
-    .prov-headline {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 36px;
-      color: var(--sepia-black);
-      margin-bottom: 32px;
-      line-height: 1.2;
-    }
-
-    .prov-body {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 17px;
-      color: var(--charcoal);
-      line-height: 1.75;
-    }
-
-    /* Closing line in mono weight to match existing terminal/data register */
-    .prov-closing {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      margin-top: 24px;
-    }
-
-    .prov-dark {
-      background: var(--sepia-black);
-      padding: 80px 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    .code-gen-line {
+      display: inline;
+      animation: genShimmer 0.8s ease-out forwards;
     }
 
     .dp-mono { font-family: var(--font-mono); font-size: 11px; fill: #FAFAF8; opacity: 1; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -1372,16 +1366,16 @@
       z-index: 2;
     }
     .lyten-intro-label {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted-clay);
+      color: var(--text-label-dark);
       display: block;
       margin-bottom: 16px;
     }
     .lyten-intro-headline {
-      font-family: 'IBM Plex Sans', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: clamp(64px, 10vw, 120px);
       color: var(--warm-off-white);
@@ -1390,7 +1384,7 @@
       margin-bottom: 32px;
     }
     .lyten-intro-descriptor {
-      font-family: 'Satoshi', sans-serif;
+      font-family: var(--font-body);
       font-weight: 400;
       font-size: 18px;
       color: var(--warm-accent);
@@ -1410,25 +1404,25 @@
       border-top: 1px solid rgba(212, 201, 185, 0.15);
     }
     .lyten-spec-value {
-      font-family: 'IBM Plex Sans', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 48px;
       color: var(--warm-off-white);
       line-height: 1;
     }
     .lyten-spec-unit {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 14px;
-      color: var(--muted-clay);
+      color: var(--text-label-dark);
       letter-spacing: 0.05em;
       margin-top: 4px;
     }
     .lyten-spec-label {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(212, 201, 185, 0.6);
+      color: var(--text-secondary-dark);
       margin-top: 12px;
     }
     /* ── LYTEN video frame ── */
@@ -1474,7 +1468,8 @@
        RESPONSIVE — 1024px & 768px
     ══════════════════════════════════ */
     @media (max-width: 1024px) {
-      .data-grid, .exec-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ds-compliance-grid, .ds-prov-grid, .exec-grid { grid-template-columns: 1fr; gap: 48px; }
+      .ds-transfer-grid { grid-template-columns: 1fr; gap: 40px; }
       .mt-schematic-svg { max-width: 500px; margin: 40px auto 0; }
       .lyten-intro-grid { grid-template-columns: 1fr; gap: 48px; }
       .lyten-intro-text { padding-right: 64px; }
@@ -1510,7 +1505,7 @@
       .problem-headline { font-size: 36px; max-width: 100%; }
       .problem-grid { grid-template-columns: 1fr; gap: 48px; }
       .problem-body { padding-right: 0; padding-top: 0; }
-      .data-cards { border-left: 2px solid var(--muted-clay); padding-left: 24px; margin-left: 0; }
+      .data-cards { padding-left: 0; margin-left: 0; }
 
       #circularity { padding: 80px 32px; }
       .circularity-headline { font-size: 28px; }
@@ -1529,19 +1524,15 @@
       .philosophy-section { padding: 100px 32px; }
       .philosophy-main { font-size: 32px; }
 
-      #data-layer { padding: 80px 32px; }
-      .data-headline { font-size: 28px; }
+      #data-story .ds-compliance { padding: 80px 32px; }
+      #data-story .ds-transfer { padding: 40px 32px; }
+      #data-story .ds-provenance { padding: 60px 32px 80px; }
+      .ds-compliance-grid, .ds-transfer-grid, .ds-prov-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ds-headline { font-size: 28px; }
+      .ds-prov-headline { font-size: 28px; }
+      .mac-window { max-width: 100%; }
       .reg-table thead th, .reg-table tbody td { font-size: 13px; }
       .reg-table thead th + th, .reg-table tbody td + td { padding-left: 12px; }
-
-      #data-transfer { padding: 80px 32px; }
-      .transfer-headline { font-size: 28px; }
-      .transfer-cols { grid-template-columns: 1fr; gap: 32px; }
-
-      #provenance { padding: 0; }
-      .provenance-split { grid-template-columns: 1fr; }
-      .prov-light, .prov-dark { padding: 60px 32px; }
-      .prov-headline { font-size: 28px; }
 
       #execution { padding: 80px 32px; }
       .exec-headline { font-size: 28px; margin-bottom: 40px; }
@@ -1572,9 +1563,8 @@
       </a>
     </div>
     <div class="nav-links">
-      <a href="#material" class="nav-link">[ MATERIAL ]</a>
-      <a href="#data-layer" class="nav-link">[ DATA ]</a>
-      <a href="#provenance" class="nav-link">[ SINGLE-ESTATE ]</a>
+      <a href="#problem" class="nav-link">[ THE MATERIAL ]</a>
+      <a href="#data-story" class="nav-link">[ THE DATA ]</a>
       <a href="#cta" class="nav-btn">REQUEST BRIEF</a>
     </div>
     <button class="hamburger-btn" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Toggle navigation menu">
@@ -1587,10 +1577,8 @@
   <!-- Mobile Navigation Drawer -->
   <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Navigation menu">
     <a href="#hero">Home</a>
-    <a href="#problem">The Problem</a>
-    <a href="#material">LYTEN™</a>
-    <a href="#provenance">Single-Estate</a>
-    <a href="#data-layer">Data Layer</a>
+    <a href="#problem">The Material</a>
+    <a href="#data-story">The Data</a>
     <a href="#execution">FAQ</a>
     <a href="#cta" class="nav-btn">Request Brief</a>
   </div>
@@ -1616,23 +1604,29 @@
 
         <div class="hero-bottom">
           <div class="hero-left">
-            <h1 class="hero-headline">AN INGREDIENT BRAND BUILT FOR THE <span class="highlight-tag">COMPLIANCE</span> ERA.</h1>
+            <h1 class="hero-headline">AN INGREDIENT BRAND BUILT FOR THE <span class="highlight-tag">ACCOUNTABILITY</span> ERA.</h1>
             <p class="hero-descriptor">High-performance textile ingredients interlinked with deep environmental data. Structured for EU compliance.</p>
             <p class="hero-subline">Natural Engineering. Unbroken Traceability.</p>
           </div>
 
         <div class="hero-terminal" id="heroTerminal" aria-label="Material specification data">
-          <div class="terminal-line">
+          <div class="terminal-line" data-delay="0">
             <span class="terminal-label">Fibre Diameter</span><span class="terminal-sep">&middot;</span><span class="terminal-value">16.8&#xB5;m</span>
           </div>
-          <div class="terminal-line">
+          <div class="terminal-line" data-delay="1">
             <span class="terminal-label">Comfort Factor</span><span class="terminal-sep">&middot;</span><span class="terminal-value">98.7%</span>
           </div>
-          <div class="terminal-line">
+          <div class="terminal-line" data-delay="2">
             <span class="terminal-label">Certification</span><span class="terminal-sep">&middot;</span><span class="terminal-value">RWS</span>
           </div>
           <div class="terminal-line" data-delay="3">
-            <span class="terminal-label">Grower Partner 001</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Victoria, Australia &middot; 7th Generation Family Stud<span class="cursor-blink">|</span></span>
+            <span class="terminal-label">Grower Partner 001</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Victoria, Australia &middot; 7th Generation Family Stud</span>
+          </div>
+          <div class="terminal-line" data-delay="4">
+            <span class="terminal-label">Annual Clip</span><span class="terminal-sep">&middot;</span><span class="terminal-value">90,000kg</span>
+          </div>
+          <div class="terminal-line" data-delay="5">
+            <span class="terminal-label">Data Layer</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Tier 4 Primary &middot; EPCIS 2.0<span class="cursor-blink">|</span></span>
           </div>
         </div>
       </div>
@@ -1658,7 +1652,7 @@
         <p class="orientation-body reveal-child" style="transition-delay: 200ms;">
           Batch-specific environmental data from a single verified source. Primary, not modelled. Structured for EU compliance reporting and delivered with every transaction.
         </p>
-        <a href="#data-layer" class="orientation-cue reveal-child" style="transition-delay: 200ms;" aria-label="Scroll to data proposition">The data &#8595;</a>
+        <a href="#data-story" class="orientation-cue reveal-child" style="transition-delay: 200ms;" aria-label="Scroll to data proposition">The data &#8595;</a>
       </div>
     </section>
 
@@ -1696,7 +1690,11 @@
     ══════════════════════════════════════════ -->
     <section id="circularity" aria-labelledby="circularity-headline">
       <div class="reveal">
-        <h2 class="circularity-headline reveal-child" id="circularity-headline">Circular by Design. Not by Disassembly.</h2>
+        <h2 id="circularity-headline" style="margin:0;">
+          <span class="circularity-line1 reveal-child" id="circLine1">Circular by Design.</span>
+          <span class="circularity-line2 reveal-child" id="circLine2">Not by <span id="disassembleWord">Disassembly.</span></span>
+        </h2>
+        <div class="circularity-rule reveal-child" aria-hidden="true"></div>
         <p class="circularity-body reveal-child">
           A mono-material keratin structure requires no separation. It enters fibre-to-fibre recycling as a single clean stream. At the end of its useful life, it returns to the biosphere without leaving synthetic residue behind.
         </p>
@@ -1810,180 +1808,110 @@
     </div>
 
     <!-- ══════════════════════════════════════════
-         SECTION 7 — THE DATA LAYER & SCHEMATIC
+         UNIFIED DATA STORY
     ══════════════════════════════════════════ -->
-    <section id="data-layer" aria-labelledby="data-layer-headline">
-      <div class="reveal data-grid">
-        
-        <div class="data-left reveal-child">
-          <span class="data-bridge-text">Nature provides the performance. We provide the proof.</span>
-          <h2 class="data-headline" id="data-layer-headline">Structured Data for the Compliance Era.</h2>
-          <p class="data-intro">
-            MONO&bull;TERRA™ supplies Tier 4 primary data with every material transaction. Batch-specific. Auditable. Structured for CSRD Scope 3 Category 1 reporting, DPP field population, and ESPR ecodesign dossiers.
-          </p>
-          
-          <table class="reg-table" aria-label="Regulatory compliance matrix">
-            <thead>
-              <tr>
-                <th scope="col">Regulation</th>
-                <th scope="col">Relevance</th>
-                <th scope="col">MONO&bull;TERRA™ Position</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>CSRD Scope 3 Cat. 1</td>
-                <td>Tier 1 supplier environmental data</td>
-                <td>Primary farm data supplied per batch</td>
-              </tr>
-              <tr>
-                <td>ESPR Ecodesign</td>
-                <td>Mono-material, no restricted substances</td>
-                <td>LYTEN™ designed to ESPR alignment criteria</td>
-              </tr>
-              <tr>
-                <td>DPP (textile)</td>
-                <td>Product-level traceability data</td>
-                <td>Batch provenance available now</td>
-              </tr>
-              <tr>
-                <td>EPR Eco-modulation</td>
-                <td>End-of-life recyclability</td>
-                <td>Mono-material keratin. Single stream. No blend contaminants.</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="data-qualify-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to hedge EPR exposure, reduce reporting burden, and limit end-of-life liability — ahead of compliance thresholds, not behind them.</p>
-        </div>
+    <section id="data-story" aria-label="Data story: compliance, provenance and traceability">
+      <!-- Segment 1: Compliance Data + Schematic -->
+      <div class="ds-compliance reveal">
+        <div class="ds-compliance-grid">
+          <div class="reveal-child">
+            <span class="ds-eyebrow">Nature provides the performance. We provide the proof.</span>
+            <h2 class="ds-headline">Your Compliance Data Shouldn't Be an Industry Average.</h2>
+            <p class="ds-body">
+              MONO&bull;TERRA™ supplies Tier 4 primary data with every material transaction. Batch-specific. Auditable. Structured for CSRD Scope 3 Category 1 reporting, DPP field population, and ESPR ecodesign dossiers.
+            </p>
 
-        <!-- SVG Schematic Column -->
-        <div class="reveal-child svg-lazy-container" style="transition-delay: 200ms;" data-lazy-svg>
-          <svg viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Diagram showing physical batch linked to digital record">
-            <style>
-              .mt-svg-mono { font-family: var(--font-mono); font-size: 12px; fill: #6B6B6B; letter-spacing: 0.05em; }
-              .mt-svg-sans { font-family: var(--font-sans); font-weight: 700; font-size: 14px; fill: #1A1A1A; text-transform: uppercase; }
-              .mt-svg-tiny { font-family: var(--font-mono); font-size: 11px; fill: #1A1A1A; }
-              .mt-svg-line { stroke: #1A1A1A; stroke-width: 2; fill: none; stroke-dasharray: 4; }
-              .mt-svg-fill { fill: #FAFAF8; stroke: #1A1A1A; stroke-width: 1.5; }
-              .mt-svg-accent { fill: #D4C9B9; }
-              .mt-svg-bar  { fill: #1A1A1A; opacity: 0.2; }
-              .mt-svg-zone { fill: #F4F4F2; stroke: none; } 
-              .mt-svg-zone-label { font-family: var(--font-mono); font-size: 10px; fill: #999; letter-spacing: 0.1em; text-transform: uppercase; }
-              .mt-arrow-path { stroke: #1A1A1A; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
-            </style>
-            <defs>
-              <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="#1A1A1A" />
-              </marker>
-              <g id="squatCone">
-                  <rect x="-6" y="-35" width="12" height="10" class="mt-svg-accent" />
-                  <path d="M-22,30 L-18,-25 L18,-25 L22,30 Q0,36 -22,30 Z" class="mt-svg-fill" />
-                  <path d="M-12,20 L12,28 M-14,5 L14,12 M-12,-10 L12,-2" stroke="#1A1A1A" stroke-width="0.5" opacity="0.15" />
-              </g>
-              <g id="dataRecord">
-                  <rect x="0" y="0" width="90" height="80" class="mt-svg-fill" rx="2" />
-                  <rect x="12" y="15" width="30" height="4" fill="#1A1A1A" />
-                  <rect x="12" y="30" width="50" height="2" class="mt-svg-bar" />
-                  <rect x="12" y="40" width="60" height="2" class="mt-svg-bar" />
-                  <rect x="12" y="50" width="30" height="2" class="mt-svg-bar" />
-                  <rect x="12" y="60" width="55" height="2" class="mt-svg-bar" />
-                  <rect x="0" y="0" width="5" height="80" fill="#1A1A1A" rx="1" />
-              </g>
-              <g id="factoryIcon">
-                <path d="M0,40 L0,15 L15,0 L30,15 L45,0 L60,15 L60,40 Z" class="mt-svg-fill" />
-                <rect x="10" y="25" width="10" height="15" class="mt-svg-fill" />
-                <rect x="40" y="25" width="10" height="15" class="mt-svg-fill" />
-              </g>
-              <g id="dbIcon">
-                 <path d="M0,10 A30,8 0 0,1 60,10 L60,50 A30,8 0 0,1 0,50 Z" class="mt-svg-fill" />
-                 <ellipse cx="30" cy="10" rx="30" ry="8" class="mt-svg-fill" />
-                 <path d="M0,30 A30,8 0 0,0 60,30" stroke="#1A1A1A" stroke-width="1.5" fill="none" />
-              </g>
-              <g id="tagIcon">
-                <path d="M0,0 L60,0 L60,90 L0,90 Z" class="mt-svg-fill" /> 
-                <circle cx="30" cy="10" r="4" stroke="#1A1A1A" stroke-width="1.5" fill="#FAFAF8" /> 
-                <path d="M30,6 C30,-15 30,-15 30,-20" stroke="#1A1A1A" stroke-width="1" fill="none" />
-                <rect x="15" y="25" width="30" height="30" fill="#1A1A1A" opacity="0.9" />
-                <line x1="12" y1="65" x2="48" y2="65" stroke="#1A1A1A" stroke-width="1" />
-                <line x1="12" y1="70" x2="40" y2="70" stroke="#1A1A1A" stroke-width="1" />
-              </g>
-            </defs>
-
-            <g transform="translate(100, 60)">
-                  <use href="#squatCone" x="-25" y="-12" opacity="0.5" />
-                  <use href="#squatCone" x="25" y="-12" opacity="0.5" />
-                  <use href="#squatCone" x="0" y="10" opacity="1" />
-            </g>
-            <text x="100" y="130" text-anchor="middle" class="mt-svg-sans">PHYSICAL<tspan x="100" dy="16">BATCH</tspan></text>
-
-            <line x1="150" y1="70" x2="350" y2="70" class="mt-svg-line" />
-            
-            <g transform="translate(250, 70)">
-              <circle cx="0" cy="0" r="18" fill="#1A1A1A" />
-              <g transform="translate(-12, -12) scale(1.5)">
-                 <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" fill="#FAFAF8"/>
-                 <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" fill="#FAFAF8"/>
-              </g>
-            </g>
-            <text x="250" y="110" text-anchor="middle" class="mt-svg-mono" font-size="10">CONTRACTUALLY<tspan x="250" dy="12">INTERLINKED</tspan></text>
-
-            <g transform="translate(355, 30)">
-                <use href="#dataRecord" />
-            </g>
-            <text x="400" y="130" text-anchor="middle" class="mt-svg-sans">DIGITAL<tspan x="400" dy="16">RECORD</tspan></text>
-
-            <path d="M100,150 L100,210" class="mt-arrow-path" />
-            <path d="M400,150 L400,210" class="mt-arrow-path" />
-
-            <rect x="20" y="195" width="460" height="140" class="mt-svg-zone" rx="4" />
-            <text x="470" y="210" text-anchor="end" class="mt-svg-zone-label">PARTNER BRAND OPERATIONS</text>
-
-            <g transform="translate(70, 230)">
-               <use href="#factoryIcon" />
-            </g>
-            <text x="100" y="300" text-anchor="middle" class="mt-svg-sans">BRAND<tspan x="100" dy="16">MANUFACTURING</tspan></text>
-
-            <g transform="translate(370, 230)">
-               <use href="#dbIcon" />
-            </g>
-            <text x="400" y="300" text-anchor="middle" class="mt-svg-sans">ERP / PLM<tspan x="400" dy="16">SYSTEMS</tspan></text>
-
-            <path d="M100,320 Q100,380 230,380" class="mt-arrow-path" />
-            <path d="M400,320 Q400,380 270,380" class="mt-arrow-path" />
-
-            <g transform="translate(220, 390)">
-              <use href="#tagIcon" />
-            </g>
-            
-            <text x="300" y="430" class="mt-svg-tiny">MADE WITH</text>
-            <text x="300" y="444" class="mt-svg-tiny" font-weight="bold">MONO•TERRA™</text>
-            <text x="300" y="458" class="mt-svg-tiny">MERINO</text>
-
-            <text x="250" y="510" text-anchor="middle" class="mt-svg-sans">CONSUMER<tspan x="250" dy="16">PASSPORT (DPP)</tspan></text>
-
-          </svg>
+            <table class="reg-table" aria-label="Regulatory compliance matrix">
+              <thead>
+                <tr>
+                  <th scope="col">Regulation</th>
+                  <th scope="col">Relevance</th>
+                  <th scope="col">MONO&bull;TERRA™ Position</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CSRD Scope 3 Cat. 1</td>
+                  <td>Tier 1 supplier environmental data</td>
+                  <td>Primary farm data supplied per batch</td>
+                </tr>
+                <tr>
+                  <td>ESPR Ecodesign</td>
+                  <td>Mono-material, no restricted substances</td>
+                  <td>LYTEN™ designed to ESPR alignment criteria</td>
+                </tr>
+                <tr>
+                  <td>DPP (textile)</td>
+                  <td>Product-level traceability data</td>
+                  <td>Batch provenance available now</td>
+                </tr>
+                <tr>
+                  <td>EPR Eco-modulation</td>
+                  <td>End-of-life recyclability</td>
+                  <td>Mono-material keratin. Single stream. No blend contaminants.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to hedge EPR exposure, reduce reporting burden, and limit end-of-life liability — ahead of compliance thresholds, not behind them.</p>
+          </div>
+          <!-- SVG Schematic -->
+          <div class="reveal-child svg-lazy-container" style="transition-delay: 200ms;" data-lazy-svg>
+            <svg viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Diagram showing physical batch linked to digital record">
+              <style>
+                .mt-svg-mono { font-family: var(--font-mono); font-size: 12px; fill: #6B6B6B; letter-spacing: 0.05em; }
+                .mt-svg-sans { font-family: var(--font-sans); font-weight: 700; font-size: 14px; fill: #1A1A1A; text-transform: uppercase; }
+                .mt-svg-tiny { font-family: var(--font-mono); font-size: 11px; fill: #1A1A1A; }
+                .mt-svg-line { stroke: #1A1A1A; stroke-width: 2; fill: none; stroke-dasharray: 4; }
+                .mt-svg-fill { fill: #FAFAF8; stroke: #1A1A1A; stroke-width: 1.5; }
+                .mt-svg-accent { fill: #D4C9B9; }
+                .mt-svg-bar  { fill: #1A1A1A; opacity: 0.2; }
+                .mt-svg-zone { fill: #F4F4F2; stroke: none; }
+                .mt-svg-zone-label { font-family: var(--font-mono); font-size: 10px; fill: #999; letter-spacing: 0.1em; text-transform: uppercase; }
+                .mt-arrow-path { stroke: #1A1A1A; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead2); }
+              </style>
+              <defs>
+                <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#1A1A1A" />
+                </marker>
+                <g id="squatCone"><rect x="-6" y="-35" width="12" height="10" class="mt-svg-accent" /><path d="M-22,30 L-18,-25 L18,-25 L22,30 Q0,36 -22,30 Z" class="mt-svg-fill" /><path d="M-12,20 L12,28 M-14,5 L14,12 M-12,-10 L12,-2" stroke="#1A1A1A" stroke-width="0.5" opacity="0.15" /></g>
+                <g id="dataRecord"><rect x="0" y="0" width="90" height="80" class="mt-svg-fill" rx="2" /><rect x="12" y="15" width="30" height="4" fill="#1A1A1A" /><rect x="12" y="30" width="50" height="2" class="mt-svg-bar" /><rect x="12" y="40" width="60" height="2" class="mt-svg-bar" /><rect x="12" y="50" width="30" height="2" class="mt-svg-bar" /><rect x="12" y="60" width="55" height="2" class="mt-svg-bar" /><rect x="0" y="0" width="5" height="80" fill="#1A1A1A" rx="1" /></g>
+                <g id="factoryIcon"><path d="M0,40 L0,15 L15,0 L30,15 L45,0 L60,15 L60,40 Z" class="mt-svg-fill" /><rect x="10" y="25" width="10" height="15" class="mt-svg-fill" /><rect x="40" y="25" width="10" height="15" class="mt-svg-fill" /></g>
+                <g id="dbIcon"><path d="M0,10 A30,8 0 0,1 60,10 L60,50 A30,8 0 0,1 0,50 Z" class="mt-svg-fill" /><ellipse cx="30" cy="10" rx="30" ry="8" class="mt-svg-fill" /><path d="M0,30 A30,8 0 0,0 60,30" stroke="#1A1A1A" stroke-width="1.5" fill="none" /></g>
+                <g id="tagIcon"><path d="M0,0 L60,0 L60,90 L0,90 Z" class="mt-svg-fill" /><circle cx="30" cy="10" r="4" stroke="#1A1A1A" stroke-width="1.5" fill="#FAFAF8" /><path d="M30,6 C30,-15 30,-15 30,-20" stroke="#1A1A1A" stroke-width="1" fill="none" /><rect x="15" y="25" width="30" height="30" fill="#1A1A1A" opacity="0.9" /><line x1="12" y1="65" x2="48" y2="65" stroke="#1A1A1A" stroke-width="1" /><line x1="12" y1="70" x2="40" y2="70" stroke="#1A1A1A" stroke-width="1" /></g>
+              </defs>
+              <g transform="translate(100, 60)"><use href="#squatCone" x="-25" y="-12" opacity="0.5" /><use href="#squatCone" x="25" y="-12" opacity="0.5" /><use href="#squatCone" x="0" y="10" opacity="1" /></g>
+              <text x="100" y="130" text-anchor="middle" class="mt-svg-sans">PHYSICAL<tspan x="100" dy="16">BATCH</tspan></text>
+              <line x1="150" y1="70" x2="350" y2="70" class="mt-svg-line" />
+              <g transform="translate(250, 70)"><circle cx="0" cy="0" r="18" fill="#1A1A1A" /><g transform="translate(-12, -12) scale(1.5)"><path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" fill="#FAFAF8"/><path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" fill="#FAFAF8"/></g></g>
+              <text x="250" y="110" text-anchor="middle" class="mt-svg-mono" font-size="10">CONTRACTUALLY<tspan x="250" dy="12">INTERLINKED</tspan></text>
+              <g transform="translate(355, 30)"><use href="#dataRecord" /></g>
+              <text x="400" y="130" text-anchor="middle" class="mt-svg-sans">DIGITAL<tspan x="400" dy="16">RECORD</tspan></text>
+              <path d="M100,150 L100,210" class="mt-arrow-path" /><path d="M400,150 L400,210" class="mt-arrow-path" />
+              <rect x="20" y="195" width="460" height="140" class="mt-svg-zone" rx="4" />
+              <text x="470" y="210" text-anchor="end" class="mt-svg-zone-label">PARTNER BRAND OPERATIONS</text>
+              <g transform="translate(70, 230)"><use href="#factoryIcon" /></g>
+              <text x="100" y="300" text-anchor="middle" class="mt-svg-sans">BRAND<tspan x="100" dy="16">MANUFACTURING</tspan></text>
+              <g transform="translate(370, 230)"><use href="#dbIcon" /></g>
+              <text x="400" y="300" text-anchor="middle" class="mt-svg-sans">ERP / PLM<tspan x="400" dy="16">SYSTEMS</tspan></text>
+              <path d="M100,320 Q100,380 230,380" class="mt-arrow-path" /><path d="M400,320 Q400,380 270,380" class="mt-arrow-path" />
+              <g transform="translate(220, 390)"><use href="#tagIcon" /></g>
+              <text x="300" y="430" class="mt-svg-tiny">MADE WITH</text>
+              <text x="300" y="444" class="mt-svg-tiny" font-weight="bold">MONO•TERRA™</text>
+              <text x="300" y="458" class="mt-svg-tiny">MERINO</text>
+              <text x="250" y="510" text-anchor="middle" class="mt-svg-sans">CONSUMER<tspan x="250" dy="16">PASSPORT (DPP)</tspan></text>
+            </svg>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         SECTION 8 — DATA TRANSFER (MAC UI)
-    ══════════════════════════════════════════ -->
-    <section id="data-transfer" aria-labelledby="data-transfer-headline">
-      <div class="reveal">
-        <h2 class="transfer-headline reveal-child" id="data-transfer-headline">Structured data. Every transaction.</h2>
-        <div class="transfer-cols reveal-child">
-          <div>
-            <p class="transfer-intro">
-              Each LYTEN™ material delivery is accompanied by a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Fields are structured for direct import into CSRD reporting systems, DPP interfaces, and brand-level environmental databases. No manual data entry required on the buyer side.
-            </p>
-            <p class="transfer-body">
-              The record captures provenance, fibre specification, processing methodology, certification status, and chain-of-custody events from farm gate to finished material handoff. Data is primary -- generated at source, not modelled or averaged. The structure follows open standards to ensure compatibility with third-party DPP systems and future regulatory portals.
-            </p>
+      <!-- Segment 2: JSON Data Window -->
+      <div class="ds-transfer reveal">
+        <div class="ds-transfer-grid">
+          <div class="reveal-child">
+            <h3 class="ds-headline" style="font-size: 28px;">Structured data. Every transaction.</h3>
+            <p class="ds-body">Each LYTEN™ delivery includes a batch-specific data record aligned to EPCIS 2.0 and GS1 Digital Link standards. Structured for direct import into CSRD reporting, DPP interfaces, and brand-level environmental databases.</p>
+            <p class="ds-body">The record captures provenance, fibre specification, certification status, and chain-of-custody events from farm gate to finished material handoff. Primary data, not modelled or averaged.</p>
           </div>
-          <div>
-            
-            <!-- macOS Styled Code Window -->
+          <div class="reveal-child">
             <div class="mac-window" aria-label="Illustrative EPCIS 2.0 data structure">
               <div class="mac-header" aria-hidden="true">
                 <div class="mac-dot mac-close"></div>
@@ -1992,109 +1920,44 @@
               </div>
               <pre class="code-block"><code id="epcisCode"></code></pre>
             </div>
-            <!-- End macOS Window -->
-
-            <p class="code-note">Illustrative structure only. Field values are proxies. Live records are batch-specific and supplied with each material transaction.</p>
+            <p class="code-note">Illustrative structure. Field values are proxies. Live records are batch-specific.</p>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         SECTION 9 — PROVENANCE
-    ══════════════════════════════════════════ -->
-    <section id="provenance" aria-labelledby="provenance-headline">
-      <div class="provenance-split">
-        <div class="prov-light">
-          <div class="prov-light-inner reveal">
-            <h2 class="prov-headline reveal-child" id="provenance-headline">Our Grower Partners.</h2>
-            <p class="prov-body reveal-child">
+      <!-- Segment 3: Provenance -->
+      <div class="ds-provenance reveal">
+        <div class="ds-prov-grid">
+          <div class="ds-prov-text reveal-child">
+            <h3 class="ds-prov-headline" id="provenance">Our Grower Partners.</h3>
+            <p class="ds-prov-body">
               Hand-selected family estates. Assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
             </p>
-            <p class="prov-body reveal-child">
+            <p class="ds-prov-body">
               Mulesing is a hard exclusion. No exceptions.
             </p>
-            <p class="prov-body reveal-child">
+            <p class="ds-prov-body">
               All Grower Partners hold current Responsible Wool Standard certification, independently audited by Textile Exchange. RWS is our baseline. Our protocol assesses what growers do beyond it.
             </p>
-            <p class="prov-body reveal-child">
+            <p class="ds-prov-body">
               Primary environmental data is structured directly with each farm team from existing operational records. Generated at source. Not modelled. Not averaged.
             </p>
-            <p class="prov-body prov-closing reveal-child">
+            <p class="ds-prov-body ds-prov-closing">
               Grower Partner identity is not disclosed. Single-origin. Fully segregated. Secure supply.
             </p>
           </div>
-        </div>
-        <div class="prov-dark" id="provDark">
-          
-          <!-- Consumer DPP Lookup Mockup SVG -->
-          <div class="reveal-child svg-lazy-container" style="width: 100%; max-width: 400px; margin: 0 auto;" data-lazy-svg>
-            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup">
-              <defs>
-                <marker id="arrow-dp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <polygon points="0 0, 8 4, 0 8" fill="#D4C9B9" />
-                </marker>
-              </defs>
-
-              <!-- Garment Tag -->
-              <g transform="translate(10, 150)">
-                <path d="M0,0 L60,0 L60,90 L30,110 L0,90 Z" class="dp-shape" />
-                <circle cx="30" cy="15" r="4" class="dp-bg" />
-                <rect x="15" y="30" width="30" height="30" class="dp-bg" />
-                <rect x="19" y="34" width="8" height="8" class="dp-node" />
-                <rect x="29" y="48" width="12" height="8" class="dp-node" />
-                <rect x="19" y="48" width="8" height="8" class="dp-node" />
-                <text x="30" y="80" text-anchor="middle" class="dp-mono" font-size="9">NFC / QR</text>
-              </g>
-
-              <!-- Connection -->
+          <div class="ds-prov-visual reveal-child svg-lazy-container" data-lazy-svg>
+            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup" style="max-height:400px;">
+              <defs><marker id="arrow-dp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#D4C9B9" /></marker></defs>
+              <g transform="translate(10, 150)"><path d="M0,0 L60,0 L60,90 L30,110 L0,90 Z" class="dp-shape" /><circle cx="30" cy="15" r="4" class="dp-bg" /><rect x="15" y="30" width="30" height="30" class="dp-bg" /><rect x="19" y="34" width="8" height="8" class="dp-node" /><rect x="29" y="48" width="12" height="8" class="dp-node" /><rect x="19" y="48" width="8" height="8" class="dp-node" /><text x="30" y="80" text-anchor="middle" class="dp-mono" font-size="9">NFC / QR</text></g>
               <path d="M80,200 L140,200" stroke="#D4C9B9" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow-dp)" />
-              <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#D4C9B9" opacity="1">SCAN</text>
-
-              <!-- Mobile UI -->
-              <g transform="translate(160, 20)">
-                <rect x="0" y="0" width="240" height="360" rx="20" class="dp-bg" />
-                <rect x="10" y="10" width="220" height="340" rx="12" class="dp-shape" />
-                
-                <!-- UI Header -->
-                <line x1="10" y1="55" x2="230" y2="55" class="dp-path" />
-                <text x="120" y="38" text-anchor="middle" class="dp-mono">PRODUCT PASSPORT</text>
-
-                <!-- UI Content Nodes -->
-                <!-- Origin Node -->
-                <circle cx="35" cy="90" r="5" class="dp-dot" />
-                <line x1="35" y1="95" x2="35" y2="155" class="dp-line" />
-                <text x="60" y="86" class="dp-mono">ORIGIN</text>
-                <text x="60" y="104" class="dp-sans">Single-Estate Family Stud</text>
-                <text x="60" y="120" class="dp-sans">Victoria, Australia</text>
-
-                <!-- Fibre Node -->
-                <circle cx="35" cy="160" r="5" class="dp-dot" />
-                <line x1="35" y1="165" x2="35" y2="225" class="dp-line" />
-                <text x="60" y="156" class="dp-mono">FIBRE SPEC</text>
-                <text x="60" y="174" class="dp-sans">16.8 µm Merino</text>
-                <text x="60" y="190" class="dp-sans">98.7% Comfort Factor</text>
-
-                <!-- Processing Node -->
-                <circle cx="35" cy="230" r="5" class="dp-dot" />
-                <line x1="35" y1="235" x2="35" y2="295" class="dp-line" />
-                <text x="60" y="226" class="dp-mono">PROCESSING</text>
-                <text x="60" y="244" class="dp-sans">Zero Added Chemistry</text>
-                <text x="60" y="260" class="dp-sans">Mechanical Finishing</text>
-
-                <!-- Batch Node -->
-                <circle cx="35" cy="300" r="5" class="dp-dot" />
-                <text x="60" y="296" class="dp-mono">VERIFICATION</text>
-                <text x="60" y="314" class="dp-sans">Batch: MT-2025-PX</text>
-                <text x="60" y="330" class="dp-sans" fill="#D4C9B9">RWS Certified</text>
-              </g>
+              <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#D4C9B9">SCAN</text>
+              <g transform="translate(160, 20)"><rect x="0" y="0" width="240" height="360" rx="20" class="dp-bg" /><rect x="10" y="10" width="220" height="340" rx="12" class="dp-shape" /><line x1="10" y1="55" x2="230" y2="55" class="dp-path" /><text x="120" y="38" text-anchor="middle" class="dp-mono">PRODUCT PASSPORT</text><circle cx="35" cy="90" r="5" class="dp-dot" /><line x1="35" y1="95" x2="35" y2="155" class="dp-line" /><text x="60" y="86" class="dp-mono">ORIGIN</text><text x="60" y="104" class="dp-sans">Single-Estate Family Stud</text><text x="60" y="120" class="dp-sans">Victoria, Australia</text><circle cx="35" cy="160" r="5" class="dp-dot" /><line x1="35" y1="165" x2="35" y2="225" class="dp-line" /><text x="60" y="156" class="dp-mono">FIBRE SPEC</text><text x="60" y="174" class="dp-sans">16.8 µm Merino</text><text x="60" y="190" class="dp-sans">98.7% Comfort Factor</text><circle cx="35" cy="230" r="5" class="dp-dot" /><line x1="35" y1="235" x2="35" y2="295" class="dp-line" /><text x="60" y="226" class="dp-mono">PROCESSING</text><text x="60" y="244" class="dp-sans">Zero Added Chemistry</text><text x="60" y="260" class="dp-sans">Mechanical Finishing</text><circle cx="35" cy="300" r="5" class="dp-dot" /><text x="60" y="296" class="dp-mono">VERIFICATION</text><text x="60" y="314" class="dp-sans">Batch: MT-2025-PX</text><text x="60" y="330" class="dp-sans" fill="#D4C9B9">RWS Certified</text></g>
             </svg>
           </div>
-          <!-- End Mockup -->
-
         </div>
       </div>
     </section>
+
 
     <!-- ══════════════════════════════════════════
          SECTION 10 — EXECUTION MODEL (FAQ)
@@ -2149,7 +2012,7 @@
           <a class="cta-btn"
              target="_blank" 
              rel="noopener noreferrer"
-             href="https://greenfieldgroup.eu/contact/cta">
+             href="https://greenfieldgroup.eu/monoterra/contact/thanks">
             Request Technical Brief
           </a>
         </div>
@@ -2384,33 +2247,24 @@
       declineBtn.addEventListener('click', function () { dismiss('declined'); });
     }());
 
-    // ── EPCIS CODE BLOCK: JS-rendered syntax highlighting ──
+    // ── EPCIS CODE BLOCK: syntax highlighting + cycling last line ──
     (function () {
       var codeEl = document.getElementById('epcisCode');
       if (!codeEl) return;
-
       var epcisData = {
         "epcis:EPCISDocument": {
           "schemaVersion": "2.0",
           "creationDate": "2026-XX-XX",
-          "sender": {
-            "identifier": "MONOTERRA-AB",
-            "gs1CompanyPrefix": "XXXXXXX"
-          },
+          "sender": { "identifier": "MONOTERRA-AB", "gs1CompanyPrefix": "XXXXXXX" },
           "eventList": [{
             "type": "ObjectEvent",
-            "eventTime": "2026-XX-XXTXX:XX:XXZ",
             "action": "OBSERVE",
             "epcList": ["urn:epc:id:sgtin:XXXXXXX.XXXXX.MT-XXXX-PX"],
             "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
-            "disposition": "urn:epcglobal:cbv:disp:in_transit",
-            "readPoint": {"id": "urn:epc:id:sgln:XXXXXXX.XXXXX.0"},
             "ilmd": {
               "mt:fibreSpecification": {
                 "diameter_microns": "16.8",
-                "comfortFactor_pct": "XX.X",
-                "stapleLength_mm": "XX",
-                "yield_pct": "XX.X",
+                "comfortFactor_pct": "98.7",
                 "certifications": ["RWS", "GOTS-compatible pathway"],
                 "processingChemistry": "none"
               },
@@ -2423,14 +2277,21 @@
               "mt:complianceFields": {
                 "csrdScope3Cat1": true,
                 "espr_monoMaterial": true,
-                "dpp_readiness": "batch-level provenance available",
-                "eprEcoModulation": "single-fibre keratin stream"
+                "dpp_readiness": "CYCLING_PLACEHOLDER"
               }
             }
           }]
         }
       };
-
+      var cycleValues = [
+        "batch-level provenance available",
+        "MT-2026-P3 verified",
+        "single-fibre keratin stream",
+        "cradle-to-gate footprint: primary",
+        "EPR eco-modulation: mono-material",
+        "Victoria AU clip 2025 segregated"
+      ];
+      var cycleIdx = 0;
       function syntaxHighlight(json) {
         var str = JSON.stringify(json, null, 2);
         str = str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -2449,8 +2310,79 @@
           return '<span class="' + cls + '">' + match + '</span>';
         }).replace(/([{}\[\],])/g, '<span class="code-struct">$1</span>');
       }
+      function renderWithCycle() {
+        var data = JSON.parse(JSON.stringify(epcisData));
+        data["epcis:EPCISDocument"].eventList[0].ilmd["mt:complianceFields"].dpp_readiness = cycleValues[cycleIdx];
+        var html = syntaxHighlight(data);
+        var safeVal = cycleValues[cycleIdx].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        html = html.replace(
+          new RegExp('(<span class="code-str">"' + safeVal + '"<\\/span>)'),
+          '<span class="code-gen-line">$1</span>'
+        );
+        codeEl.innerHTML = html;
+      }
+      renderWithCycle();
+      setInterval(function () {
+        cycleIdx = (cycleIdx + 1) % cycleValues.length;
+        renderWithCycle();
+      }, 3500);
+    }());
 
-      codeEl.innerHTML = syntaxHighlight(epcisData);
+    // ── CIRCULARITY: halo glow + disassembly letter scatter ──
+    (function () {
+      var section = document.getElementById('circularity');
+      var line1 = document.getElementById('circLine1');
+      var word = document.getElementById('disassembleWord');
+      if (!section || !line1 || !word) return;
+      var text = word.textContent;
+      word.innerHTML = '';
+      var letters = [];
+      for (var i = 0; i < text.length; i++) {
+        var span = document.createElement('span');
+        span.textContent = text[i];
+        span.className = 'disassemble-letter';
+        span.dataset.dx = String((Math.random() - 0.5) * 60);
+        span.dataset.dy = String(20 + Math.random() * 40);
+        span.dataset.rot = String((Math.random() - 0.5) * 30);
+        word.appendChild(span);
+        letters.push(span);
+      }
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var rect = section.getBoundingClientRect();
+          var vh = window.innerHeight;
+          var sectionCenter = rect.top + rect.height / 2;
+          var dist = Math.abs(sectionCenter - vh / 2) / (vh / 2);
+          var haloStrength = Math.max(0, 1 - dist);
+          if (haloStrength > 0.3) {
+            line1.style.textShadow = '0 0 ' + (40 * haloStrength) + 'px rgba(250,250,248,' + (0.15 * haloStrength) + '), 0 0 ' + (80 * haloStrength) + 'px rgba(250,250,248,' + (0.05 * haloStrength) + ')';
+          } else {
+            line1.style.textShadow = '';
+          }
+          var scrollPast = window.pageYOffset - (section.offsetTop + section.offsetHeight - vh * 0.3);
+          if (scrollPast > 0) {
+            var progress = Math.min(scrollPast / 300, 1);
+            letters.forEach(function (span) {
+              var dx = parseFloat(span.dataset.dx) * progress;
+              var dy = parseFloat(span.dataset.dy) * progress;
+              var rot = parseFloat(span.dataset.rot) * progress;
+              span.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) rotate(' + rot + 'deg)';
+              span.style.opacity = String(Math.max(0, 1 - progress * 1.3));
+            });
+          } else {
+            letters.forEach(function (span) {
+              span.style.transform = '';
+              span.style.opacity = '';
+            });
+          }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', function () {}, { passive: true });
     }());
 
     // ── LYTEN VIDEO: scroll-linked fade-in reveal ──
