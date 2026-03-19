@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; media-src 'self'; base-uri 'self'; form-action 'self'">
-  <title>MONO•TERRA™ — Natural Engineering. Unbroken Traceability.</title>
+  <title>MONO•TERRA™ | Natural Engineering. Unbroken Traceability.</title>
   <meta name="description" content="MONO•TERRA™ supplies European apparel brands with single-estate, identity-preserved technical merino. LYTEN™ is a mechanically finished mid-layer material designed for the compliance era.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
   <link href="assets/fonts/fonts.css" rel="stylesheet">
@@ -691,12 +691,13 @@
 
     .feature-block-label {
       font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-label-dark);
+      font-size: 12px;
+      color: var(--warm-off-white);
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 12px;
       display: block;
+      font-weight: 500;
     }
 
     .feature-block-body {
@@ -707,7 +708,9 @@
       line-height: 1.7;
     }
     .espr-tag {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-family: var(--font-mono);
       font-size: 9px;
       letter-spacing: 0.08em;
@@ -718,6 +721,14 @@
       border-radius: 3px;
       padding: 3px 8px;
       margin-top: 10px;
+    }
+    .espr-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #27C93F;
+      flex-shrink: 0;
     }
 
     .feature-block-note {
@@ -766,6 +777,13 @@
       color: var(--warm-off-white);
       font-weight: 600;
       letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s, text-shadow 0.4s ease;
+    }
+    .philosophy-main.phil-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ── ORIENTATION DEVICE ── */
@@ -868,11 +886,15 @@
     .transition-line--outgoing {
       color: var(--warm-accent);
       opacity: 0.6;
+      transition: transform 0.05s linear;
+      will-change: transform, opacity;
     }
 
     .transition-line--incoming {
       color: var(--charcoal);
       opacity: 0.8;
+      transition: transform 0.05s linear;
+      will-change: transform, opacity;
     }
 
     /* ══════════════════════════════════
@@ -977,6 +999,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .ds-prov-caption {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mid-grey);
+      margin-top: 16px;
+      text-align: center;
+      letter-spacing: 0.02em;
     }
 
     .reg-table {
@@ -1838,13 +1868,13 @@
       <div class="ds-compliance reveal">
         <div class="ds-compliance-grid">
           <div class="reveal-child">
-            <span class="ds-eyebrow">Beyond Industry Averages</span>
+            <span class="ds-eyebrow">Nature provides the performance. We provide the proof.</span>
             <h2 class="ds-headline">Most Brands Report With Modelled Data. That Penalty Is Avoidable.</h2>
             <p class="ds-body">
-              CSRD requires Scope 3 Category 1 environmental data from every material supplier. Without it, brands default to industry averages — generic emission factors that inflate reported footprints, weaken reduction claims, and expose ESG narratives to audit risk.
+              CSRD requires Scope 3 Category 1 environmental data from every material supplier. Without it, brands default to industry averages: generic emission factors that inflate reported footprints, weaken reduction claims, and expose ESG narratives to audit risk.
             </p>
             <p class="ds-body">
-              MONO&bull;TERRA™ supplies Tier 4 primary data with every transaction. Batch-specific. Auditable. Structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers. Your numbers reflect your actual supply chain — not someone else's.
+              MONO&bull;TERRA™ supplies Tier 4 primary data with every transaction. Batch-specific. Auditable. Structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers. Your numbers reflect your actual supply chain, not someone else's.
             </p>
 
             <table class="reg-table" aria-label="Regulatory compliance matrix">
@@ -1852,28 +1882,28 @@
                 <tr>
                   <th scope="col">Regulation</th>
                   <th scope="col">What It Requires</th>
-                  <th scope="col">MONO&bull;TERRA™ Position</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>CSRD Scope 3 Cat. 1</td>
                   <td>Tier 1 supplier environmental data</td>
-                  <td>Primary farm data supplied per batch</td>
+                </tr>
+                <tr>
+                  <td>ESPR Ecodesign</td>
+                  <td>Mono-material composition, restricted substance compliance, recyclability by design</td>
                 </tr>
                 <tr>
                   <td>DPP (textile)</td>
-                  <td>Product-level traceability data</td>
-                  <td>Batch provenance available now</td>
+                  <td>Product-level traceability and provenance data</td>
                 </tr>
                 <tr>
                   <td>EPR Eco-modulation</td>
                   <td>End-of-life recyclability evidence</td>
-                  <td>Mono-material keratin. Single stream. No blend contaminants.</td>
                 </tr>
               </tbody>
             </table>
-            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to reduce reporting burden, hedge EPR exposure, and limit end-of-life liability — ahead of compliance thresholds, not behind them.</p>
+            <p class="ds-note">Regulatory enforcement timelines vary. MONO&bull;TERRA™ is structured to reduce reporting burden, hedge EPR exposure, and limit end-of-life liability. Ahead of compliance thresholds, not behind them.</p>
           </div>
           <!-- SVG Schematic -->
           <div class="reveal-child svg-lazy-container" style="transition-delay: 200ms;" data-lazy-svg>
@@ -1965,18 +1995,18 @@
             <p class="ds-prov-body">
               Primary environmental data is structured directly with each farm team from existing operational records. Generated at source. Not modelled. Not averaged.
             </p>
-            <p class="ds-prov-body ds-prov-closing">
-              Grower Partner identity is not disclosed publicly to protect commercial and biosecurity interests. Single-origin. Fully segregated. Secure supply.
-            </p>
           </div>
-          <div class="ds-prov-visual reveal-child svg-lazy-container" data-lazy-svg>
-            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup" style="max-height:400px;">
+          <div class="reveal-child">
+            <div class="ds-prov-visual svg-lazy-container" data-lazy-svg>
+              <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" class="mt-schematic-svg" preserveAspectRatio="xMidYMid meet" aria-label="Consumer DPP Mockup" style="max-height:400px;">
               <defs><marker id="arrow-dp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#D4C9B9" /></marker></defs>
               <g transform="translate(10, 150)"><path d="M0,0 L60,0 L60,90 L30,110 L0,90 Z" class="dp-shape" /><circle cx="30" cy="15" r="4" class="dp-bg" /><rect x="15" y="30" width="30" height="30" class="dp-bg" /><rect x="19" y="34" width="8" height="8" class="dp-node" /><rect x="29" y="48" width="12" height="8" class="dp-node" /><rect x="19" y="48" width="8" height="8" class="dp-node" /><text x="30" y="80" text-anchor="middle" class="dp-mono" font-size="9">NFC / QR</text></g>
               <path d="M80,200 L140,200" stroke="#D4C9B9" stroke-width="1.5" fill="none" stroke-dasharray="4 4" marker-end="url(#arrow-dp)" />
               <text x="110" y="190" text-anchor="middle" class="dp-mono" fill="#D4C9B9">SCAN</text>
               <g transform="translate(160, 20)"><rect x="0" y="0" width="240" height="360" rx="20" class="dp-bg" /><rect x="10" y="10" width="220" height="340" rx="12" class="dp-shape" /><line x1="10" y1="55" x2="230" y2="55" class="dp-path" /><text x="120" y="38" text-anchor="middle" class="dp-mono">PRODUCT PASSPORT</text><circle cx="35" cy="90" r="5" class="dp-dot" /><line x1="35" y1="95" x2="35" y2="155" class="dp-line" /><text x="60" y="86" class="dp-mono">ORIGIN</text><text x="60" y="104" class="dp-sans">Single-Estate Family Stud</text><text x="60" y="120" class="dp-sans">Victoria, Australia</text><circle cx="35" cy="160" r="5" class="dp-dot" /><line x1="35" y1="165" x2="35" y2="225" class="dp-line" /><text x="60" y="156" class="dp-mono">FIBRE SPEC</text><text x="60" y="174" class="dp-sans">16.8 µm Merino</text><text x="60" y="190" class="dp-sans">98.7% Comfort Factor</text><circle cx="35" cy="230" r="5" class="dp-dot" /><line x1="35" y1="235" x2="35" y2="295" class="dp-line" /><text x="60" y="226" class="dp-mono">PROCESSING</text><text x="60" y="244" class="dp-sans">Zero Added Chemistry</text><text x="60" y="260" class="dp-sans">Mechanical Finishing</text><circle cx="35" cy="300" r="5" class="dp-dot" /><text x="60" y="296" class="dp-mono">VERIFICATION</text><text x="60" y="314" class="dp-sans">Batch: MT-2025-PX</text><text x="60" y="330" class="dp-sans" fill="#D4C9B9">RWS Certified</text></g>
             </svg>
+            </div>
+            <p class="ds-prov-caption">Grower Partner identity is not disclosed publicly to protect right to privacy.</p>
           </div>
         </div>
       </div>
@@ -2405,6 +2435,68 @@
               span.style.opacity = '';
             });
           }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }());
+
+    // ── PHILOSOPHY: scroll-linked fade-in + halo ──
+    (function () {
+      var section = document.querySelector('.philosophy-section');
+      var main = section && section.querySelector('.philosophy-main');
+      if (!section || !main) return;
+      var revealed = false;
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var rect = section.getBoundingClientRect();
+          var vh = window.innerHeight;
+          // Fade in when section enters viewport
+          if (!revealed && rect.top < vh * 0.75) {
+            main.classList.add('phil-visible');
+            revealed = true;
+          }
+          // Halo when centered
+          var center = rect.top + rect.height / 2;
+          var dist = Math.abs(center - vh / 2) / (vh / 2);
+          var strength = Math.max(0, 1 - dist);
+          if (strength > 0.2) {
+            var s = strength * strength;
+            main.style.textShadow = '0 0 ' + (50 * s) + 'px rgba(250,250,248,' + (0.25 * s) + '), 0 0 ' + (100 * s) + 'px rgba(250,250,248,' + (0.08 * s) + ')';
+          } else {
+            main.style.textShadow = '';
+          }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }());
+
+    // ── TRANSITION BAND: split on scroll ──
+    (function () {
+      var band = document.getElementById('transition-band');
+      if (!band) return;
+      var outgoing = band.querySelector('.transition-line--outgoing');
+      var incoming = band.querySelector('.transition-line--incoming');
+      if (!outgoing || !incoming) return;
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var rect = band.getBoundingClientRect();
+          var vh = window.innerHeight;
+          var bandCenter = rect.top + rect.height / 2;
+          // Progress: 0 when band center is at viewport center, 1 when band center reaches top
+          var progress = Math.max(0, Math.min(1, (vh / 2 - bandCenter) / (vh * 0.4)));
+          var offset = progress * 60; // max 60px separation
+          outgoing.style.transform = 'translateY(' + (-offset) + 'px)';
+          outgoing.style.opacity = String(Math.max(0.15, 0.6 - progress * 0.45));
+          incoming.style.transform = 'translateY(' + offset + 'px)';
+          incoming.style.opacity = String(Math.min(1, 0.8 + progress * 0.2));
           ticking = false;
         });
       }
