@@ -519,13 +519,13 @@
 
     .problem-headline {
       font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: clamp(48px, 5vw, 72px);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-weight: 600;
+      font-size: clamp(36px, 4vw, 52px);
+      text-transform: none;
+      letter-spacing: 0.01em;
       color: var(--warm-off-white);
       margin-bottom: 72px;
-      line-height: 1.0;
+      line-height: 1.15;
       max-width: 70%;
     }
 
@@ -595,12 +595,12 @@
 
     .circularity-line1 {
       font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 600;
+      font-size: clamp(36px, 4.5vw, 52px);
       color: var(--warm-off-white);
-      letter-spacing: 0.02em;
-      line-height: 1.05;
-      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      text-transform: none;
       display: block;
       position: relative;
       text-shadow: 0 0 0px rgba(250, 250, 248, 0);
@@ -612,11 +612,11 @@
     .circularity-line2 {
       font-family: var(--font-sans);
       font-weight: 300;
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(28px, 3.5vw, 42px);
       color: var(--warm-accent);
       letter-spacing: 0.01em;
-      line-height: 1.1;
-      text-transform: uppercase;
+      line-height: 1.15;
+      text-transform: none;
       display: block;
       margin-top: 8px;
       white-space: nowrap;
@@ -688,7 +688,7 @@
 
     .feature-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 48px 40px;
     }
 
@@ -790,9 +790,9 @@
     .orientation-panel {
       flex: 1;
       padding: 64px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      display: grid;
+      grid-template-rows: auto auto auto;
+      align-content: start;
     }
 
     .orientation-panel--dark {
@@ -842,7 +842,9 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       text-decoration: none;
-      margin-top: 32px;
+      margin-top: auto;
+      padding-top: 32px;
+      align-self: start;
     }
 
     .orientation-panel--dark .orientation-cue {
@@ -858,7 +860,7 @@
     ══════════════════════════════════ */
     /* ── TRANSITION PIVOT ── */
     #transition-band {
-      background: linear-gradient(to bottom, var(--sepia-black), var(--warm-off-white));
+      background: linear-gradient(to bottom, var(--sepia-black) 0%, var(--sepia-black) 20%, var(--warm-off-white) 100%);
       padding: 48px 0;
       text-align: center;
     }
@@ -1438,8 +1440,6 @@
       margin-top: 56px;
     }
     .lyten-spec {
-      display: flex;
-      flex-direction: column;
       padding: 24px 0;
       border-top: 1px solid rgba(212, 201, 185, 0.15);
     }
@@ -1452,12 +1452,13 @@
     }
     .lyten-spec-unit {
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 16px;
       color: var(--text-label-dark);
       letter-spacing: 0.05em;
-      margin-top: 4px;
+      margin-left: 4px;
     }
     .lyten-spec-label {
+      display: block;
       font-family: var(--font-mono);
       font-size: 10px;
       letter-spacing: 0.14em;
@@ -1479,6 +1480,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: right center;
       opacity: 0;
       transition: opacity 0.05s linear;
     }
@@ -1542,14 +1544,14 @@
       .terminal-line { white-space: normal; }
 
       #problem { padding: 80px 32px; }
-      .problem-headline { font-size: 36px; max-width: 100%; }
+      .problem-headline { font-size: 28px; max-width: 100%; }
       .problem-grid { grid-template-columns: 1fr; gap: 48px; }
       .problem-body { padding-right: 0; padding-top: 0; }
       .data-cards { padding-left: 0; margin-left: 0; }
 
       #circularity { padding: 80px 32px; }
-      .circularity-line1 { font-size: clamp(32px, 5vw, 48px); }
-      .circularity-line2 { font-size: clamp(28px, 4vw, 40px); }
+      .circularity-line1 { font-size: clamp(26px, 4vw, 36px); }
+      .circularity-line2 { font-size: clamp(22px, 3vw, 30px); }
 
       .lyten-intro { padding: 100px 32px; }
       .lyten-intro-text { padding-right: 0; }
@@ -1750,7 +1752,7 @@
       <div class="lyten-intro-grid">
         <div class="lyten-intro-text reveal">
           <span class="lyten-intro-label reveal-child">Introducing</span>
-          <h2 class="lyten-intro-headline reveal-child" id="lyten-intro-headline">LYTEN&#8482;</h2>
+          <h2 class="lyten-intro-headline reveal-child" id="lyten-intro-headline">LYTEN<span style="font-weight: 300; font-size: 0.4em; vertical-align: super;">&#8482;</span></h2>
           <p class="lyten-intro-descriptor reveal-child">Our flagship material. Engineered from single-estate superfine merino. No blends. No coatings. No compromises.</p>
           <div class="lyten-specs reveal-child">
             <div class="lyten-spec">
@@ -1814,7 +1816,7 @@
             </article>
             <article>
               <span class="feature-block-label">Engineered in Biella</span>
-              <p class="feature-block-body">Developed in Italy's textile district, where generations of superfine wool expertise meet the precision finishing infrastructure of Biella.</p>
+              <p class="feature-block-body">Developed in Italy&#8217;s textile district, where generations of superfine wool expertise meet the precision finishing infrastructure of Biella.</p>
             </article>
             <article>
               <span class="feature-block-label">Unbroken Traceability</span>
@@ -1823,8 +1825,28 @@
             </article>
             <article>
               <span class="feature-block-label">Next-to-Skin Performance</span>
-              <p class="feature-block-body">A 98.7% comfort factor places LYTEN™ above the fibre diameter threshold at which prickle perception begins. Silent against skin. Structured for mid-layer thermal performance.</p>
+              <p class="feature-block-body">A 98.7% comfort factor places LYTEN&#8482; above the fibre diameter threshold at which prickle perception begins. Silent against skin. Structured for mid-layer thermal performance.</p>
               <span class="espr-tag">ESPR: Durability &amp; extended use</span>
+            </article>
+            <article>
+              <span class="feature-block-label">Structural Longevity</span>
+              <p class="feature-block-body">No coatings to exhaust. No finishes to strip. The material performs consistently across its full service life.</p>
+              <span class="espr-tag">ESPR: Durability &amp; extended use</span>
+            </article>
+            <article>
+              <span class="feature-block-label">Surface Resistance</span>
+              <p class="feature-block-body">Light resistance to wind and water ingress without chemical treatment. A function of fibre structure, not applied finish. Pending ISO 9237 and ISO 811 validation.</p>
+              <span class="espr-tag">ESPR: Restricted substance compliance</span>
+            </article>
+            <article>
+              <span class="feature-block-label">Odour Resistance</span>
+              <p class="feature-block-body">The keratin protein matrix resists odour and moisture retention, reducing wash frequency compared to synthetic and blend mid-layers. Most use cases require airing rather than washing. No antimicrobial treatment required or applied.</p>
+              <span class="espr-tag">ESPR: Durability &amp; extended use</span>
+            </article>
+            <article>
+              <span class="feature-block-label">Kinetic Recovery</span>
+              <p class="feature-block-body">Inherent fibre elasticity without synthetic components. No elastane. No blend required.</p>
+              <span class="espr-tag">ESPR: Recyclability by design</span>
             </article>
           </div>
 
@@ -2491,8 +2513,8 @@
           } else {
             line1.style.textShadow = '';
           }
-          // Scatter triggers when section's bottom 30% reaches viewport center
-          var triggerPoint = section.offsetTop + section.offsetHeight * 0.7;
+          // Scatter triggers when section's top 60% reaches viewport center
+          var triggerPoint = section.offsetTop + section.offsetHeight * 0.35;
           var scrollPast = window.pageYOffset + vh * 0.5 - triggerPoint;
           if (scrollPast > 0) {
             var progress = Math.min(scrollPast / 200, 1);
