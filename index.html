@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0F0F0E">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; media-src 'self'; base-uri 'self'; form-action 'self'">
   <title>MONO•TERRA™ | Natural Engineering. Unbroken Traceability.</title>
-  <meta name="description" content="MONO•TERRA™ supplies single-origin merino with primary environmental data to European apparel brands. LYTEN™ is our quiet performance fabric — mechanically finished, zero chemical finishing, formed by nature.">
+  <meta name="description" content="MONO•TERRA™ supplies single-origin merino with primary environmental data to European apparel brands. LYTEN™ is our quiet performance fabric. Formed, not treated.">
   <meta name="copyright" content="© 2026 MONOTERRA AB. Organisationsnummer: 559572-5259. All rights reserved.">
   <link href="assets/fonts/fonts.css" rel="stylesheet">
   <link rel="preload" as="image" href="assets/images/_Hero landing image_CMPRSSD.avif" type="image/avif">
@@ -21,7 +21,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="MONO•TERRA™ | Natural Engineering. Unbroken Traceability.">
-  <meta property="og:description" content="MONO•TERRA™ supplies single-origin merino with primary environmental data to European apparel brands. LYTEN™ is our quiet performance fabric — mechanically finished, zero chemical finishing, formed by nature.">
+  <meta property="og:description" content="MONO•TERRA™ supplies single-origin merino with primary environmental data to European apparel brands. LYTEN™ is our quiet performance fabric. Formed, not treated.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://monoterra.eu/">
   <meta property="og:image" content="https://images.squarespace-cdn.com/content/692ef9367a342e5167c274e7/106e138b-f5c6-4188-82bc-45f7cf6984a7/Hero+landing+image.png?content-type=image%2Fpng">
@@ -32,7 +32,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MONO•TERRA™ | Natural Engineering. Unbroken Traceability.">
-  <meta name="twitter:description" content="MONO•TERRA™ supplies single-origin merino with primary environmental data to European apparel brands. LYTEN™ is our quiet performance fabric — mechanically finished, zero chemical finishing, formed by nature.">
+  <meta name="twitter:description" content="MONO•TERRA™ supplies single-origin merino with primary environmental data to European apparel brands. LYTEN™ is our quiet performance fabric. Formed, not treated.">
   <meta name="twitter:image" content="https://images.squarespace-cdn.com/content/692ef9367a342e5167c274e7/106e138b-f5c6-4188-82bc-45f7cf6984a7/Hero+landing+image.png?content-type=image%2Fpng">
 
   <!-- JSON-LD Organization Schema -->
@@ -52,7 +52,7 @@
     "brand": {
       "@type": "Brand",
       "name": "LYTEN™",
-      "description": "Quiet performance fabric. Mono-material keratin. Zero chemical finishing."
+      "description": "Quiet performance fabric. Mono-material keratin. Mechanically finished, not chemically."
     }
   }
   </script>
@@ -235,17 +235,6 @@
       transform: rotate(-25deg);
       pointer-events: none;
       z-index: 1;
-    }
-
-    /* ── BLINK ── */
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    .cursor-blink {
-      display: inline-block;
-      animation: blink 1s step-end infinite;
-      margin-left: 2px;
     }
 
     /* ── SCROLL INDICATOR ── */
@@ -1586,6 +1575,13 @@
       color: var(--warm-off-white);
       line-height: 1;
     }
+    /* Text-variant: sized down from the numeric 48px to a readable display weight */
+    .lyten-spec-value--text {
+      font-size: 28px;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      display: block;
+    }
     .lyten-spec-unit {
       font-family: var(--font-mono);
       font-size: 16px;
@@ -1711,6 +1707,7 @@
       .lyten-video-frame { width: calc(100% + 64px); margin-left: -32px; min-height: 280px; }
       .lyten-specs { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
       .lyten-spec-value { font-size: 36px; }
+      .lyten-spec-value--text { font-size: 22px; }
 
       #material { padding: 80px 32px; }
       .material-headline { font-size: 28px; }
@@ -1815,24 +1812,24 @@
             <p class="hero-subline">Natural Engineering. Unbroken Traceability.</p>
           </div>
 
-        <div class="hero-terminal" id="heroTerminal" aria-label="Material specification data">
+        <div class="hero-terminal" id="heroTerminal" aria-label="Brand principles">
           <div class="terminal-line" data-delay="0">
-            <span class="terminal-label">Fibre Diameter</span><span class="terminal-sep">&middot;</span><span class="terminal-value">16.8&#xB5;m</span>
+            <span class="terminal-label">Principle</span><span class="terminal-sep">&middot;</span><span class="terminal-value">One origin. One fibre.</span>
           </div>
           <div class="terminal-line" data-delay="1">
-            <span class="terminal-label">Comfort Factor</span><span class="terminal-sep">&middot;</span><span class="terminal-value">98.7%</span>
+            <span class="terminal-label">Method</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Formed, not treated.</span>
           </div>
           <div class="terminal-line" data-delay="2">
-            <span class="terminal-label">Certification</span><span class="terminal-sep">&middot;</span><span class="terminal-value">RWS</span>
+            <span class="terminal-label">Fibre Diameter</span><span class="terminal-sep">&middot;</span><span class="terminal-value">17&#xB5;m &middot; RWS</span>
           </div>
           <div class="terminal-line" data-delay="3">
             <span class="terminal-label">Grower Partner 001</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Victoria, Australia &middot; 7th Generation Family Stud</span>
           </div>
           <div class="terminal-line" data-delay="4">
-            <span class="terminal-label">Annual Clip</span><span class="terminal-sep">&middot;</span><span class="terminal-value">200,000kg+</span>
+            <span class="terminal-label">Annual Clip</span><span class="terminal-sep">&middot;</span><span class="terminal-value">90,000kg</span>
           </div>
           <div class="terminal-line" data-delay="5">
-            <span class="terminal-label">Data Layer</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Tier 4 Primary &middot; EPCIS 2.0<span class="cursor-blink">|</span></span>
+            <span class="terminal-label">Data Layer</span><span class="terminal-sep">&middot;</span><span class="terminal-value">Primary &middot; EPCIS 2.0</span>
           </div>
         </div>
       </div>
@@ -1849,7 +1846,7 @@
       <div class="orientation-panel orientation-panel--dark reveal" role="region" aria-label="Natural Engineering">
         <span class="orientation-label reveal-child">Natural Engineering</span>
         <p class="orientation-body reveal-child">
-          One untreated fibre. No blends. No coatings. Zero chemical finishing. Performance from the fibre's structure, not from anything added to it.
+          One untreated fibre. No blends. No synthetic coatings. No functional finishes. Performance from the fibre's structure, not from anything added to it.
         </p>
         <a href="#problem" class="orientation-cue reveal-child" aria-label="Scroll to material proposition">The material &#8595;</a>
       </div>
@@ -1918,24 +1915,20 @@
           <p class="lyten-intro-descriptor reveal-child">Quiet performance fabric. Single-origin superfine merino, mechanically finished. Nothing added, nothing approximated.</p>
           <div class="lyten-specs reveal-child">
             <div class="lyten-spec">
-              <span class="lyten-spec-value">250</span>
-              <span class="lyten-spec-unit">gsm</span>
-              <span class="lyten-spec-label">Fabric Weight [provisional]</span>
+              <span class="lyten-spec-value lyten-spec-value--text">Milled</span>
+              <span class="lyten-spec-label">Construction</span>
             </div>
             <div class="lyten-spec">
-              <span class="lyten-spec-value">16.8</span>
-              <span class="lyten-spec-unit">&micro;m</span>
-              <span class="lyten-spec-label">Fibre Diameter</span>
+              <span class="lyten-spec-value lyten-spec-value--text">100% Merino</span>
+              <span class="lyten-spec-label">Composition &middot; Non-superwash</span>
             </div>
             <div class="lyten-spec">
-              <span class="lyten-spec-value">98.7</span>
-              <span class="lyten-spec-unit">%</span>
-              <span class="lyten-spec-label">Comfort Factor</span>
+              <span class="lyten-spec-value lyten-spec-value--text">Mechanical</span>
+              <span class="lyten-spec-label">Finishing &middot; No synthetic coatings. No functional finishes.</span>
             </div>
             <div class="lyten-spec">
-              <span class="lyten-spec-value">100</span>
-              <span class="lyten-spec-unit">%</span>
-              <span class="lyten-spec-label">Mono-Material</span>
+              <span class="lyten-spec-value lyten-spec-value--text">Single-estate</span>
+              <span class="lyten-spec-label">Provenance &middot; Australian merino</span>
             </div>
           </div>
           <div class="lyten-creed reveal-child">
@@ -1958,7 +1951,7 @@
 
       <div class="material-content">
         <div class="reveal">
-          <h2 class="material-headline reveal-child" id="material-headline">One untreated fibre. Zero chemical finishing.</h2>
+          <h2 class="material-headline reveal-child" id="material-headline">One untreated fibre. Mechanically finished, not chemically.</h2>
 
           <div class="feature-grid reveal-child">
             <article class="feature-card" data-accordion>
@@ -1968,26 +1961,17 @@
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
               <div class="feature-card-panel" id="feature-panel-1" role="region" aria-labelledby="feature-trigger-1">
-                <p class="feature-block-body">No synthetic components. No coatings. No microplastic generation pathway in consumer use.</p>
+                <p class="feature-block-body">No synthetic components. No synthetic coatings. No microplastic generation pathway in consumer use.</p>
               </div>
             </article>
             <article class="feature-card" data-accordion>
               <button class="feature-card-trigger" aria-expanded="false" aria-controls="feature-panel-2" id="feature-trigger-2">
-                <span class="feature-block-label">Zero Chemical Finishing</span>
-                <span class="espr-tag">ESPR: Restricted substance compliance</span>
+                <span class="feature-block-label">Mechanically Finished</span>
+                <span class="espr-tag">ESPR: Substances of concern</span>
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
               <div class="feature-card-panel" id="feature-panel-2" role="region" aria-labelledby="feature-trigger-2">
-                <p class="feature-block-body">No chlorination. No chemical finishes. GOTS-compatible processing pathway.</p>
-              </div>
-            </article>
-            <article class="feature-card" data-accordion>
-              <button class="feature-card-trigger" aria-expanded="false" aria-controls="feature-panel-3" id="feature-trigger-3">
-                <span class="feature-block-label">Engineered in Biella</span>
-                <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
-              </button>
-              <div class="feature-card-panel" id="feature-panel-3" role="region" aria-labelledby="feature-trigger-3">
-                <p class="feature-block-body">Developed in Italy&#8217;s textile district, where generations of superfine wool expertise meet the precision finishing infrastructure of Biella.</p>
+                <p class="feature-block-body">No chlorine-based shrink treatment. No synthetic coatings. No functional finishes. Structural performance engineered through mechanical milling, not chemical addition.</p>
               </div>
             </article>
             <article class="feature-card" data-accordion>
@@ -2007,7 +1991,7 @@
                 <svg class="feature-card-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
               </button>
               <div class="feature-card-panel" id="feature-panel-5" role="region" aria-labelledby="feature-trigger-5">
-                <p class="feature-block-body">A 98.7% comfort factor places LYTEN&#8482; above the fibre diameter threshold at which prickle perception begins. Silent against skin. Structured for mid-layer thermal performance.</p>
+                <p class="feature-block-body">Superfine merino at a diameter consistent with next-to-skin wear. Structured for mid-layer thermal performance without the prickle perception associated with coarser wools.</p>
               </div>
             </article>
             <article class="feature-card" data-accordion>
@@ -2069,7 +2053,7 @@
               CSRD requires Scope 3 Category 1 data from every material supplier. Without it, brands default to industry averages: generic emission factors that inflate reported footprints, weaken reduction targets, and expose ESG narratives to audit risk.
             </p>
             <p class="ds-body">
-              MONO&bull;TERRA™ supplies Tier 4 primary data with every transaction. Batch-specific. Auditable. Pre-structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers.
+              MONO&bull;TERRA™ supplies primary data with every transaction. Batch-specific. Auditable. Pre-structured for CSRD reporting, DPP field population, and EPR eco-modulation dossiers.
             </p>
             <p class="ds-body">
               Specifying LYTEN™ is more than a sourcing decision. It is a compliance infrastructure solution. The compliance-ready data arrives with the material.
@@ -2084,7 +2068,7 @@
               <tbody>
                 <tr>
                   <td>CSRD Scope 3 Cat. 1</td>
-                  <td>Tier 1 supplier environmental data</td>
+                  <td>Primary supplier data on purchased goods</td>
                 </tr>
                 <tr>
                   <td>ESPR Ecodesign</td>
@@ -2096,7 +2080,7 @@
                 </tr>
                 <tr>
                   <td>EPR Eco-modulation</td>
-                  <td>End-of-life recyclability evidence</td>
+                  <td>Design-for-recyclability criteria and recycled content thresholds</td>
                 </tr>
               </tbody>
             </table>
@@ -2116,7 +2100,7 @@
             <span class="ds-eyebrow">Where the Primary Data Originates</span>
             <h3 class="ds-headline" id="provenance">Our Grower Partners.</h3>
             <p class="ds-body">
-              The data records start here. Hand-selected family estates, assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency.
+              The data records start here. Family estates assessed against the MONO&bull;TERRA Protocol&trade; for animal welfare, land stewardship, and data transparency. The protocol, not a roster, is the asset.
             </p>
             <p class="ds-body">
               Mulesing is a hard exclusion. No exceptions.
@@ -2187,7 +2171,7 @@
                 <div class="mac-dot mac-close"></div>
                 <div class="mac-dot mac-min"></div>
                 <div class="mac-dot mac-max"></div>
-                <span class="mac-title">MT-2026-P3-batch.epcis.json</span>
+                <span class="mac-title">mt-[batch-id].epcis.json</span>
               </div>
               <pre class="code-block"><code id="epcisCode"></code></pre>
             </div>
@@ -2209,7 +2193,7 @@
                   <path d="M80,40 L80,15 Q100,0 120,15 L120,40" fill="none" stroke="#444" stroke-width="1" />
                   <circle cx="100" cy="20" r="6" fill="none" stroke="#555" stroke-width="1" />
                   <!-- Brand mark -->
-                  <text x="100" y="80" text-anchor="middle" class="dp-mono" font-size="8" fill="#666">MONO\u2022TERRA\u2122</text>
+                  <text x="100" y="80" text-anchor="middle" class="dp-mono" font-size="8" fill="#666">MONO•TERRA™</text>
                   <!-- QR code block (21×21 Version 1 grid, 5px modules) -->
                   <rect x="42" y="97" width="116" height="116" rx="3" fill="#1A1A17" stroke="#444" stroke-width="0.5" />
                   <g transform="translate(47, 102)" fill="#D4C9B9">
@@ -2241,12 +2225,12 @@
                   <!-- Data lines -->
                   <line x1="30" y1="252" x2="170" y2="252" stroke="#333" stroke-width="0.5" />
                   <text x="30" y="272" class="dp-mono" font-size="8" fill="#888">ORIGIN</text>
-                  <text x="30" y="288" class="dp-sans" font-size="11" fill="#D4C9B9">Single-Estate, Victoria AU</text>
+                  <text x="30" y="288" class="dp-sans" font-size="11" fill="#D4C9B9">[ single-estate &middot; country ]</text>
                   <line x1="30" y1="302" x2="170" y2="302" stroke="#333" stroke-width="0.5" />
                   <text x="30" y="322" class="dp-mono" font-size="8" fill="#888">SPECIFICATION</text>
-                  <text x="30" y="338" class="dp-sans" font-size="11" fill="#D4C9B9">16.8 &#xB5;m &middot; 98.7% CF &middot; RWS</text>
+                  <text x="30" y="338" class="dp-sans" font-size="11" fill="#D4C9B9">[ µm ] &middot; [ CF ] &middot; [ cert ]</text>
                   <line x1="30" y1="352" x2="170" y2="352" stroke="#333" stroke-width="0.5" />
-                  <text x="100" y="372" text-anchor="middle" class="dp-mono" font-size="8" fill="#555">MT-2026-P3</text>
+                  <text x="100" y="372" text-anchor="middle" class="dp-mono" font-size="8" fill="#555">MT-[ BATCH-ID ]</text>
                 </g>
                 <!-- Scan indicator -->
                 <g transform="translate(260, 160)">
@@ -2256,7 +2240,7 @@
                 </g>
               </svg>
             </div>
-            <p class="ds-prov-caption">Grower Partner identity is not disclosed publicly to protect right to privacy.</p>
+            <p class="ds-prov-caption">Illustrative. Field values populated per batch. Grower Partner identity is not disclosed publicly.</p>
           </div>
         </div>
       </div>
@@ -2311,7 +2295,7 @@
               <svg class="exec-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="1.2"/></svg>
             </button>
             <div class="exec-panel">
-              <p class="exec-a">Yes. Capacity is drawn from a curated network of grower partners, each governed by the MONO•TERRA Protocol™. Supply is structured well ahead of current commercial demand.</p>
+              <p class="exec-a">Yes. Capacity is drawn from a partner network governed by the MONO•TERRA Protocol&trade;. Supply is structured well ahead of current commercial demand.</p>
             </div>
           </div>
 
@@ -2330,7 +2314,7 @@
           Get in touch to discuss the LYTEN™ fibre specification, processing methodology, provenance chain, and compliance protocol.
         </p>
         <p class="cta-note reveal-child">
-          ISO validation programme in progress. Performance data will be appended upon completion. Pilot sample allocation available on request.
+          ISO validation programme in progress. Performance data will be appended upon completion.
         </p>
         <div class="reveal-child">
           <a class="cta-btn"
@@ -2378,7 +2362,7 @@
 
     {
       "ci": {
-        "collect": { "url": ["https://greenfieldgroup.eu/monoterra/"] },
+        "collect": { "url": ["https://monoterra.eu/"] },
         "assert": {
           "assertions": {
             "categories:performance": ["error", { "minScore": 0.85 }],
@@ -2611,30 +2595,30 @@
       var epcisData = {
         "epcis:EPCISDocument": {
           "schemaVersion": "2.0",
-          "creationDate": "2026-XX-XX",
-          "sender": { "identifier": "MONOTERRA-AB", "gs1CompanyPrefix": "XXXXXXX" },
+          "creationDate": "<iso-8601>",
+          "sender": { "identifier": "MONOTERRA-AB", "gs1CompanyPrefix": "<prefix>" },
           "eventList": [{
             "type": "ObjectEvent",
             "action": "OBSERVE",
-            "epcList": ["urn:epc:id:sgtin:XXXXXXX.XXXXX.MT-XXXX-PX"],
+            "epcList": ["urn:epc:id:sgtin:<prefix>.<item>.<serial>"],
             "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
             "ilmd": {
               "mt:fibreSpecification": {
-                "diameter_microns": "16.8",
-                "comfortFactor_pct": "98.7",
-                "certifications": ["RWS", "GOTS-compatible pathway"],
-                "processingChemistry": "none"
+                "diameter_microns": "<value>",
+                "comfortFactor_pct": "<value>",
+                "certifications": ["<cert>", "<cert>"],
+                "processingChemistry": "mechanical-finishing"
               },
               "mt:provenance": {
-                "sourceRegion": "Victoria, Australia",
-                "estateType": "Single-estate family stud",
-                "clipYear": "2025",
+                "sourceRegion": "<country>",
+                "estateType": "<estate-type>",
+                "clipYear": "<yyyy>",
                 "dataType": "primary"
               },
               "mt:complianceFields": {
                 "csrdScope3Cat1": true,
                 "espr_monoMaterial": true,
-                "dpp_readiness": "CYCLING_PLACEHOLDER"
+                "dpp_readiness": "PLACEHOLDER"
               }
             }
           }]
@@ -2642,11 +2626,9 @@
       };
       var cycleValues = [
         "batch-level provenance available",
-        "MT-2026-P3 verified",
         "single-fibre keratin stream",
         "cradle-to-gate footprint: primary",
-        "EPR eco-modulation: mono-material",
-        "Victoria AU clip 2025 segregated"
+        "EPR eco-modulation: mono-material"
       ];
       var cycleIdx = 0;
       function syntaxHighlight(json) {
@@ -2679,31 +2661,6 @@
         codeEl.innerHTML = html;
       }
       renderWithCycle();
-      setInterval(function () {
-        cycleIdx = (cycleIdx + 1) % cycleValues.length;
-        renderWithCycle();
-      }, 3500);
-
-      // Scroll-sync: scroll code-block content with page scroll
-      var codeBlock = codeEl.parentElement;
-      if (codeBlock) {
-        var ticking = false;
-        window.addEventListener('scroll', function () {
-          if (ticking) return;
-          ticking = true;
-          requestAnimationFrame(function () {
-            var rect = codeBlock.getBoundingClientRect();
-            var vh = window.innerHeight;
-            // Calculate how far through the viewport the code block is
-            var progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height)));
-            var scrollRange = codeBlock.scrollHeight - codeBlock.clientHeight;
-            if (scrollRange > 0) {
-              codeBlock.scrollTop = progress * scrollRange;
-            }
-            ticking = false;
-          });
-        }, { passive: true });
-      }
     }());
 
     // ── CIRCULARITY: halo glow + disassembly letter scatter ──
